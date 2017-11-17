@@ -242,10 +242,10 @@ public class UserUtils {
 				unitList = unitDao.findAllList(new Unit());
 			}else{
 				Unit unit = new Unit();
-				unit.getSqlMap().put("dsf", BaseService.dataScopeFilter(user, "a", ""));
+				unit.setOffice(user.getOffice());
 				unitList = unitDao.findList(unit);
 			}
-			putCache(CACHE_OFFICE_LIST, unitList);
+			putCache(CACHE_UNIT_LIST, unitList);
 		}
 		return unitList;
 	}

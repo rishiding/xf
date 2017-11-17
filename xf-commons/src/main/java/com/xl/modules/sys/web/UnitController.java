@@ -6,7 +6,6 @@ package com.xl.modules.sys.web;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -22,10 +21,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.xl.common.config.Global;
-import com.xl.common.persistence.Page;
 import com.xl.common.web.BaseController;
 import com.xl.common.utils.StringUtils;
-import com.xl.modules.sys.entity.Office;
 import com.xl.modules.sys.entity.Unit;
 import com.xl.modules.sys.entity.User;
 import com.xl.modules.sys.service.UnitService;
@@ -43,7 +40,7 @@ public class UnitController extends BaseController {
 	@Autowired
 	private UnitService unitService;
 	
-	@ModelAttribute
+	@ModelAttribute("unit")
 	public Unit get(@RequestParam(required=false) String id) {
 		Unit entity = null;
 		if (StringUtils.isNotBlank(id)){
@@ -56,10 +53,15 @@ public class UnitController extends BaseController {
 	}
 	
 	@RequiresPermissions("sys:unit:view")
-	@RequestMapping(value = {"list", ""})
-	public String list(Unit unit, HttpServletRequest request, HttpServletResponse response, Model model) {
-		Page<Unit> page = unitService.findPage(new Page<Unit>(request, response), unit); 
-		model.addAttribute("page", page);
+	@RequestMapping(value = {""})
+	public String index(Unit office, Model model) {
+		return "modules/sys/unitIndex";
+	}
+	
+	@RequiresPermissions("sys:unit:view")
+	@RequestMapping(value = {"list"})
+	public String list(Unit unit, Model model) {
+		model.addAttribute("list", unitService.findList(unit));
 		return "modules/sys/unitList";
 	}
 
@@ -67,8 +69,10 @@ public class UnitController extends BaseController {
 	@RequestMapping(value = "form")
 	public String form(Unit unit, Model model) {
 		User user = UserUtils.getUser();
+		if(unit.getParent()!=null){
+			unit.setParent(unitService.get(unit.getParent().getId()));
+		}
 		
-		unit.setParent(unitService.get(unit.getParent().getId()));
 		if (unit.getArea()==null){
 			unit.setArea(user.getOffice().getArea());
 		}
