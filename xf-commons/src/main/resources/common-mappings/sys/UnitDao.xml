@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xl.modules.sys.dao.UnitDao">
+    
+	<sql id="unitColumns">
+		a.id AS "id",
+		a.parent_id AS "parent.id",
+		a.parent_ids AS "parentIds",
+		a.name AS "name",
+		a.sort AS "sort",
+		a.area_id AS "area.id",
+		a.code AS "code",
+		a.address AS "address",
+		a.longitude AS "longitude",
+		a.latitude AS "latitude",
+		a.point AS "point",
+		a.zip_code AS "zipCode",
+		a.master AS "master",
+		a.phone AS "phone",
+		a.fax AS "fax",
+		a.email AS "email",
+		a.usable AS "usable",
+		a.industry AS "industry",
+		a.office_id AS "office.id",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.remarks AS "remarks",
+		a.del_flag AS "delFlag",
+		a6.name AS "area.name",
+		o19.name AS "office.name"
+	</sql>
+	
+	<sql id="unitJoins">
+		LEFT JOIN sys_area a6 ON a6.id = a.area_id
+		LEFT JOIN sys_office o19 ON o19.id = a.office_id
+	</sql>
+    
+	<select id="get" resultType="Unit">
+		SELECT 
+			<include refid="unitColumns"/>
+		FROM sys_unit a
+		<include refid="unitJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="Unit">
+		SELECT 
+			<include refid="unitColumns"/>
+		FROM sys_unit a
+		<include refid="unitJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="name != null and name != ''">
+				AND a.name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{name}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{name}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{name},'%')</if>
+			</if>
+			<if test="office != null and office.id !=null and office.id != ''">	
+				a.office_id=#{office.id}
+			</if>
+			
+			ORDER BY a.code
+		</where>
+		
+	</select>
+	
+	<select id="findAllList" resultType="Unit">
+		SELECT 
+			<include refid="unitColumns"/>
+		FROM sys_unit a
+		<include refid="unitJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	<select id="findByParentIdsLike" resultType="com.xl.modules.sys.entity.Unit">
+		SELECT
+			<include refid="unitColumns"/>
+		FROM sys_unit a
+		<include refid="unitJoins"/>
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} AND a.parent_ids LIKE #{parentIds}
+		ORDER BY a.code
+	</select>
+	
+	<update id="updateParentIds">
+		UPDATE sys_unit SET 
+			parent_id = #{parent.id}, 
+			parent_ids = #{parentIds}
+		WHERE id = #{id}
+	</update>
+	<insert id="insert">
+		INSERT INTO sys_unit(
+			id,
+			parent_id,
+			parent_ids,
+			name,
+			sort,
+			area_id,
+			code,
+			address,
+			longitude,
+			latitude,
+			point,
+			zip_code,
+			master,
+			phone,
+			fax,
+			email,
+			usable,
+			industry,
+			office_id,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			remarks,
+			del_flag
+		) VALUES (
+			#{id},
+			#{parent.id},
+			#{parentIds},
+			#{name},
+			#{sort},
+			#{area.id},
+			#{code},
+			#{address},
+			#{longitude},
+			#{latitude},
+			#{point},
+			#{zipCode},
+			#{master},
+			#{phone},
+			#{fax},
+			#{email},
+			#{usable},
+			#{industry},
+			#{office.id},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{remarks},
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sys_unit SET 	
+			parent_id = #{parent.id},
+			parent_ids = #{parentIds},
+			name = #{name},
+			sort = #{sort},
+			area_id = #{area.id},
+			code = #{code},
+			address = #{address},
+			longitude = #{longitude},
+			latitude = #{latitude},
+			point = #{point},
+			zip_code = #{zipCode},
+			master = #{master},
+			phone = #{phone},
+			fax = #{fax},
+			email = #{email},
+			usable = #{usable},
+			industry = #{industry},
+			office_id = #{office.id},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE sys_unit SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>
