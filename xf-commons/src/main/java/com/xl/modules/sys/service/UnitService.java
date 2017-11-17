@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xl.common.persistence.Page;
-import com.xl.common.service.CrudService;
+import com.xl.common.service.TreeService;
 import com.xl.modules.sys.entity.Unit;
 import com.xl.modules.sys.utils.UserUtils;
 import com.xl.modules.sys.dao.UnitDao;
@@ -22,7 +22,7 @@ import com.xl.modules.sys.dao.UnitDao;
  */
 @Service
 @Transactional(readOnly = true)
-public class UnitService extends CrudService<UnitDao, Unit> {
+public class UnitService extends TreeService<UnitDao, Unit> {
 	public List<Unit> findAll(){
 		return UserUtils.getUnitList();
 	}
