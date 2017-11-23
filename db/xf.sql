@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-11-16 11:46:11
+Date: 2017-11-23 18:16:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,6 +43,7 @@ CREATE TABLE `gen_scheme` (
 -- ----------------------------
 -- Records of gen_scheme
 -- ----------------------------
+INSERT INTO `gen_scheme` VALUES ('5fd1d4dc2d1947408424369274f6c9c6', '单位表', 'curd', 'com.xl.modules', 'sys', '', '单位管理', '单位管理', 'rishi', 'e420a518a0ba4db899857614d130835e', 's1', '2017-11-16 17:21:43', 's1', '2017-11-16 17:42:04', '', '0');
 INSERT INTO `gen_scheme` VALUES ('dfd678176f6c4323bccfc5393d1c23b6', 'sys_user', 'curd', 'com.xl.modules', 'user', '', 'sys', 'user', 'rishi', '1045d5693efb4f63ba32364c2e8cd8c4', 's1', '2017-11-10 19:10:03', 's1', '2017-11-10 19:57:31', '', '0');
 
 -- ----------------------------
@@ -71,6 +72,7 @@ CREATE TABLE `gen_table` (
 -- Records of gen_table
 -- ----------------------------
 INSERT INTO `gen_table` VALUES ('1045d5693efb4f63ba32364c2e8cd8c4', 'sys_user', '用户表', 'SysUser', '', '', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', '', '0');
+INSERT INTO `gen_table` VALUES ('e420a518a0ba4db899857614d130835e', 'sys_unit', '单位表', 'Unit', '', '', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', '', '0');
 
 -- ----------------------------
 -- Table structure for gen_table_column
@@ -112,26 +114,51 @@ CREATE TABLE `gen_table_column` (
 -- Records of gen_table_column
 -- ----------------------------
 INSERT INTO `gen_table_column` VALUES ('01fdaf7a6b4a4b6396456b444d9ae4f6', '1045d5693efb4f63ba32364c2e8cd8c4', 'phone', '电话', 'varchar(200)', 'String', 'phone', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '90', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('020914bb51c540ee995f5a546cf8fd1b', 'e420a518a0ba4db899857614d130835e', 'longitude', '经度', 'double(20,6)', 'String', 'longitude', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '90', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('031c44343ac84616bac9b9dfc136e895', 'e420a518a0ba4db899857614d130835e', 'office_id', '所属机构', 'varchar(64)', 'com.xl.modules.sys.entity.Office', 'office.id|name', '0', '1', '1', '1', '0', '0', '=', 'officeselect', '', null, '190', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('052fbcea50cc425ca939407d7036f5c6', 'e420a518a0ba4db899857614d130835e', 'update_by', '更新者', 'varchar(64)', 'com.xl.modules.sys.entity.User', 'updateBy.id', '0', '0', '1', '1', '0', '0', '=', 'input', '', null, '220', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('0ca9ac6fb3f64199b974678618f35ff5', 'e420a518a0ba4db899857614d130835e', 'code', '编码', 'varchar(100)', 'String', 'code', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '70', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 INSERT INTO `gen_table_column` VALUES ('1158fd7ef9de4e5280ae08c46e85369e', '1045d5693efb4f63ba32364c2e8cd8c4', 'update_date', '更新时间', 'datetime', 'java.util.Date', 'updateDate', '0', '0', '1', '1', '1', '0', '=', 'dateselect', '', null, '190', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
 INSERT INTO `gen_table_column` VALUES ('15933f93eecd4647ad0879278c355360', '1045d5693efb4f63ba32364c2e8cd8c4', 'remarks', '备注信息', 'varchar(255)', 'String', 'remarks', '0', '1', '1', '1', '1', '0', '=', 'textarea', '', null, '200', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
 INSERT INTO `gen_table_column` VALUES ('20239345064a4004a1ed3e49acefb028', '1045d5693efb4f63ba32364c2e8cd8c4', 'mobile', '手机', 'varchar(200)', 'String', 'mobile', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '100', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('209a624111c145758e1b8a63ad61ae37', 'e420a518a0ba4db899857614d130835e', 'latitude', '纬度', 'double(20,6)', 'String', 'latitude', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '100', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('2e297b105e0742ab84167348e4191388', 'e420a518a0ba4db899857614d130835e', 'usable', '是否启用', 'varchar(64)', 'String', 'usable', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '170', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 INSERT INTO `gen_table_column` VALUES ('2fb94f152cac49b9913f0c535726e9e2', '1045d5693efb4f63ba32364c2e8cd8c4', 'office_id', '归属部门', 'varchar(64)', 'com.xl.modules.sys.entity.Office', 'office.id|name', '0', '0', '1', '1', '0', '0', '=', 'officeselect', '', null, '30', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
 INSERT INTO `gen_table_column` VALUES ('4a85dd949d42472fbb250f9a5e6947d5', '1045d5693efb4f63ba32364c2e8cd8c4', 'email', '邮箱', 'varchar(200)', 'String', 'email', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '80', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('523fe843b64e45c4992e045d2bab6119', 'e420a518a0ba4db899857614d130835e', 'parent_id', '父级编号', 'varchar(64)', 'This', 'parent.id|name', '0', '0', '1', '1', '0', '0', '=', 'treeselect', '', null, '20', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('55c3873ca99041c08e89ea8174f52439', 'e420a518a0ba4db899857614d130835e', 'id', '编号', 'varchar(64)', 'String', 'id', '1', '0', '1', '0', '0', '0', '=', 'input', '', null, '10', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('59297ed3e0e142088094680f02cdce89', 'e420a518a0ba4db899857614d130835e', 'email', '邮箱', 'varchar(200)', 'String', 'email', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '160', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 INSERT INTO `gen_table_column` VALUES ('598831a189c842bd98261a33b344ef65', '1045d5693efb4f63ba32364c2e8cd8c4', 'login_flag', '是否可登录', 'varchar(64)', 'String', 'loginFlag', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '150', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
 INSERT INTO `gen_table_column` VALUES ('5c243c8cd1a6465487c1103ea72d4baf', '1045d5693efb4f63ba32364c2e8cd8c4', 'no', '工号', 'varchar(100)', 'String', 'no', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '60', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
 INSERT INTO `gen_table_column` VALUES ('6142116e5bd9410287aeb11854ecc055', '1045d5693efb4f63ba32364c2e8cd8c4', 'id', '编号', 'varchar(64)', 'String', 'id', '1', '0', '1', '0', '0', '0', '=', 'input', '', null, '10', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('673dec9610484b0fad00cfe2ef3a9b2c', 'e420a518a0ba4db899857614d130835e', 'fax', '传真', 'varchar(200)', 'String', 'fax', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '150', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('7b91184b7d2d48e5872f8459a2c992d1', 'e420a518a0ba4db899857614d130835e', 'point', '经纬度', 'varchar(100)', 'String', 'point', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '110', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 INSERT INTO `gen_table_column` VALUES ('7ca06bdd6fbb475a8fffb11040ab1c6e', '1045d5693efb4f63ba32364c2e8cd8c4', 'login_date', '最后登陆时间', 'datetime', 'java.util.Date', 'loginDate', '0', '1', '1', '1', '0', '0', '=', 'dateselect', '', null, '140', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
 INSERT INTO `gen_table_column` VALUES ('92adecef414e4d84b9cd59b350dea89d', '1045d5693efb4f63ba32364c2e8cd8c4', 'update_by', '更新者', 'varchar(64)', 'com.xl.modules.sys.entity.User', 'updateBy.id', '0', '0', '1', '1', '0', '0', '=', 'input', '', null, '180', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('98875f801d1a4026b8d3969f2fab6dda', 'e420a518a0ba4db899857614d130835e', 'remarks', '备注信息', 'varchar(255)', 'String', 'remarks', '0', '1', '1', '1', '1', '0', '=', 'textarea', '', null, '240', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 INSERT INTO `gen_table_column` VALUES ('a1572b6101cd4872a5994e5c0d696fae', '1045d5693efb4f63ba32364c2e8cd8c4', 'create_date', '创建时间', 'datetime', 'java.util.Date', 'createDate', '0', '0', '1', '0', '0', '0', '=', 'dateselect', '', null, '170', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
 INSERT INTO `gen_table_column` VALUES ('a232425e10b24a738befc634c32cbbd3', '1045d5693efb4f63ba32364c2e8cd8c4', 'del_flag', '删除标记', 'char(1)', 'String', 'delFlag', '0', '0', '1', '0', '0', '0', '=', 'radiobox', 'del_flag', null, '210', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('ac21266194ce4f739180735e1eb51d60', 'e420a518a0ba4db899857614d130835e', 'name', '名称', 'varchar(100)', 'String', 'name', '0', '0', '1', '1', '1', '1', 'like', 'input', '', null, '40', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('adbe75e1ca734d9cbd697d7ece446173', 'e420a518a0ba4db899857614d130835e', 'address', '联系地址', 'varchar(255)', 'String', 'address', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '80', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('af337a8be33b4ffb9fe762c70284263f', 'e420a518a0ba4db899857614d130835e', 'zip_code', '邮政编码', 'varchar(100)', 'String', 'zipCode', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '120', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 INSERT INTO `gen_table_column` VALUES ('b0d2b1ffa20446e7b257e209ae25e533', '1045d5693efb4f63ba32364c2e8cd8c4', 'name', '姓名', 'varchar(100)', 'String', 'name', '0', '0', '1', '1', '1', '1', 'like', 'input', '', null, '70', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
 INSERT INTO `gen_table_column` VALUES ('b3bb704d2a364ed28e28d2e4c54d881c', '1045d5693efb4f63ba32364c2e8cd8c4', 'photo', '用户头像', 'varchar(1000)', 'String', 'photo', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '120', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('b4971153b6ee4f4eb5fd178388975e65', 'e420a518a0ba4db899857614d130835e', 'create_by', '创建者', 'varchar(64)', 'com.xl.modules.sys.entity.User', 'createBy.id', '0', '0', '1', '0', '0', '0', '=', 'input', '', null, '200', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 INSERT INTO `gen_table_column` VALUES ('b96db2ed233845b5870a9f3891e37dea', '1045d5693efb4f63ba32364c2e8cd8c4', 'password', '密码', 'varchar(100)', 'String', 'password', '0', '0', '1', '1', '0', '0', '=', 'input', '', null, '50', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('ba8203fc0f944722886deb43e210a305', 'e420a518a0ba4db899857614d130835e', 'phone', '电话', 'varchar(200)', 'String', 'phone', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '140', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 INSERT INTO `gen_table_column` VALUES ('c0423829c5eb4c30a11e2a349fc4c7e3', '1045d5693efb4f63ba32364c2e8cd8c4', 'user_type', '用户类型', 'char(1)', 'String', 'userType', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '110', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
 INSERT INTO `gen_table_column` VALUES ('c0df7910d4254e0988b5f7046da1c388', '1045d5693efb4f63ba32364c2e8cd8c4', 'create_by', '创建者', 'varchar(64)', 'com.xl.modules.sys.entity.User', 'createBy.id', '0', '0', '1', '0', '0', '0', '=', 'input', '', null, '160', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
 INSERT INTO `gen_table_column` VALUES ('c29ccb9fc2924abf96dd8a75a2166f8f', '1045d5693efb4f63ba32364c2e8cd8c4', 'company_id', '归属公司', 'varchar(64)', 'String', 'companyId', '0', '0', '1', '1', '0', '0', '=', 'input', '', null, '20', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('c2aa3000b4c049f68a886bfb85196ffc', 'e420a518a0ba4db899857614d130835e', 'sort', '排序', 'decimal(10,0)', 'String', 'sort', '0', '0', '1', '1', '0', '0', '=', 'input', '', null, '50', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('c53eb243cc094eada9e7946e98392261', 'e420a518a0ba4db899857614d130835e', 'del_flag', '删除标记', 'char(1)', 'String', 'delFlag', '0', '0', '1', '0', '0', '0', '=', 'radiobox', 'del_flag', null, '250', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('e665c168a2ed4e7e8498ec967b4a2a59', 'e420a518a0ba4db899857614d130835e', 'area_id', '归属区域', 'varchar(64)', 'com.xl.modules.sys.entity.Area', 'area.id|name', '0', '0', '1', '1', '0', '0', '=', 'areaselect', '', null, '60', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('e6a070f9205242e9838e4ce805c60ac2', 'e420a518a0ba4db899857614d130835e', 'parent_ids', '所有父级编号', 'varchar(2000)', 'String', 'parentIds', '0', '0', '1', '1', '0', '0', 'like', 'input', '', null, '30', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 INSERT INTO `gen_table_column` VALUES ('e923e26c830f434199da4c83083046fa', '1045d5693efb4f63ba32364c2e8cd8c4', 'login_name', '登录名', 'varchar(100)', 'String', 'loginName', '0', '0', '1', '1', '0', '0', '=', 'input', '', null, '40', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('eae18f2de4d640a3ae661cdd1eb24542', 'e420a518a0ba4db899857614d130835e', 'master', '负责人', 'varchar(100)', 'String', 'master', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '130', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('ec45fe4d6fc54735a0ed7871da82e2c6', 'e420a518a0ba4db899857614d130835e', 'industry', '所属行业', 'varchar(64)', 'String', 'industry', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '180', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
+INSERT INTO `gen_table_column` VALUES ('f20811c9927641de870817a869988b91', 'e420a518a0ba4db899857614d130835e', 'update_date', '更新时间', 'datetime', 'java.util.Date', 'updateDate', '0', '0', '1', '1', '1', '0', '=', 'dateselect', '', null, '230', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 INSERT INTO `gen_table_column` VALUES ('f385ffd190b9497f85b6cd209522b7ba', '1045d5693efb4f63ba32364c2e8cd8c4', 'login_ip', '最后登陆IP', 'varchar(100)', 'String', 'loginIp', '0', '1', '1', '1', '0', '0', '=', 'input', '', null, '130', 's1', '2017-11-10 19:09:31', 's1', '2017-11-10 19:09:31', null, '0');
+INSERT INTO `gen_table_column` VALUES ('f9600184dc0d47589fdcc2168009a704', 'e420a518a0ba4db899857614d130835e', 'create_date', '创建时间', 'datetime', 'java.util.Date', 'createDate', '0', '0', '1', '0', '0', '0', '=', 'dateselect', '', null, '210', 's1', '2017-11-16 17:20:08', 's1', '2017-11-16 17:20:08', null, '0');
 
 -- ----------------------------
 -- Table structure for gen_template
@@ -3394,19 +3421,23 @@ CREATE TABLE `sys_dict` (
 -- ----------------------------
 -- Records of sys_dict
 -- ----------------------------
+INSERT INTO `sys_dict` VALUES ('0dc4f6e4acb04af3ab58cb511d18d4fc', 'G', '信息传输、计算机服务和软件业', 'sys_industry', '行业', '7', '0', 's1', '2017-11-16 15:37:05', 's1', '2017-11-16 15:37:05', '', '0');
 INSERT INTO `sys_dict` VALUES ('1', '0', '正常', 'del_flag', '删除标记', '10', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('10', 'yellow', '黄色', 'color', '颜色值', '40', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('11', 'orange', '橙色', 'color', '颜色值', '50', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_dict` VALUES ('11c91be94e44449891f1e953a3656c66', 'T', '国际组织', 'sys_industry', '行业', '20', '0', 's1', '2017-11-16 15:43:50', 's1', '2017-11-16 15:43:50', '', '0');
 INSERT INTO `sys_dict` VALUES ('12', 'default', '默认主题', 'theme', '主题方案', '10', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('13', 'cerulean', '天蓝主题', 'theme', '主题方案', '20', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('14', 'readable', '橙色主题', 'theme', '主题方案', '30', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('15', 'united', '红色主题', 'theme', '主题方案', '40', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('16', 'cosmo', '黑色主题', 'theme', '主题方案', '60', '0', 's1', '2013-05-27 00:00:00', 's1', '2017-11-13 15:02:21', '', '0');
 INSERT INTO `sys_dict` VALUES ('17', '1', '国家', 'sys_area_type', '区域类型', '10', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_dict` VALUES ('17917b9d0e7e46cf995d31872ae4e7a6', 'M', '科学研究、技术服务和地质勘杳业', 'sys_industry', '行业', '13', '0', 's1', '2017-11-16 15:41:38', 's1', '2017-11-16 15:41:38', '', '0');
 INSERT INTO `sys_dict` VALUES ('18', '2', '省份、直辖市', 'sys_area_type', '区域类型', '20', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('19', '3', '地市', 'sys_area_type', '区域类型', '30', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('2', '1', '删除', 'del_flag', '删除标记', '20', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('20', '4', '区县', 'sys_area_type', '区域类型', '40', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_dict` VALUES ('205e55a46205458181c454dc7802c512', 'N', '水利、环境和公共设施管理业', 'sys_industry', '行业', '14', '0', 's1', '2017-11-16 15:41:51', 's1', '2017-11-16 15:41:55', '', '0');
 INSERT INTO `sys_dict` VALUES ('21', '1', '机构', 'sys_office_type', '机构类型', '60', '0', 's1', '2013-05-27 00:00:00', 's1', '2017-11-14 09:39:27', '', '0');
 INSERT INTO `sys_dict` VALUES ('22', '2', '部门', 'sys_office_type', '机构类型', '70', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('23', '3', '小组', 'sys_office_type', '机构类型', '80', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
@@ -3421,25 +3452,41 @@ INSERT INTO `sys_dict` VALUES ('30', '3', '三级', 'sys_office_grade', '机构�
 INSERT INTO `sys_dict` VALUES ('31', '4', '四级', 'sys_office_grade', '机构等级', '40', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('32', '1', '所有数据', 'sys_data_scope', '数据范围', '10', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('33', '2', '所在公司及以下数据', 'sys_data_scope', '数据范围', '20', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_dict` VALUES ('33e5098f924347789bfdaf1f71926d6b', 'K', '房地产业', 'sys_industry', '行业', '11', '0', 's1', '2017-11-16 15:37:54', 's1', '2017-11-16 15:37:54', '', '0');
 INSERT INTO `sys_dict` VALUES ('34', '3', '所在公司数据', 'sys_data_scope', '数据范围', '30', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('35', '4', '所在部门及以下数据', 'sys_data_scope', '数据范围', '40', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('36', '5', '所在部门数据', 'sys_data_scope', '数据范围', '50', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('37', '8', '仅本人数据', 'sys_data_scope', '数据范围', '90', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('38', '9', '按明细设置', 'sys_data_scope', '数据范围', '100', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('39', '1', '系统管理', 'sys_user_type', '用户类型', '10', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_dict` VALUES ('3bf4d2d4ebd542a8b9aef9c3e7b0df70', 'E', '建筑业', 'sys_industry', '行业', '5', '0', 's1', '2017-11-16 15:36:09', 's1', '2017-11-16 15:36:32', '', '0');
+INSERT INTO `sys_dict` VALUES ('3f1648a4d1184e7fbfdc7bc8d4a5f9b5', 'P', '教育', 'sys_industry', '行业', '16', '0', 's1', '2017-11-16 15:42:37', 's1', '2017-11-16 15:42:37', '', '0');
 INSERT INTO `sys_dict` VALUES ('4', '0', '隐藏', 'show_hide', '显示/隐藏', '20', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('40', '2', '经理', 'sys_user_type', '用户类型', '20', '0', 's1', '2013-05-27 00:00:00', 's1', '2017-11-10 15:40:03', '', '0');
 INSERT INTO `sys_dict` VALUES ('41', '3', '普通用户', 'sys_user_type', '用户类型', '30', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('42', 'basic', '基础主题', 'cms_theme', '站点主题', '10', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_dict` VALUES ('46d97769c9f54beeb4edad61927d2a5c', 'J', '金融业', 'sys_industry', '行业', '10', '0', 's1', '2017-11-16 15:37:42', 's1', '2017-11-16 15:37:42', '', '0');
 INSERT INTO `sys_dict` VALUES ('5', '1', '是', 'yes_no', '是/否', '10', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_dict` VALUES ('5510cb5f17fe45e4b577e4b581e2174e', 'F', '交通运输、仓储和邮政业', 'sys_industry', '行业', '6', '0', 's1', '2017-11-16 15:36:26', 's1', '2017-11-16 15:38:59', '', '0');
 INSERT INTO `sys_dict` VALUES ('6', '0', '否', 'yes_no', '是/否', '20', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('67', '1', '接入日志', 'sys_log_type', '日志类型', '30', '0', 's1', '2013-06-03 00:00:00', 's1', '2013-06-03 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('68', '2', '异常日志', 'sys_log_type', '日志类型', '40', '0', 's1', '2013-06-03 00:00:00', 's1', '2013-06-03 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('7', 'red', '红色', 'color', '颜色值', '10', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_dict` VALUES ('77ff9dccac914e64be20990352ede235', 'A', '农、林、牧、渔业', 'sys_industry', '行业', '1', '0', 's1', '2017-11-16 15:34:46', 's1', '2017-11-16 15:36:53', '', '0');
+INSERT INTO `sys_dict` VALUES ('78d9708b2bef4bcb9856a6ead726fc8e', 'I', '住宿和餐饮业', 'sys_industry', '行业', '9', '0', 's1', '2017-11-16 15:37:30', 's1', '2017-11-16 15:37:30', '', '0');
 INSERT INTO `sys_dict` VALUES ('8', 'green', '绿色', 'color', '颜色值', '20', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_dict` VALUES ('836a3173fa4a4a44b68da0923cab10c5', 'H', '批发和零售业', 'sys_industry', '行业', '8', '0', 's1', '2017-11-16 15:37:14', 's1', '2017-11-16 15:37:14', '', '0');
+INSERT INTO `sys_dict` VALUES ('8bb8d8e64a3246f4b32b239e5574a1b0', 'S', '公共管理和社会组织', 'sys_industry', '行业', '19', '0', 's1', '2017-11-16 15:43:21', 's1', '2017-11-16 15:43:30', '', '0');
 INSERT INTO `sys_dict` VALUES ('9', 'blue', '蓝色', 'color', '颜色值', '30', '0', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('96', '1', '男', 'sex', '性别', '10', '0', 's1', '2013-10-28 00:00:00', 's1', '2013-10-28 00:00:00', '', '0');
 INSERT INTO `sys_dict` VALUES ('97', '2', '女', 'sex', '性别', '20', '0', 's1', '2013-10-28 00:00:00', 's1', '2013-10-28 00:00:00', '', '0');
+INSERT INTO `sys_dict` VALUES ('98d0710f9f464fe99a1d178998ced617', 'C', '制造业', 'sys_industry', '行业', '3', '0', 's1', '2017-11-16 15:35:22', 's1', '2017-11-16 15:36:44', '', '0');
+INSERT INTO `sys_dict` VALUES ('9e9796f9cf244dd9a1a5e8afaa72f198', 'R', '文化、体育和娱乐业', 'sys_industry', '行业', '18', '0', 's1', '2017-11-16 15:43:12', 's1', '2017-11-16 15:43:26', '', '0');
+INSERT INTO `sys_dict` VALUES ('a08b491dac2149b4b10a9508d7d26855', 'L', '租赁和商务服务业', 'sys_industry', '行业', '12', '0', 's1', '2017-11-16 15:38:18', 's1', '2017-11-16 15:38:18', '', '0');
+INSERT INTO `sys_dict` VALUES ('a130fca924ac469882e1713d5f1458cb', 'D', '电力、燃气及水的生产和供应业', 'sys_industry', '行业', '4', '0', 's1', '2017-11-16 15:35:49', 's1', '2017-11-16 15:36:38', '', '0');
+INSERT INTO `sys_dict` VALUES ('bfc788932181473695701cf01bbdbe80', 'Q', '卫生、社会保幢和社会福利业', 'sys_industry', '行业', '17', '0', 's1', '2017-11-16 15:42:53', 's1', '2017-11-16 15:42:53', '', '0');
+INSERT INTO `sys_dict` VALUES ('db277b98d6c0467f99f7028b84459de5', 'B', '采矿业', 'sys_industry', '行业', '2', '0', 's1', '2017-11-16 15:35:10', 's1', '2017-11-16 15:36:48', '', '0');
+INSERT INTO `sys_dict` VALUES ('e445544baed04739b0b450bb49551b61', 'O', '居民服务和其他服务业', 'sys_industry', '行业', '15', '0', 's1', '2017-11-16 15:42:12', 's1', '2017-11-16 15:42:12', '', '0');
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -3467,212 +3514,6 @@ CREATE TABLE `sys_log` (
 -- ----------------------------
 -- Records of sys_log
 -- ----------------------------
-INSERT INTO `sys_log` VALUES ('039b2935-0deb-4dd8-ad13-74c8d742d822', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:44', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('048deb7a-be1d-4b5f-b5ac-1d26b7366c9c', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-16 11:25:28', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('048ff497-531d-4fb7-b918-97e766baad8d', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:32', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=9&office.name=综合部', '');
-INSERT INTO `sys_log` VALUES ('052bec96-a4e4-4069-b02f-80d7bbbf6486', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:51:44', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('0888c389-011e-44fd-9a38-4f2c2d123008', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:49:11', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=5', '');
-INSERT INTO `sys_log` VALUES ('097a8a43-4af4-4279-bac2-40c9802fdd3c', '1', '系统设置-系统设置-角色管理', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:45:52', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('09b26b55-9914-47f3-97f7-178839d14524', '1', '系统登录', 's1', '2017-11-15 15:43:34', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('09e7aff8-eec5-4ec6-af2a-e931bdcae27e', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:51:12', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('0ada38e4-ebb6-4d34-8bb6-7d68a01ecb23', '1', '系统设置-系统设置-角色管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:45:55', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/form', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('0adbcdf4-e53e-4a08-a0d8-d4d37727bdf8', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:51:04', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('0bd747c9-65aa-49a4-8f93-b8a93d4de887', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 13:22:59', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('0cea3a61-ace7-42d7-a077-f6c49043d91a', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-15 15:48:44', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('0cea4432-cba6-40a0-a04e-53b19e613cad', '1', '我的面板-个人信息-修改密码', 's1', '2017-11-16 11:25:22', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/modifyPwd', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('0d73d697-ad40-41bf-b76e-b59db91fc46c', '1', '系统设置-机构用户-机构管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:45:29', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=0,', '');
-INSERT INTO `sys_log` VALUES ('112bb28d-dad3-482b-9db0-19127f17846c', '1', '系统登录', 's1', '2017-11-15 15:40:30', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('11838c19-855c-4de3-893c-31c42bff1f11', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:36', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=21&office.name=技术部', '');
-INSERT INTO `sys_log` VALUES ('118a6f66-7396-4007-86b2-009bcadb890c', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 15:51:05', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('137e29ec-bac3-4a48-9de9-f3a666b34faf', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:48:12', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=12&office.name=历城区分公司', '');
-INSERT INTO `sys_log` VALUES ('13df6997-bcf9-4ad4-9d53-12c4afacd793', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:40:32', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('152d153f-37bf-450f-9373-c426969305cb', '1', '系统登录', 's1', '2017-11-15 14:26:51', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('15bf389d-44f1-4131-8b14-f126f57924fc', '1', '系统设置-机构用户-区域管理', 's1', '2017-11-15 13:23:02', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/area/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('15fb9bc3-b4d9-4416-a5d5-098f90cd16eb', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:40:36', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('17194e4c-14f8-43c9-95ec-a208a5b6a360', '1', '系统设置-机构用户-机构管理-修改', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:45:29', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/save', 'POST', 'id=&parent.id=&parent.name=&area.id=2&area.name=北京市&name=五星&code=123&type=2&grade=1&useable=1&primaryPerson.id=&office.primaryPerson.name=&deputyPerson.id=&office.deputyPerson.name=&address=&zipCode=&master=&phone=&fax=&email=&remarks=&_childDeptList=on', '');
-INSERT INTO `sys_log` VALUES ('178f9de4-a958-44cb-9aed-5e1e882c57b7', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:51:22', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('17c6ee83-e1a4-42db-8c83-aefd096b228c', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:48:15', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('17caca7c-e595-4502-83bd-15621f47865e', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:42:09', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('18093c31-2190-4340-87d7-bdef555045c0', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 15:40:32', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('18b79eec-6301-4e15-9547-ebec970755f8', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:48:26', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/delete', 'GET', 'id=17', '');
-INSERT INTO `sys_log` VALUES ('1b61819a-0fee-45c7-8bc0-6892262edc47', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:47:55', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('1d964911-bbd2-468d-afd4-50186214261e', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:51:45', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('1daa771d-87c8-4c19-b66f-589e257ebf08', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:50:49', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('201e4776-519e-412e-80df-9d7fb11cf905', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 14:29:24', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('244d0bfd-6a12-4699-98b0-3aec4d17ed9e', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-16 11:25:09', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('24f32a09-7f6f-483c-b9a9-2317d2ef937e', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:50:05', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/delete', 'GET', 'id=17', '');
-INSERT INTO `sys_log` VALUES ('25849ddc-f738-4c4f-a6cf-a55aab26c4cf', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 14:26:52', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('25ff744b-0c71-4d0a-b8c4-a08f0d451478', '1', '系统设置-系统设置-角色管理', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:46:03', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('26ee88d5-20ed-495d-812b-e901bb1aeb38', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:49:56', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('272464a4-8230-4c0b-9ebb-4d3cb4d20faf', '1', '系统设置-机构用户-用户管理-修改', 's1', '2017-11-15 15:43:01', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/save', 'POST', 'id=&photo=&company.id=7&company.name=济南市分公司&office.id=2&office.name=公司领导&no=0001&name=六三&oldLoginName=&loginName=六三&newPassword=&confirmNewPassword=&email=&phone=&mobile=&loginFlag=1&userType=2&roleIdList=7&_roleIdList=on&remarks=', '');
-INSERT INTO `sys_log` VALUES ('2b25fc70-9eb1-4e4a-81fd-7f82dcec61df', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:50:10', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=13', '');
-INSERT INTO `sys_log` VALUES ('2d6d196d-c837-477e-bf6b-5f5d7eed8e50', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:33:05', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('2e0ee9da-d93e-466b-b56d-413066b541a0', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:50:35', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('2f279ed9-0b83-49c2-9c44-bb27de6b6638', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:35:30', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('31e76355-c550-4f62-8260-6246c774796a', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:51:06', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('32162e32-82a7-40d4-a279-5ea6af622e67', '1', '系统登录', 's1', '2017-11-16 11:28:06', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('34e6a906-2de6-4e67-84a1-573b76f6e7f1', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-16 11:25:08', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('366eba6f-66c6-4aa9-8442-879451c30323', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:37:35', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('37297d22-6a3e-4986-84f5-7ce52624e1c6', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-15 15:43:39', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('38f6bb19-3e7e-4d25-9b8c-92d001e58aa2', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:37:39', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('395268f5-8f37-4a53-95e7-e6a7ec161f97', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 14:29:20', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('3acfdd7b-1789-4ea9-855c-ce30b7d85fb4', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:40:31', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('3ad374f1-9c9b-4aa0-876d-c531f548668e', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-16 11:25:24', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('3bddd79c-5d25-4f49-9554-362c9357b8f3', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:37:40', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=4&office.name=市场部', '');
-INSERT INTO `sys_log` VALUES ('3c07faf4-d50d-4a7c-b956-b0bebff4dbc5', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:51:40', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=0,', '');
-INSERT INTO `sys_log` VALUES ('3c616aa5-e550-4a16-9df6-f2ad5f387d5d', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:43:07', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/form', 'GET', 'id=0ebe1f3872204169958002b5ba065dcc', '');
-INSERT INTO `sys_log` VALUES ('3d9b73e8-465c-4de4-bfe2-6f4dac74ccaf', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:46:48', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=9659b314660f45d789158c9cce6b5b47', '');
-INSERT INTO `sys_log` VALUES ('3eae9e17-29fa-4c32-877c-97f0259dd83c', '1', '系统设置-机构用户-机构管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:45:46', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=0,', '');
-INSERT INTO `sys_log` VALUES ('3ecdb577-a806-4a6a-873f-55c107739887', '1', '系统设置-机构用户-机构管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:50', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'parent.id=', '');
-INSERT INTO `sys_log` VALUES ('3f0646dc-41d0-4f64-97d5-7d74b12f479e', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:43:34', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('3fe84f39-7426-4d08-bb2c-666409fe8c97', '1', '系统设置-机构用户-机构管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:45', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('4044d7c4-8d74-4b1b-8ab8-8bf1ebe4d05c', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:48:23', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/delete', 'GET', 'id=12', '');
-INSERT INTO `sys_log` VALUES ('41321896-15b1-4119-92d0-78a68547ece1', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:37:41', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=2&office.name=公司领导', '');
-INSERT INTO `sys_log` VALUES ('413531b6-3451-4cc0-a416-ea623640a7f4', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:50:49', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/save', 'POST', 'id=7&parent.id=1&parent.name=平台&area.id=276&area.name=成都市&name=成都市分公司&code=200000&type=1&grade=2&useable=1&primaryPerson.id=&office.primaryPerson.name=&deputyPerson.id=&office.deputyPerson.name=&address=&zipCode=&master=&phone=&fax=&email=&remarks=', '');
-INSERT INTO `sys_log` VALUES ('41c6adcb-9d3f-4d7c-b0c9-ee336f22dc6f', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 15:37:39', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('4249a103-9345-4869-bb5f-32818f902c72', '1', '系统登录', 's1', '2017-11-15 14:29:20', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('44a37994-8095-4be3-9ba6-c16c564982fd', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:51:40', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/save', 'POST', 'id=1&parent.id=&parent.name=&area.id=276&area.name=成都市&name=消防总局&code=100000&type=1&grade=1&useable=1&primaryPerson.id=&office.primaryPerson.name=&deputyPerson.id=&office.deputyPerson.name=&address=&zipCode=&master=&phone=&fax=&email=&remarks=', '');
-INSERT INTO `sys_log` VALUES ('471656f6-ff10-4fb6-96ef-5f1f439f72ee', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 14:29:21', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('4842822f-634d-4e5c-ac4f-0fe82158f574', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 13:23:03', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('489fb31d-0261-42a9-9243-99a04e2f482e', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:50:35', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/save', 'POST', 'id=7&parent.id=1&parent.name=平台&area.id=276&area.name=成都市&name=绵阳市分公司&code=200000&type=1&grade=2&useable=1&primaryPerson.id=&office.primaryPerson.name=&deputyPerson.id=&office.deputyPerson.name=&address=&zipCode=&master=&phone=&fax=&email=&remarks=', '');
-INSERT INTO `sys_log` VALUES ('4b2e073a-f488-4d52-a8ff-a19de0ca6d9c', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-15 15:50:15', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('4ba7d771-6a09-40a1-a511-f92a5d2f168b', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:37', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=2&office.name=公司领导', '');
-INSERT INTO `sys_log` VALUES ('4bdb3f88-94a2-4362-a4ec-2f96900b47cc', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:43:39', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('4bde04f5-3a85-4f44-b4c0-0cb231fda214', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-15 15:51:06', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('4c418ae0-652d-49ec-aa46-b3ad14b7bab9', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:43:01', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'repage=', '');
-INSERT INTO `sys_log` VALUES ('4cc2e566-ebe6-4e66-a185-69868cc5d59d', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-16 11:25:08', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('4db30ae2-6532-4353-8eff-b47648589cbf', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-16 11:28:07', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('4f1a437d-2b68-4c8a-bab6-38aaf4b8a9ff', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:47:19', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('4f760c13-745b-44cb-a47b-96a0c8ea0542', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:33', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=10&office.name=市场部', '');
-INSERT INTO `sys_log` VALUES ('4fb83f75-957c-4876-8abc-e50fdd338502', '1', '系统设置-机构用户-区域管理', 's1', '2017-11-16 11:25:09', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/area/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('530c7316-0845-4796-b936-3c24d3e169b8', '1', '系统设置-系统设置-字典管理', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:46:27', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/dict/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('55735d18-8a8a-4fd8-af4c-7233d3b102d5', '1', '我的面板-个人信息-修改密码', 's1', '2017-11-16 11:23:38', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/modifyPwd', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('57cd5e91-01a1-4ef1-8221-f3e1ce154540', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:48:35', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/delete', 'GET', 'id=22', '');
-INSERT INTO `sys_log` VALUES ('58a3337c-940f-4d93-9d71-b5a554d58bf5', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:51:23', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=1', '');
-INSERT INTO `sys_log` VALUES ('5cb1416e-7e14-40b3-8a85-08d8a33ed9a8', '1', '系统登录', 's1', '2017-11-16 11:23:01', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('5d054c97-9803-4c57-acab-67e201a22c24', '1', '系统登录', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:43:20', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('5f883fdb-eb1a-401b-85de-0a604cd2f78c', '1', '系统设置-系统设置-角色管理', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:46:24', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('61638781-8d82-429f-85c2-65ce58cf7556', '1', '系统设置-系统设置-角色管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:46:15', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/users', 'GET', 'officeId=7', '');
-INSERT INTO `sys_log` VALUES ('625ce08a-bac8-4b8e-b080-0b3d54561c6d', '1', '系统设置-系统设置-角色管理-修改', 's1', '2017-11-15 15:44:15', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/save', 'POST', 'id=7&office.id=2&office.name=公司领导&oldName=济南市管理员&name=济南市管理员&oldEnname=e&enname=e&roleType=assignment&sysData=1&useable=1&dataScope=9&menuIds=1,27,28,29,30,71,56,57,58,59,2,13,20,21,22,17,18,19,14,15,16,3,4,5,6,7,8,9,10,11,12,67,68&officeIds=7,8,9,10,11,12,13,14,15,16,22,23,24,25,26,17,18,19,20,21&remarks=', '');
-INSERT INTO `sys_log` VALUES ('62e99b8b-9ad8-4efb-900d-932c80fb6947', '1', '系统设置-机构用户-用户管理', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:27', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('67ac733e-e1b3-434d-9dd3-25e3616b8863', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:48:59', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=6', '');
-INSERT INTO `sys_log` VALUES ('67c3e425-2128-4147-9d19-9b6b74dc0eb8', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:33', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=11&office.name=技术部', '');
-INSERT INTO `sys_log` VALUES ('6889a1a2-ff7d-4b60-a240-420e29d571f3', '1', '系统登录', 's1', '2017-11-15 15:46:41', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('691124b0-b598-4d7f-bd42-b6abe1ad8b8d', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 15:48:43', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('692a0ad0-6dab-4618-8e78-21e80a8709dd', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:47:39', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=0,', '');
-INSERT INTO `sys_log` VALUES ('6c49db14-d6bd-418b-8cfe-c190513e8a35', '1', '系统登录', 's1', '2017-11-15 13:22:57', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('6cfae0e8-ac18-48c5-9334-215e84043934', '1', '系统登录', 's1', '2017-11-15 15:30:12', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('7156651b-d9b4-4623-8636-4e26f7bcef2c', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-16 11:25:11', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('71f99547-0d6d-430d-a1b2-519156af5ef6', '1', '系统登录', 's1', '2017-11-16 11:27:09', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('7280b5a0-d1e9-4183-b905-78ecadfcf883', '1', '系统设置-机构用户-机构管理', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:45', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('756199bb-ccdf-41fb-82a7-35584bde1976', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-15 15:40:36', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('75921d1f-3fcd-452b-a1e8-f1503413fcf7', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:49:15', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('75bdc049-aeb6-49eb-ad1c-d1349533b31b', '1', '系统设置-机构用户-用户管理-修改', 's1', '2017-11-15 15:43:12', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/checkLoginName', 'GET', 'oldLoginName=六三&loginName=0001', '');
-INSERT INTO `sys_log` VALUES ('786eebcf-f319-4433-84f8-f54a7fe1653d', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:48:26', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=7&parentIds=0,1,7,', '');
-INSERT INTO `sys_log` VALUES ('78a91bd9-1901-4b24-bfeb-51031bac9e10', '1', '系统登录', 's1', '2017-11-15 15:37:34', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('7a4fb270-bf53-4b74-9b78-1560017eb37a', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-16 11:28:16', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('7db5a65f-112a-44cf-a161-22e5d899b129', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 14:29:20', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('7e206457-9ff3-4cbd-9a4a-00366addb85b', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:48:00', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('7fd19306-8561-4ca2-b7e1-47590d490e58', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:50:58', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=7&parentIds=0,1,7,', '');
-INSERT INTO `sys_log` VALUES ('7fdda8fd-ad51-468e-9293-d097571aa22b', '1', '系统登录', 's1', '2017-11-15 15:29:18', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('807fd83b-a780-4f00-a4f4-92cf142874b6', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-15 13:23:01', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('812a673d-a94d-41f2-9f93-3f64bdcae3fa', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:34', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=12&office.name=历城区分公司', '');
-INSERT INTO `sys_log` VALUES ('827e1ead-0e64-400e-96bb-24d9a8dbdb79', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 15:48:00', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('845e0e2b-9996-4aa0-ba45-a42f16cf0a33', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-16 10:49:56', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('8803dd53-4651-467b-89e2-01f51a0268da', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:51:46', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=7&parentIds=0,1,7,', '');
-INSERT INTO `sys_log` VALUES ('882f8e52-ec4d-4d44-a1e4-6df76661d70a', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:50:20', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=7', '');
-INSERT INTO `sys_log` VALUES ('8a26424c-f166-45a0-afce-066cfc2d934b', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:51:45', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('8bf0ab04-6b76-45a2-b1e9-4faae3962df2', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-16 10:49:57', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('8cb7eae7-2dda-42fc-b712-12766f7b3a88', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:48:10', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=9659b314660f45d789158c9cce6b5b47&office.name=五星', '');
-INSERT INTO `sys_log` VALUES ('8e0f1789-f2b0-45df-9843-fd60ddce939e', '1', '系统设置-系统设置-角色管理', 's1', '2017-11-15 15:40:37', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('9095b24a-01c1-4997-b056-27b48d7d77ea', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:27', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('91f33961-3794-4a75-ae3d-2dd65158ec05', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:46:42', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('95aee4bd-bfb3-4c42-96a6-e70b35cd63d6', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-16 10:49:52', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('96bafed1-21dd-4885-a8ae-fd0c2dda6eaf', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 15:51:12', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('97556b8b-75c2-4f2f-be29-0ad96c1b58c4', '1', '系统登录', 's1', '2017-11-16 10:49:50', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('981c7fc1-76e1-4fdd-84ba-94c441f6629c', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:50:05', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=7&parentIds=0,1,7,', '');
-INSERT INTO `sys_log` VALUES ('9987895c-7698-418e-bdfa-40321271e815', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:46:44', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('9aadb987-7d7d-4825-bdfc-847b367d0ceb', '1', '系统设置-系统设置-角色管理-修改', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:46:07', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/assign', 'GET', 'id=7', '');
-INSERT INTO `sys_log` VALUES ('9b37d037-bb9f-45d2-9a2e-cb77dd5635b5', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-15 15:49:56', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('9be32264-c9a3-4e3d-96d9-217a1a8fdf26', '1', '系统设置-日志查询-日志查询', 's1', '2017-11-15 15:37:44', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/log', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('9c8e0743-ed22-4deb-8570-968883234bf4', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-16 11:27:10', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('9e15aca6-de89-4855-9b03-40326a4b1c44', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:50:15', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('9e7061a0-bfe5-4ff1-bb55-0a1b900cd824', '1', '系统设置-系统设置-角色管理', 's1', '2017-11-15 15:43:42', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('9f1c9b87-06d3-4642-9d96-dea031f42b23', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:52:07', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('9f896a71-add7-4986-adfa-ada402b64b86', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 15:46:43', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('a24bb165-e7cc-4c5c-aa54-663f328e7a0d', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:48:43', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('a25ba9e0-30fe-407b-985a-63d02b2af246', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:50:58', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/save', 'POST', 'id=12&parent.id=7&parent.name=成都市分公司&area.id=276&area.name=成都市&name=武侯区分公司&code=201000&type=1&grade=3&useable=1&primaryPerson.id=&office.primaryPerson.name=&deputyPerson.id=&office.deputyPerson.name=&address=&zipCode=&master=&phone=&fax=&email=&remarks=', '');
-INSERT INTO `sys_log` VALUES ('a36c814e-6e42-498a-81b3-7e7e771ca994', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:46:59', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/save', 'POST', 'id=9659b314660f45d789158c9cce6b5b47&parent.id=7&parent.name=济南市分公司&area.id=2&area.name=北京市&name=五星&code=123&type=2&grade=1&useable=1&primaryPerson.id=&office.primaryPerson.name=&deputyPerson.id=&office.deputyPerson.name=&address=&zipCode=&master=&phone=&fax=&email=&remarks=', '');
-INSERT INTO `sys_log` VALUES ('a3f90095-44ba-4b0a-aa86-701ce7918ed3', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 13:22:59', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('a41c5231-45b5-4046-9fdf-d2fb7152965c', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:46:43', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('a4b0eede-31f7-48cb-986c-152670ab3c81', '1', '系统设置-机构用户-用户管理-修改', 's1', '2017-11-15 15:42:39', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/checkLoginName', 'GET', 'oldLoginName=&loginName=六三', '');
-INSERT INTO `sys_log` VALUES ('a4ed9c1e-bd67-48e8-8a29-515752ddb7ae', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 14:29:24', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('a7c437b0-7b09-4519-8e97-a0a80c585111', '1', '系统设置-系统设置-角色管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:46:11', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/usertorole', 'POST', 'id=7&___t0.5387422079466073=', '');
-INSERT INTO `sys_log` VALUES ('a8038d12-7c92-40ae-aae9-c93e35164ef6', '1', '系统设置-机构用户-机构管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:45:44', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=9659b314660f45d789158c9cce6b5b47', '');
-INSERT INTO `sys_log` VALUES ('a86b1b16-b55e-4ed9-aaba-05963c20a7d6', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-16 11:23:02', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('a9dfda58-bfa8-40dd-b3e7-80f0da72be76', '1', '系统设置-系统设置-角色管理', 's1', '2017-11-15 15:44:15', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/', 'GET', 'repage=', '');
-INSERT INTO `sys_log` VALUES ('aa94bb5d-4434-47de-829d-9d6890c21130', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:51:45', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('af299f71-aeeb-4574-adf3-7d1836025d6b', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 14:29:21', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('b1584dcf-8063-4ef3-b40b-1a6a9a56ed18', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-16 11:25:09', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('b375992c-c8d4-4c46-a32b-fc0a24cb7428', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:36', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=18&office.name=公司领导', '');
-INSERT INTO `sys_log` VALUES ('b3a3fca2-4c77-44b7-9302-e1c127fa6ee9', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:47:16', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('b79f3870-2f3f-4a7b-8674-e821afbafe5e', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:49:09', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/save', 'POST', 'id=6&parent.id=1&parent.name=平台&area.id=276&area.name=成都市&name=研发部&code=100005&type=2&grade=1&useable=1&primaryPerson.id=&office.primaryPerson.name=&deputyPerson.id=&office.deputyPerson.name=&address=&zipCode=&master=&phone=&fax=&email=&remarks=', '');
-INSERT INTO `sys_log` VALUES ('b7dbc93d-99e6-4bb5-8e7e-0b2863c4b168', '1', '系统设置-系统设置-角色管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:46:14', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/users', 'GET', 'officeId=9', '');
-INSERT INTO `sys_log` VALUES ('b8e2f1d4-72d3-44b1-9cf8-9615a79be9dc', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:50:51', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=12', '');
-INSERT INTO `sys_log` VALUES ('baba6762-e954-42ef-bae5-8d994e4b0e4c', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:42:12', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/form', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('bd08a8af-9ed5-4591-bf19-872e6440a5ef', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-15 15:48:15', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('be972dfe-6751-418a-a75a-77c869576ec7', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:51:08', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('be9984f6-18eb-4f96-814a-06874d74585e', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:32', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=8&office.name=公司领导', '');
-INSERT INTO `sys_log` VALUES ('c0102ca7-0b92-44f4-96ae-4b9a93191d0f', '1', '系统登录', 's1', '2017-11-15 13:07:23', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('c2c38ea6-1e7a-4432-9bfc-f6cc1d600820', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 12:11:03', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('c30d2975-ac6b-4f3b-8655-5d1445e94560', '1', '系统登录', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:26', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('c3618918-e0d1-4553-b57b-eb1d58a6e887', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:47:20', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=0,', '');
-INSERT INTO `sys_log` VALUES ('c60d12de-235b-4e71-b084-99f0b0df1a57', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:35', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=15&office.name=市场部', '');
-INSERT INTO `sys_log` VALUES ('c65464ec-0d56-41bc-9dcd-b7814b5647d9', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 15:43:35', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('c66731a6-e62d-4c0f-81c0-0dc2a3e03af8', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-15 15:42:09', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('c8f994bb-c31e-414e-bd2b-a75a5aa1d1c1', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 13:07:24', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('c975d974-8bcb-4e86-9dfa-4741b266ac5e', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:43:14', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'repage=', '');
-INSERT INTO `sys_log` VALUES ('cb0bde9e-3830-4f09-acb2-73cec0197d57', '1', '系统登录', 's1', '2017-11-15 15:35:29', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('ccfcc491-41f0-4589-8fe1-d2c3bf48e274', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:48:23', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=7&parentIds=0,1,7,', '');
-INSERT INTO `sys_log` VALUES ('ce1e4ba9-2b27-4587-8efc-e298ab97735b', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:49:09', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('cefe6e5c-79fc-4381-8325-b9d088509a83', '1', '我的面板-个人信息-个人信息', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:26', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('d24fe3c0-52f4-4498-98f9-2caef5ea5109', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 13:22:57', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('d3e18e9e-17ba-40fd-a0f6-a3799ea2ae80', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:37:40', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=3&office.name=综合部', '');
-INSERT INTO `sys_log` VALUES ('d4b44915-5e70-41f8-8988-d2e8ae76c1d6', '1', '系统设置-日志查询-日志查询', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:46:31', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/log', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('d51aa913-f7e1-4da7-b097-9935db9835bf', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:30:13', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('d82fec37-604b-4847-93b0-9b4f46875577', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:41', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/form', 'GET', 'id=0ebe1f3872204169958002b5ba065dcc', '');
-INSERT INTO `sys_log` VALUES ('d94ebffb-eec8-40c7-b0e8-4e22d714a6ee', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:47:39', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/save', 'POST', 'id=1&parent.id=&parent.name=&area.id=276&area.name=成都市&name=平台&code=100000&type=1&grade=1&useable=1&primaryPerson.id=&office.primaryPerson.name=&deputyPerson.id=&office.deputyPerson.name=&address=&zipCode=&master=&phone=&fax=&email=&remarks=', '');
-INSERT INTO `sys_log` VALUES ('dc8956c1-46d9-41f2-938f-552cd63d92a8', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:29:19', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('dd64a877-9248-4a21-b593-d2000cc0d492', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:36', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=19&office.name=综合部', '');
-INSERT INTO `sys_log` VALUES ('dd8fe743-5662-463c-bce5-294fd69caca0', '1', '系统登录', 's1', '2017-11-15 15:33:04', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin', 'GET', 'login=', '');
-INSERT INTO `sys_log` VALUES ('de2fcd4f-fed2-4cf0-a626-d80011a7a3a2', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-15 15:48:41', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('de3fe0af-b026-4431-aa5c-66e921da8814', '1', '系统设置-系统设置-角色管理-查看', 's1', '2017-11-15 15:43:51', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/form', 'GET', 'id=7', '');
-INSERT INTO `sys_log` VALUES ('dec63e6c-4536-4e8e-a14b-1546bb9b963c', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:50:43', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=7', '');
-INSERT INTO `sys_log` VALUES ('df62b981-1512-47a7-baad-0f5dec816be6', '1', '系统设置-系统设置-角色管理', 's1', '2017-11-15 15:41:58', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('e15649dc-0a91-450c-81d5-1b297da1ac51', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:47:43', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=2', '');
-INSERT INTO `sys_log` VALUES ('e1e2366b-775e-46a7-ad8f-29b8878bbda8', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:47:29', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/form', 'GET', 'id=1', '');
-INSERT INTO `sys_log` VALUES ('e215ebba-1e75-4726-b4ca-88dc91a0aedf', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-15 15:46:44', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('e36e489f-0af6-4f1f-93fa-2b510b748682', '1', '我的面板-个人信息-个人信息', 's1', '2017-11-16 11:25:21', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/info', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('e42a72c3-27de-4845-abe3-4ff4f7a99996', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-16 11:25:12', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('e45b23e5-4d78-454d-9db2-c8f5c8bcc0a7', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:35', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=14&office.name=综合部', '');
-INSERT INTO `sys_log` VALUES ('e4ae8fe8-bf45-435a-90be-10fa09391835', '1', '系统设置-机构用户-区域管理', 's1', '2017-11-15 15:40:33', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/area/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('e4e886a5-e902-4973-983b-ab1c0ac10fab', '1', '系统设置-机构用户-用户管理', 's1', '2017-11-16 11:25:11', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/index', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('e664b927-1719-4520-a146-c5ee985f4aa3', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 13:23:01', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('e6692a36-b079-4e3b-b1e4-d2a0aa7e90e7', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:43:35', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('e8fe4440-7e24-4c15-840c-9efc1c072f9d', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:35', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=17&office.name=历下区分公司', '');
-INSERT INTO `sys_log` VALUES ('e9f35343-9391-4f87-854e-faca609b44d0', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-16 11:25:28', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('eaddc2bb-23b7-4a19-ab62-9707b636fdc2', '1', '系统设置-系统设置-角色管理-查看', 's1', '2017-11-15 15:41:56', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/role/form', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('eb666b63-133c-4435-ac91-99e68c9e1411', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:48:44', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('eb887e2c-8a78-435d-ac48-e4dce6ed9e22', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:30', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=2&office.name=公司领导', '');
-INSERT INTO `sys_log` VALUES ('f0d21df8-2b5c-492b-8e15-156d2474ca45', '1', '系统设置-机构用户-机构管理', 's1', '2017-11-15 15:51:22', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/', 'GET', '', '');
-INSERT INTO `sys_log` VALUES ('f2ffe1b1-5777-4b32-a31b-5e38b7d08e83', '1', '系统设置-机构用户-用户管理-查看', '0ebe1f3872204169958002b5ba065dcc', '2017-11-15 15:44:34', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', 'office.id=13&office.name=公司领导', '');
-INSERT INTO `sys_log` VALUES ('f320e6fc-2b75-49fd-b950-c7ef365b52fb', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:48:35', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=7&parentIds=0,1,7,', '');
-INSERT INTO `sys_log` VALUES ('f5ce5d65-541e-440c-99fd-c20bd02cd691', '1', '系统设置-机构用户-用户管理-修改', 's1', '2017-11-15 15:43:14', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/save', 'POST', 'id=0ebe1f3872204169958002b5ba065dcc&photo=&company.id=7&company.name=济南市分公司&office.id=2&office.name=公司领导&no=0001&name=六三&oldLoginName=六三&loginName=0001&newPassword=&confirmNewPassword=&email=&phone=&mobile=&loginFlag=1&userType=2&roleIdList=7&_roleIdList=on&remarks=', '');
-INSERT INTO `sys_log` VALUES ('f70e621e-0c80-4f8c-b6a8-1d15a68159db', '1', '系统设置-机构用户-机构管理-修改', 's1', '2017-11-15 15:47:55', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/save', 'POST', 'id=2&parent.id=1&parent.name=平台&area.id=276&area.name=成都市&name=公司领导&code=100001&type=2&grade=1&useable=1&primaryPerson.id=&office.primaryPerson.name=&deputyPerson.id=&office.deputyPerson.name=&address=&zipCode=&master=&phone=&fax=&email=&remarks=', '');
-INSERT INTO `sys_log` VALUES ('f9a547a4-3a72-482b-8c5e-15cd0fd72516', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-16 11:25:12', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=&parentIds=', '');
-INSERT INTO `sys_log` VALUES ('f9f57abd-fff5-4cf2-b4a6-b5d304619086', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:46:59', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=7&parentIds=0,1,7,', '');
-INSERT INTO `sys_log` VALUES ('fb484999-8c59-4bf3-a99f-eb4a48b4996f', '1', '系统设置-机构用户-机构管理-查看', 's1', '2017-11-15 15:47:19', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/office/list', 'GET', 'id=1&parentIds=0,1,', '');
-INSERT INTO `sys_log` VALUES ('fdf795de-fbf7-4ce8-934f-7c6ee544277b', '1', '系统设置-机构用户-用户管理-查看', 's1', '2017-11-15 15:51:05', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36', '/admin/sys/user/list', 'GET', '', '');
 
 -- ----------------------------
 -- Table structure for sys_mdict
@@ -3721,7 +3562,6 @@ CREATE TABLE `sys_menu` (
   `update_date` datetime NOT NULL COMMENT '更新时间',
   `remarks` varchar(255) DEFAULT NULL COMMENT '备注信息',
   `del_flag` char(1) NOT NULL DEFAULT '0' COMMENT '删除标记',
-  `company_ids` varchar(2000) DEFAULT '1' COMMENT '所属机构',
   PRIMARY KEY (`id`),
   KEY `sys_menu_parent_id` (`parent_id`),
   KEY `sys_menu_del_flag` (`del_flag`)
@@ -3730,50 +3570,46 @@ CREATE TABLE `sys_menu` (
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES ('1', '0', '0,', '功能菜单', '0', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('10', '3', '0,1,2,3,', '字典管理', '60', '/sys/dict/', '', 'th-list', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('11', '10', '0,1,2,3,10,', '查看', '30', '', '', '', '0', 'sys:dict:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('12', '10', '0,1,2,3,10,', '修改', '40', '', '', '', '0', 'sys:dict:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('13', '2', '0,1,2,', '机构用户', '970', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('14', '13', '0,1,2,13,', '区域管理', '50', '/sys/area/', '', 'th', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('15', '14', '0,1,2,13,14,', '查看', '30', '', '', '', '0', 'sys:area:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('16', '14', '0,1,2,13,14,', '修改', '40', '', '', '', '0', 'sys:area:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('17', '13', '0,1,2,13,', '机构管理', '40', '/sys/office/', '', 'th-large', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('18', '17', '0,1,2,13,17,', '查看', '30', '', '', '', '0', 'sys:office:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('19', '17', '0,1,2,13,17,', '修改', '40', '', '', '', '0', 'sys:office:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('2', '1', '0,1,', '系统设置', '900', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('20', '13', '0,1,2,13,', '用户管理', '30', '/sys/user/index', '', 'user', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('21', '20', '0,1,2,13,20,', '查看', '30', '', '', '', '0', 'sys:user:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('22', '20', '0,1,2,13,20,', '修改', '40', '', '', '', '0', 'sys:user:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('24', '23', '0,1,2,23', '官方首页', '30', 'http://jeesite.com', '_blank', '', '0', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('27', '1', '0,1,', '我的面板', '100', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-15 11:18:41', '', '0', '1,7,12,17,22,');
-INSERT INTO `sys_menu` VALUES ('28', '27', '0,1,27,', '个人信息', '30', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-15 11:26:34', '', '0', '1,7,12,22,17,');
-INSERT INTO `sys_menu` VALUES ('29', '28', '0,1,27,28,', '个人信息', '30', '/sys/user/info', '', 'user', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-15 11:08:20', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('3', '2', '0,1,2,', '系统设置', '980', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('30', '28', '0,1,27,28,', '修改密码', '40', '/sys/user/modifyPwd', '', 'lock', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-15 11:17:19', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('4', '3', '0,1,2,3,', '菜单管理', '30', '/sys/menu/', '', 'list-alt', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('5', '4', '0,1,2,3,4,', '查看', '30', '', '', '', '0', 'sys:menu:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('56', '71', '0,1,27,71,', '文件管理', '90', '/../static/ckfinder/ckfinder.html', '', 'folder-open', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('57', '56', '0,1,27,40,56,', '查看', '30', '', '', '', '0', 'cms:ckfinder:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('58', '56', '0,1,27,40,56,', '上传', '40', '', '', '', '0', 'cms:ckfinder:upload', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('59', '56', '0,1,27,40,56,', '修改', '50', '', '', '', '0', 'cms:ckfinder:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('6', '4', '0,1,2,3,4,', '修改', '40', '', '', '', '0', 'sys:menu:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('62', '1', '0,1,', '在线办公', '200', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '1', '1,');
-INSERT INTO `sys_menu` VALUES ('67', '2', '0,1,2,', '日志查询', '985', '', '', '', '1', '', 's1', '2013-06-03 00:00:00', 's1', '2017-11-15 10:44:15', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('68', '67', '0,1,2,67,', '日志查询', '30', '/sys/log', '', 'pencil', '1', 'sys:log:view', 's1', '2013-06-03 00:00:00', 's1', '2013-06-03 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('7', '3', '0,1,2,3,', '角色管理', '50', '/sys/role/', '', 'lock', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('71', '27', '0,1,27,', '文件管理', '90', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('79', '1', '0,1,', '代码生成', '5000', '', '', '', '1', '', 's1', '2013-10-16 00:00:00', 's1', '2013-10-16 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('8', '7', '0,1,2,3,7,', '查看', '30', '', '', '', '0', 'sys:role:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('80', '79', '0,1,79,', '代码生成', '50', '', '', '', '1', '', 's1', '2013-10-16 00:00:00', 's1', '2013-10-16 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('81', '80', '0,1,79,80,', '生成方案配置', '30', '/gen/genScheme', '', '', '1', 'gen:genScheme:view,gen:genScheme:edit', 's1', '2013-10-16 00:00:00', 's1', '2013-10-16 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('82', '80', '0,1,79,80,', '业务表配置', '20', '/gen/genTable', '', '', '1', 'gen:genTable:view,gen:genTable:edit,gen:genTableColumn:view,gen:genTableColumn:edit', 's1', '2013-10-16 00:00:00', 's1', '2013-10-16 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('84', '67', '0,1,2,67,', '连接池监视', '40', '/../druid', '', '', '1', '', 's1', '2013-10-18 00:00:00', 's1', '2013-10-18 00:00:00', '', '1', '1,');
-INSERT INTO `sys_menu` VALUES ('85', '76', '0,1,75,76,', '行政区域', '80', '/../static/map/map-city.html', '', '', '1', '', 's1', '2013-10-22 00:00:00', 's1', '2013-10-22 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('88', '62', '0,1,62,', '通知通告', '20', '', '', '', '1', '', 's1', '2013-11-08 00:00:00', 's1', '2013-11-08 00:00:00', '', '1', '1,');
-INSERT INTO `sys_menu` VALUES ('89', '88', '0,1,62,88,', '我的通告', '30', '/oa/oaNotify/self', '', '', '1', '', 's1', '2013-11-08 00:00:00', 's1', '2013-11-08 00:00:00', '', '1', '1,');
-INSERT INTO `sys_menu` VALUES ('9', '7', '0,1,2,3,7,', '修改', '40', '', '', '', '0', 'sys:role:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0', '1,');
-INSERT INTO `sys_menu` VALUES ('90', '88', '0,1,62,88,', '通告管理', '50', '/oa/oaNotify', '', '', '1', 'oa:oaNotify:view,oa:oaNotify:edit', 's1', '2013-11-08 00:00:00', 's1', '2013-11-08 00:00:00', '', '1', '1,');
+INSERT INTO `sys_menu` VALUES ('09c8e6cd58a84672942e4cd54f8ee81c', 'f30512d237974af381cd6a9f73e29bd3', '0,1,2,13,f30512d237974af381cd6a9f73e29bd3,', '修改', '2', '', '', '', '0', 'sys:unit:edit', 's1', '2017-11-16 17:47:28', 's1', '2017-11-16 17:47:41', '', '0');
+INSERT INTO `sys_menu` VALUES ('1', '0', '0,', '功能菜单', '0', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('10', '3', '0,1,2,3,', '字典管理', '60', '/sys/dict/', '', 'th-list', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('11', '10', '0,1,2,3,10,', '查看', '30', '', '', '', '0', 'sys:dict:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('12', '10', '0,1,2,3,10,', '修改', '40', '', '', '', '0', 'sys:dict:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('13', '2', '0,1,2,', '机构用户', '21', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('14', '13', '0,1,2,13,', '区域管理', '50', '/sys/area/', '', 'th', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('15', '14', '0,1,2,13,14,', '查看', '1', '', '', '', '0', 'sys:area:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('16', '14', '0,1,2,13,14,', '修改', '2', '', '', '', '0', 'sys:area:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('17', '13', '0,1,2,13,', '机构管理', '40', '/sys/office/', '', 'th-large', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('18', '17', '0,1,2,13,17,', '查看', '1', '', '', '', '0', 'sys:office:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('19', '17', '0,1,2,13,17,', '修改', '2', '', '', '', '0', 'sys:office:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('1aa2bc96837f4b0eba477841727a7043', 'f30512d237974af381cd6a9f73e29bd3', '0,1,2,13,f30512d237974af381cd6a9f73e29bd3,', '查看', '1', '', '', '', '0', 'sys:unit:view', 's1', '2017-11-16 17:47:08', 's1', '2017-11-16 17:47:08', '', '0');
+INSERT INTO `sys_menu` VALUES ('2', '1', '0,1,', '系统设置', '2', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('20', '13', '0,1,2,13,', '用户管理', '30', '/sys/user/index', '', 'user', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('21', '20', '0,1,2,13,20,', '查看', '1', '', '', '', '0', 'sys:user:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('22', '20', '0,1,2,13,20,', '修改', '2', '', '', '', '0', 'sys:user:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('27', '1', '0,1,', '我的面板', '1', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-17 16:09:05', '', '0');
+INSERT INTO `sys_menu` VALUES ('28', '27', '0,1,27,', '个人信息', '11', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-15 11:26:34', '', '0');
+INSERT INTO `sys_menu` VALUES ('29', '28', '0,1,27,28,', '个人信息', '1', '/sys/user/info', '', 'user', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-15 11:08:20', '', '0');
+INSERT INTO `sys_menu` VALUES ('3', '2', '0,1,2,', '系统设置', '22', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('30', '28', '0,1,27,28,', '修改密码', '2', '/sys/user/modifyPwd', '', 'lock', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-15 11:17:19', '', '0');
+INSERT INTO `sys_menu` VALUES ('4', '3', '0,1,2,3,', '菜单管理', '30', '/sys/menu/', '', 'list-alt', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('5', '4', '0,1,2,3,4,', '查看', '30', '', '', '', '0', 'sys:menu:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('56', '71', '0,1,27,71,', '文件管理', '1', '/../static/ckfinder/ckfinder.html', '', 'folder-open', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('57', '56', '0,1,27,40,56,', '查看', '1', '', '', '', '0', 'cms:ckfinder:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('58', '56', '0,1,27,40,56,', '上传', '2', '', '', '', '0', 'cms:ckfinder:upload', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('59', '56', '0,1,27,40,56,', '修改', '3', '', '', '', '0', 'cms:ckfinder:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('6', '4', '0,1,2,3,4,', '修改', '40', '', '', '', '0', 'sys:menu:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('67', '2', '0,1,2,', '日志查询', '23', '', '', '', '1', '', 's1', '2013-06-03 00:00:00', 's1', '2017-11-15 10:44:15', '', '0');
+INSERT INTO `sys_menu` VALUES ('68', '67', '0,1,2,67,', '日志查询', '30', '/sys/log', '', 'pencil', '1', 'sys:log:view', 's1', '2013-06-03 00:00:00', 's1', '2013-06-03 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('7', '3', '0,1,2,3,', '角色管理', '50', '/sys/role/', '', 'lock', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('71', '27', '0,1,27,', '文件管理', '12', '', '', '', '1', '', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('79', '1', '0,1,', '代码生成', '3', '', '', '', '1', '', 's1', '2013-10-16 00:00:00', 's1', '2013-10-16 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('8', '7', '0,1,2,3,7,', '查看', '30', '', '', '', '0', 'sys:role:view', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('80', '79', '0,1,79,', '代码生成', '31', '', '', '', '1', '', 's1', '2013-10-16 00:00:00', 's1', '2013-10-16 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('81', '80', '0,1,79,80,', '生成方案配置', '312', '/gen/genScheme', '', '', '1', 'gen:genScheme:view,gen:genScheme:edit', 's1', '2013-10-16 00:00:00', 's1', '2017-11-16 17:53:53', '', '0');
+INSERT INTO `sys_menu` VALUES ('82', '80', '0,1,79,80,', '业务表配置', '311', '/gen/genTable', '', '', '1', 'gen:genTable:view,gen:genTable:edit,gen:genTableColumn:view,gen:genTableColumn:edit', 's1', '2013-10-16 00:00:00', 's1', '2013-10-16 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('9', '7', '0,1,2,3,7,', '修改', '40', '', '', '', '0', 'sys:role:edit', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_menu` VALUES ('f30512d237974af381cd6a9f73e29bd3', '13', '0,1,2,13,', '单位管理', '60', '/sys/unit', '', 'hospital', '1', '', 's1', '2017-11-16 17:46:31', 's1', '2017-11-16 17:46:31', '', '0');
 
 -- ----------------------------
 -- Table structure for sys_office
@@ -3831,14 +3667,16 @@ INSERT INTO `sys_office` VALUES ('22', '7', '0,1,7,', '高新区分公司', '50'
 INSERT INTO `sys_office` VALUES ('23', '22', '0,1,7,22,', '公司领导', '10', '276', '201011', '2', '3', '', '', '', '', '', '', '1', null, null, 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_office` VALUES ('24', '22', '0,1,7,22,', '综合部', '20', '276', '201012', '2', '3', '', '', '', '', '', '', '1', null, null, 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_office` VALUES ('25', '22', '0,1,7,22,', '市场部', '30', '276', '201013', '2', '3', '', '', '', '', '', '', '1', null, null, 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
-INSERT INTO `sys_office` VALUES ('26', '22', '0,1,7,22,', '技术部', '40', '276', '201014', '2', '3', '', '', '', '', '', '', '1', null, null, 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_office` VALUES ('26', '22', '0,1,7,22,', '技术部', '40', '276', '201014', '2', '3', '', '', '', '', '', '', '1', '', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-17 18:03:20', '', '0');
 INSERT INTO `sys_office` VALUES ('3', '1', '0,1,', '综合部', '20', '276', '100002', '2', '1', '', '', '', '', '', '', '1', null, null, 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_office` VALUES ('4', '1', '0,1,', '市场部', '30', '276', '100003', '2', '1', '', '', '', '', '', '', '1', null, null, 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_office` VALUES ('4fa3507266404a8fa249ced7b8574b99', '26', '0,1,7,22,26,', '技术一组', '30', '276', '201014001', '3', '1', '', '', '', '', '', '', '1', '', '', 's1', '2017-11-16 13:40:27', 's1', '2017-11-16 13:40:27', '', '1');
 INSERT INTO `sys_office` VALUES ('5', '1', '0,1,', '技术部', '40', '276', '100004', '2', '1', '', '', '', '', '', '', '1', null, null, 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_office` VALUES ('6', '1', '0,1,', '研发部', '50', '276', '100005', '2', '1', '', '', '', '', '', '', '1', '', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-15 15:49:09', '', '0');
-INSERT INTO `sys_office` VALUES ('7', '1', '0,1,', '成都市分公司', '20', '276', '200000', '1', '2', '', '', '', '', '', '', '1', '', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-15 15:50:49', '', '0');
+INSERT INTO `sys_office` VALUES ('7', '1', '0,1,', '成都市分公司', '20', '276', '200000', '1', '2', '', '', '', '', '', '', '1', '', '', 's1', '2013-05-27 00:00:00', 's1', '2017-11-17 18:03:10', '', '0');
 INSERT INTO `sys_office` VALUES ('8', '7', '0,1,7,', '公司领导', '10', '276', '200001', '2', '2', '', '', '', '', '', '', '1', null, null, 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_office` VALUES ('9', '7', '0,1,7,', '综合部', '20', '276', '200002', '2', '2', '', '', '', '', '', '', '1', null, null, 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_office` VALUES ('f8d6ad1b24d94cf6ae75360dc651c6a5', '1', '0,1,', 'test', '30', '276', '100000007', '2', '1', '', '', '', '', '', '', '1', '', '', 's1', '2017-11-17 17:52:05', 's1', '2017-11-17 17:52:05', '', '0');
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -3867,7 +3705,7 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1', '1', '系统管理员', 'dept', 'assignment', '1', null, '1', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
+INSERT INTO `sys_role` VALUES ('1', '2', '系统管理员', 'dept', 'assignment', '1', '1', '1', 's1', '2013-05-27 00:00:00', 's1', '2017-11-16 17:51:50', '', '0');
 INSERT INTO `sys_role` VALUES ('2', '1', '公司管理员', 'hr', 'assignment', '2', null, '1', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_role` VALUES ('3', '1', '本公司管理员', 'a', 'assignment', '3', null, '1', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
 INSERT INTO `sys_role` VALUES ('4', '1', '部门管理员', 'b', 'assignment', '4', null, '1', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '', '0');
@@ -3888,6 +3726,7 @@ CREATE TABLE `sys_role_menu` (
 -- ----------------------------
 -- Records of sys_role_menu
 -- ----------------------------
+INSERT INTO `sys_role_menu` VALUES ('1', '09c8e6cd58a84672942e4cd54f8ee81c');
 INSERT INTO `sys_role_menu` VALUES ('1', '1');
 INSERT INTO `sys_role_menu` VALUES ('1', '10');
 INSERT INTO `sys_role_menu` VALUES ('1', '11');
@@ -3899,11 +3738,11 @@ INSERT INTO `sys_role_menu` VALUES ('1', '16');
 INSERT INTO `sys_role_menu` VALUES ('1', '17');
 INSERT INTO `sys_role_menu` VALUES ('1', '18');
 INSERT INTO `sys_role_menu` VALUES ('1', '19');
+INSERT INTO `sys_role_menu` VALUES ('1', '1aa2bc96837f4b0eba477841727a7043');
 INSERT INTO `sys_role_menu` VALUES ('1', '2');
 INSERT INTO `sys_role_menu` VALUES ('1', '20');
 INSERT INTO `sys_role_menu` VALUES ('1', '21');
 INSERT INTO `sys_role_menu` VALUES ('1', '22');
-INSERT INTO `sys_role_menu` VALUES ('1', '24');
 INSERT INTO `sys_role_menu` VALUES ('1', '27');
 INSERT INTO `sys_role_menu` VALUES ('1', '28');
 INSERT INTO `sys_role_menu` VALUES ('1', '29');
@@ -3916,7 +3755,6 @@ INSERT INTO `sys_role_menu` VALUES ('1', '57');
 INSERT INTO `sys_role_menu` VALUES ('1', '58');
 INSERT INTO `sys_role_menu` VALUES ('1', '59');
 INSERT INTO `sys_role_menu` VALUES ('1', '6');
-INSERT INTO `sys_role_menu` VALUES ('1', '62');
 INSERT INTO `sys_role_menu` VALUES ('1', '67');
 INSERT INTO `sys_role_menu` VALUES ('1', '68');
 INSERT INTO `sys_role_menu` VALUES ('1', '7');
@@ -3926,12 +3764,8 @@ INSERT INTO `sys_role_menu` VALUES ('1', '8');
 INSERT INTO `sys_role_menu` VALUES ('1', '80');
 INSERT INTO `sys_role_menu` VALUES ('1', '81');
 INSERT INTO `sys_role_menu` VALUES ('1', '82');
-INSERT INTO `sys_role_menu` VALUES ('1', '84');
-INSERT INTO `sys_role_menu` VALUES ('1', '85');
-INSERT INTO `sys_role_menu` VALUES ('1', '88');
-INSERT INTO `sys_role_menu` VALUES ('1', '89');
 INSERT INTO `sys_role_menu` VALUES ('1', '9');
-INSERT INTO `sys_role_menu` VALUES ('1', '90');
+INSERT INTO `sys_role_menu` VALUES ('1', 'f30512d237974af381cd6a9f73e29bd3');
 INSERT INTO `sys_role_menu` VALUES ('2', '1');
 INSERT INTO `sys_role_menu` VALUES ('2', '10');
 INSERT INTO `sys_role_menu` VALUES ('2', '11');
@@ -3947,7 +3781,6 @@ INSERT INTO `sys_role_menu` VALUES ('2', '2');
 INSERT INTO `sys_role_menu` VALUES ('2', '20');
 INSERT INTO `sys_role_menu` VALUES ('2', '21');
 INSERT INTO `sys_role_menu` VALUES ('2', '22');
-INSERT INTO `sys_role_menu` VALUES ('2', '24');
 INSERT INTO `sys_role_menu` VALUES ('2', '27');
 INSERT INTO `sys_role_menu` VALUES ('2', '28');
 INSERT INTO `sys_role_menu` VALUES ('2', '29');
@@ -3960,7 +3793,6 @@ INSERT INTO `sys_role_menu` VALUES ('2', '57');
 INSERT INTO `sys_role_menu` VALUES ('2', '58');
 INSERT INTO `sys_role_menu` VALUES ('2', '59');
 INSERT INTO `sys_role_menu` VALUES ('2', '6');
-INSERT INTO `sys_role_menu` VALUES ('2', '62');
 INSERT INTO `sys_role_menu` VALUES ('2', '67');
 INSERT INTO `sys_role_menu` VALUES ('2', '68');
 INSERT INTO `sys_role_menu` VALUES ('2', '7');
@@ -3970,12 +3802,7 @@ INSERT INTO `sys_role_menu` VALUES ('2', '8');
 INSERT INTO `sys_role_menu` VALUES ('2', '80');
 INSERT INTO `sys_role_menu` VALUES ('2', '81');
 INSERT INTO `sys_role_menu` VALUES ('2', '82');
-INSERT INTO `sys_role_menu` VALUES ('2', '84');
-INSERT INTO `sys_role_menu` VALUES ('2', '85');
-INSERT INTO `sys_role_menu` VALUES ('2', '88');
-INSERT INTO `sys_role_menu` VALUES ('2', '89');
 INSERT INTO `sys_role_menu` VALUES ('2', '9');
-INSERT INTO `sys_role_menu` VALUES ('2', '90');
 INSERT INTO `sys_role_menu` VALUES ('3', '1');
 INSERT INTO `sys_role_menu` VALUES ('3', '10');
 INSERT INTO `sys_role_menu` VALUES ('3', '11');
@@ -3991,7 +3818,6 @@ INSERT INTO `sys_role_menu` VALUES ('3', '2');
 INSERT INTO `sys_role_menu` VALUES ('3', '20');
 INSERT INTO `sys_role_menu` VALUES ('3', '21');
 INSERT INTO `sys_role_menu` VALUES ('3', '22');
-INSERT INTO `sys_role_menu` VALUES ('3', '24');
 INSERT INTO `sys_role_menu` VALUES ('3', '27');
 INSERT INTO `sys_role_menu` VALUES ('3', '28');
 INSERT INTO `sys_role_menu` VALUES ('3', '29');
@@ -4004,7 +3830,6 @@ INSERT INTO `sys_role_menu` VALUES ('3', '57');
 INSERT INTO `sys_role_menu` VALUES ('3', '58');
 INSERT INTO `sys_role_menu` VALUES ('3', '59');
 INSERT INTO `sys_role_menu` VALUES ('3', '6');
-INSERT INTO `sys_role_menu` VALUES ('3', '62');
 INSERT INTO `sys_role_menu` VALUES ('3', '67');
 INSERT INTO `sys_role_menu` VALUES ('3', '68');
 INSERT INTO `sys_role_menu` VALUES ('3', '7');
@@ -4014,12 +3839,7 @@ INSERT INTO `sys_role_menu` VALUES ('3', '8');
 INSERT INTO `sys_role_menu` VALUES ('3', '80');
 INSERT INTO `sys_role_menu` VALUES ('3', '81');
 INSERT INTO `sys_role_menu` VALUES ('3', '82');
-INSERT INTO `sys_role_menu` VALUES ('3', '84');
-INSERT INTO `sys_role_menu` VALUES ('3', '85');
-INSERT INTO `sys_role_menu` VALUES ('3', '88');
-INSERT INTO `sys_role_menu` VALUES ('3', '89');
 INSERT INTO `sys_role_menu` VALUES ('3', '9');
-INSERT INTO `sys_role_menu` VALUES ('3', '90');
 INSERT INTO `sys_role_menu` VALUES ('7', '1');
 INSERT INTO `sys_role_menu` VALUES ('7', '10');
 INSERT INTO `sys_role_menu` VALUES ('7', '11');
@@ -4089,6 +3909,48 @@ INSERT INTO `sys_role_office` VALUES ('7', '8');
 INSERT INTO `sys_role_office` VALUES ('7', '9');
 
 -- ----------------------------
+-- Table structure for sys_unit
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_unit`;
+CREATE TABLE `sys_unit` (
+  `id` varchar(64) NOT NULL COMMENT '编号',
+  `parent_id` varchar(64) NOT NULL COMMENT '父级编号',
+  `parent_ids` varchar(2000) NOT NULL COMMENT '所有父级编号',
+  `name` varchar(100) NOT NULL COMMENT '名称',
+  `sort` decimal(10,0) NOT NULL COMMENT '排序',
+  `area_id` varchar(64) NOT NULL COMMENT '归属区域',
+  `code` varchar(100) DEFAULT NULL COMMENT '编码',
+  `address` varchar(255) DEFAULT NULL COMMENT '联系地址',
+  `longitude` double(20,6) DEFAULT NULL COMMENT '经度',
+  `latitude` double(20,6) DEFAULT NULL COMMENT '纬度',
+  `point` varchar(100) DEFAULT NULL COMMENT '经纬度',
+  `zip_code` varchar(100) DEFAULT NULL COMMENT '邮政编码',
+  `master` varchar(100) DEFAULT NULL COMMENT '负责人',
+  `phone` varchar(200) DEFAULT NULL COMMENT '电话',
+  `fax` varchar(200) DEFAULT NULL COMMENT '传真',
+  `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
+  `usable` varchar(64) DEFAULT NULL COMMENT '是否启用',
+  `industry` varchar(64) DEFAULT NULL COMMENT '所属行业',
+  `office_id` varchar(64) DEFAULT NULL COMMENT '所属机构',
+  `create_by` varchar(64) NOT NULL COMMENT '创建者',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `update_by` varchar(64) NOT NULL COMMENT '更新者',
+  `update_date` datetime NOT NULL COMMENT '更新时间',
+  `remarks` varchar(255) DEFAULT NULL COMMENT '备注信息',
+  `del_flag` char(1) NOT NULL DEFAULT '0' COMMENT '删除标记',
+  PRIMARY KEY (`id`),
+  KEY `sys_office_del_flag` (`del_flag`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='单位表';
+
+-- ----------------------------
+-- Records of sys_unit
+-- ----------------------------
+INSERT INTO `sys_unit` VALUES ('1', '', '0,', '航利集团', '10', '276', '100000', '四川省成都市', null, null, null, '', '', '', '', '', '1', 'A', '1', 's1', '2013-05-27 00:00:00', 's1', '2017-11-17 17:38:46', '', '0');
+INSERT INTO `sys_unit` VALUES ('41433e9c1d984ab3ae8779a9e60198b0', '1', '0,1,', '航利中心', '30', '276', '100000001', '', null, null, null, '', '', '', '', '', '1', 'E', '1', 's1', '2017-11-17 17:57:39', 's1', '2017-11-23 13:49:52', '', '0');
+INSERT INTO `sys_unit` VALUES ('499beb5ddd8e4a1abb99421501cc28e9', '1', '0,1,', '二栋', '30', '276', '100000003', '', null, null, null, '', '', '', '', '', '1', 'E', '1', 's1', '2017-11-17 18:02:56', 's1', '2017-11-23 13:50:03', '', '0');
+INSERT INTO `sys_unit` VALUES ('6705651be7234fb484a3c4107ccc8c8c', '1', '0,1,', '一栋', '30', '276', '100000002', '', null, null, null, '', '', '', '', '', '1', 'E', '1', 's1', '2017-11-17 17:59:43', 's1', '2017-11-23 13:49:58', '', '0');
+
+-- ----------------------------
 -- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
@@ -4126,7 +3988,7 @@ CREATE TABLE `sys_user` (
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES ('0ebe1f3872204169958002b5ba065dcc', '7', '2', '0001', 'ff3ca22d328da199b16164ae1d9b4b18acb52b3df4d63d7b9fe497ab', '0001', '六三', '', '', '', '2', '', '0:0:0:0:0:0:0:1', '2017-11-15 15:44:26', '1', 's1', '2017-11-15 15:43:01', 's1', '2017-11-15 15:43:14', '', '0');
-INSERT INTO `sys_user` VALUES ('s1', '1', '2', 'admin', '02a3f0772fcca9f415adc990734b45c6f059c7d33ee28362c4852032', '0001', '系统管理员', 'admin@163.com', '8675', '8675', '', null, '0:0:0:0:0:0:0:1', '2017-11-16 11:28:06', '1', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '最高管理员', '0');
+INSERT INTO `sys_user` VALUES ('s1', '1', '2', 'admin', '02a3f0772fcca9f415adc990734b45c6f059c7d33ee28362c4852032', '0001', '系统管理员', 'admin@163.com', '8675', '8675', '', null, '0:0:0:0:0:0:0:1', '2017-11-23 13:55:54', '1', 's1', '2013-05-27 00:00:00', 's1', '2013-05-27 00:00:00', '最高管理员', '0');
 
 -- ----------------------------
 -- Table structure for sys_user_role
