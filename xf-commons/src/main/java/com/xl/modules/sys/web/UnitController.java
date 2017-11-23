@@ -69,15 +69,14 @@ public class UnitController extends BaseController {
 	@RequestMapping(value = "form")
 	public String form(Unit unit, Model model) {
 		User user = UserUtils.getUser();
-		if(unit.getParent()==null){
-			Unit unit1=new Unit();
-			unit1.setId("0");
-			unit.setParent(unit1);
+		if(unit.getParent()!=null){
+			
+			Unit tunit=unitService.get(unit.getParent().getId());
+			if(tunit!=null){
+				unit.setParent(tunit);
+				unit.setOffice(tunit.getOffice());
+			}
 		}
-		Unit tunit=unitService.get(unit.getParent().getId());
-		unit.setParent(tunit);
-		unit.setOffice(tunit.getOffice());
-		
 		if (unit.getArea()==null){
 			unit.setArea(user.getOffice().getArea());
 		}

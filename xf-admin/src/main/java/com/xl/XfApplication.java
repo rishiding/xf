@@ -21,9 +21,8 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @ServletComponentScan("com.xl")
 @Configuration  
-@ComponentScan  
 @EnableAutoConfiguration 
-/*@ComponentScan(value = "com.xl",lazyInit = false)*/
+@ComponentScan(value = "com.xl",lazyInit = false)
 public class XfApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder(XfApplication.class).web(true).run(args);
