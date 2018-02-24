@@ -25,13 +25,14 @@ import com.xl.common.utils.StringUtils;
 import com.xl.common.web.BaseController;
 import com.xl.modules.sys.entity.Office;
 import com.xl.modules.sys.entity.User;
+import com.xl.modules.sys.service.AreaService;
 import com.xl.modules.sys.service.OfficeService;
 import com.xl.modules.sys.utils.DictUtils;
 import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 机构Controller
- * @author reshi
+ * @author dingrenxin
  * @version 2013-5-15
  */
 @Controller
@@ -40,6 +41,9 @@ public class OfficeController extends BaseController {
 
 	@Autowired
 	private OfficeService officeService;
+	
+	@Autowired
+	private AreaService areaService;
 	
 	@ModelAttribute("office")
 	public Office get(@RequestParam(required=false) String id) {
@@ -65,6 +69,14 @@ public class OfficeController extends BaseController {
 	}
 	
 	@RequiresPermissions("sys:office:view")
+	@RequestMapping(value = {"list1"})
+	public String findByAreaId(Office office, Model model) {
+        model.addAttribute("list", officeService.findByAreaId(office));
+		return "modules/sys/officeList";
+	}
+	
+	
+	@RequiresPermissions("sys:office:view")
 	@RequestMapping(value = "form")
 	public String form(Office office, Model model) {
 		User user = UserUtils.getUser();
@@ -74,6 +86,8 @@ public class OfficeController extends BaseController {
 		office.setParent(officeService.get(office.getParent().getId()));
 		if (office.getArea()==null){
 			office.setArea(user.getOffice().getArea());
+		}else{
+			office.setArea(areaService.get(office.getArea()));
 		}
 		// 自动获取排序号
 		if (StringUtils.isBlank(office.getId())&&office.getParent()!=null){

@@ -14,7 +14,7 @@ import com.xl.modules.sys.service.SystemService;
 
 /**
  * 字段类型转换
- * @author reshi
+ * @author dingrenxin
  * @version 2013-5-29
  */
 public class RoleListType {

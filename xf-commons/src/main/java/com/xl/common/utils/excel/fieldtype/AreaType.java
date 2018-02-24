@@ -9,7 +9,7 @@ import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 字段类型转换
- * @author reshi
+ * @author dingrenxin
  * @version 2013-03-10
  */
 public class AreaType {

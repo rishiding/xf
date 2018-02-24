@@ -35,7 +35,7 @@ import com.xl.modules.sys.utils.UserUtils;
 /**
  * 系统管理，安全相关实体的管理类,包括用户、角色、菜单.
  *
- * @author reshi
+ * @author dingrenxin
  * @version 2013-12-05
  */
 @Service
@@ -402,7 +402,7 @@ public class SystemService extends BaseService {
 	public static boolean printKeyLoadMessage() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\r\n======================================================================\r\n");
-		sb.append("\r\n    欢迎使用 " + Global.getConfig("productName") + "  - Powered By reshi\r\n");
+		sb.append("\r\n    欢迎使用 " + Global.getConfig("productName") + "  - Powered By dingrenxin\r\n");
 		sb.append("\r\n======================================================================\r\n");
 		System.out.println(sb.toString());
 		return true;

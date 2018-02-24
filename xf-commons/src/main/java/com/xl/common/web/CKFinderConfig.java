@@ -31,7 +31,7 @@ import com.xl.modules.sys.utils.UserUtils;
 /**
  * CKFinder配置
  *
- * @author reshi
+ * @author dingrenxin
  * @version 2014-06-25
  */
 public class CKFinderConfig extends Configuration {

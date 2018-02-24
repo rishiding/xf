@@ -38,7 +38,7 @@ import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 代码生成工具类
- * @author Reshi
+ * @author dingrenxin
  * @version 2013-11-16
  */
 public class GenUtils {

@@ -31,19 +31,22 @@
 </head>
 <body>
 <ul class="nav nav-tabs">
-    <li class="active"><a href="${ctx}/sys/office/list?id=${office.id}&parentIds=${office.parentIds}">机构列表</a></li>
+    <li class="active"><a href="${ctx}/sys/office/list1?id=${office.id}&area.id=${office.area.id}">机构列表</a></li>
     <shiro:hasPermission name="sys:office:edit">
-        <li><a href="${ctx}/sys/office/form?parent.id=${office.id}">机构添加</a></li>
+        <li><a href="${ctx}/sys/office/form?area.id=${office.area.id}">机构添加</a></li>
     </shiro:hasPermission>
 </ul>
 <sys:message content="${message}"/>
 <table id="treeTable" class="table table-striped table-bordered table-condensed">
     <thead>
     <tr>
-        <th>机构名称</th>
-        <th>归属区域</th>
+     	<th>机构名称</th>
+    	<th>归属区域</th>
+               
         <th>机构编码</th>
         <th>机构类型</th>
+        <th>联系人</th>
+        <th>电话</th>
         <th>备注</th>
         <shiro:hasPermission name="sys:office:edit">
             <th>操作</th>
@@ -53,17 +56,20 @@
 </table>
 <script type="text/template" id="treeTableTpl">
     <tr id="{{row.id}}" pId="{{pid}}">
-        <td><a href="${ctx}/sys/office/form?id={{row.id}}">{{row.name}}</a></td>
-        <td>{{row.area.name}}</td>
+		
+        <td><a href="${ctx}/sys/office/form?id={{row.id}}">{{row.name}}</a></td>  
+		<td>{{row.area.name}}</td>      
         <td>{{row.code}}</td>
         <td>{{dict.type}}</td>
-        <td>{{row.remarks}}</td>
+        <td>{{row.master}}</td>
+ 		<td>{{row.phone}}</td>
+		 <td>{{row.remarks}}</td>
         <shiro:hasPermission name="sys:office:edit">
             <td>
                 <a href="${ctx}/sys/office/form?id={{row.id}}">修改</a>
                 <a href="${ctx}/sys/office/delete?id={{row.id}}"
-                   onclick="return confirmx('要删除该机构及所有子机构项吗？', this.href)">删除</a>
-                <a href="${ctx}/sys/office/form?parent.id={{row.id}}">添加下级机构</a>
+                   onclick="return confirmx('要删除该机构吗？', this.href)">删除</a>
+                
             </td>
         </shiro:hasPermission>
     </tr>

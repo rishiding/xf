@@ -29,7 +29,7 @@ import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 区域Controller
- * @author reshi
+ * @author dingrenxin
  * @version 2013-5-15
  */
 @Controller

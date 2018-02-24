@@ -20,7 +20,7 @@ import com.xl.modules.sys.utils.UserUtils;
 /**
  * CKFinderConnectorServlet
  *
- * @author reshi
+ * @author dingrenxin
  * @version 2014-06-25
  */
 @WebServlet(urlPatterns = "/static/ckfinder/core/connector/java/connector.java", initParams = {

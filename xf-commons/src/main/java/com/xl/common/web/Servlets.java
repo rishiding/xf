@@ -31,7 +31,7 @@ import com.xl.modules.sys.utils.UserUtils;
 /**
  * Http与Servlet工具类.
  *
- * @author calvin/reshi
+ * @author calvin/dingrenxin
  * @version 2014-8-19
  */
 public class Servlets {

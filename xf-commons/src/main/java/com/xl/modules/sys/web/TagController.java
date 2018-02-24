@@ -14,7 +14,7 @@ import com.xl.common.web.BaseController;
 
 /**
  * 标签Controller
- * @author reshi
+ * @author dingrenxin
  * @version 2013-3-23
  */
 @Controller

@@ -14,7 +14,7 @@ import com.xl.modules.sys.entity.Dict;
 
 /**
  * 生成方案Entity
- * @author Reshi
+ * @author dingrenxin
  * @version 2013-10-15
  */
 @XmlRootElement(name="config")

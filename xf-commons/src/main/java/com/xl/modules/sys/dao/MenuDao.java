@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 菜单DAO接口
  *
- * @author reshi
+ * @author dingrenxin
  * @version 2014-05-16
  */
 @Mapper

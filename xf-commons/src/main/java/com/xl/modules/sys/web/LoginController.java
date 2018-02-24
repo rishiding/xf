@@ -33,7 +33,7 @@ import com.xl.modules.sys.utils.UserUtils;
 /**
  * 登录Controller
  *
- * @author reshi
+ * @author dingrenxin
  * @version 2013-5-31
  */
 @Controller

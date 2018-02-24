@@ -34,7 +34,7 @@ import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 角色Controller
- * @author reshi
+ * @author dingrenxin
  * @version 2013-12-05
  */
 @Controller

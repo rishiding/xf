@@ -23,7 +23,7 @@ import com.xl.common.utils.StringUtils;
 
 /**
  * 数据库分页插件，只拦截查询语句.
- * @author poplar.yfyang / reshi
+ * @author poplar.yfyang / dingrenxin
  * @version 2013-8-28
  */
 @Intercepts({@Signature(type = Executor.class, method = "query",

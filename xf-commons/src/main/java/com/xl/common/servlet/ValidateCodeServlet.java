@@ -23,7 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 
 /**
  * 生成随机验证码
- * @author reshi
+ * @author dingrenxin
  * @version 2014-7-27
  */
 @SuppressWarnings("serial")

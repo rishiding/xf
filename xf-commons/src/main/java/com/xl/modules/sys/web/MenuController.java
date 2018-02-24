@@ -29,7 +29,7 @@ import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 菜单Controller
- * @author reshi
+ * @author dingrenxin
  * @version 2013-3-23
  */
 @Controller

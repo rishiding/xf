@@ -15,7 +15,7 @@ import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 区域Service
- * @author reshi
+ * @author dingrenxin
  * @version 2014-05-16
  */
 @Service

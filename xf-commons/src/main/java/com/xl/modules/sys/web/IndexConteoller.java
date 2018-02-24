@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 主页
- * Created by reshi
+ * Created by dingrenxin
  * create on 2017/1/11 15:15
- * the email is reshi@jyall.com.
+ * the email is dingrenxin@jyall.com.
  */
 @Controller
 public class IndexConteoller {

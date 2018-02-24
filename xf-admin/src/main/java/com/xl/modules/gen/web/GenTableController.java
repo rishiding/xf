@@ -28,7 +28,7 @@ import com.xl.modules.gen.util.GenUtils;
 
 /**
  * 业务表Controller
- * @author Reshi
+ * @author dingrenxin
  * @version 2013-10-15
  */
 @Controller

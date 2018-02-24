@@ -25,7 +25,7 @@ import com.xl.common.web.Servlets;
 
 /**
  * 自定义授权缓存管理类
- * @author reshi
+ * @author dingrenxin
  * @version 2014-7-21
  */
 public class SessionCacheManager implements CacheManager {

@@ -15,7 +15,7 @@ import com.xl.common.persistence.DataEntity;
 
 /**
  * 菜单Entity
- * @author reshi
+ * @author dingrenxin
  * @version 
  */
 public class Menu extends DataEntity<Menu> {

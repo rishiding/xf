@@ -13,7 +13,7 @@ import com.xl.common.persistence.TreeEntity;
 
 /**
  * 机构Entity
- * @author reshi
+ * @author dingrenxin
  * @version 2013-05-15
  */
 public class Office extends TreeEntity<Office> {
@@ -25,7 +25,7 @@ public class Office extends TreeEntity<Office> {
 	private String grade; 	// 机构等级（1：一级；2：二级；3：三级；4：四级）
 	private String address; // 联系地址
 	private String zipCode; // 邮政编码
-	private String master; 	// 负责人
+	private String master; 	// 联系人
 	private String phone; 	// 电话
 	private String fax; 	// 传真
 	private String email; 	// 邮箱
@@ -36,8 +36,7 @@ public class Office extends TreeEntity<Office> {
 	
 	public Office(){
 		super();
-//		this.sort = 30;
-		this.type = "2";
+		this.type = "1";
 	}
 
 	public Office(String id){

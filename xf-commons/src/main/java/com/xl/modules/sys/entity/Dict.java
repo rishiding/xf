@@ -12,7 +12,7 @@ import com.xl.common.persistence.DataEntity;
 
 /**
  * 字典Entity
- * @author reshi
+ * @author dingrenxin
  * @version 2013-05-15
  */
 public class Dict extends DataEntity<Dict> {

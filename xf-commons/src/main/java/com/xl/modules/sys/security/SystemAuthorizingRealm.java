@@ -41,7 +41,7 @@ import com.xl.modules.sys.web.LoginController;
 
 /**
  * 系统安全认证实现类
- * @author reshi
+ * @author dingrenxin
  * @version 2014-7-5
  */
 @Service

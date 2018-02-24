@@ -15,7 +15,7 @@ import java.util.UUID;
 /**
  * 封装各种生成唯一性ID算法的工具类.
  *
- * @author reshi
+ * @author dingrenxin
  * @version 2013-01-15
  */
 @Service

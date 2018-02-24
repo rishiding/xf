@@ -16,7 +16,7 @@ import com.xl.common.utils.StringUtils;
 
 /**
  * 生成方案Entity
- * @author Reshi
+ * @author dingrenxin
  * @version 2013-10-15
  */
 @XmlRootElement(name="template")

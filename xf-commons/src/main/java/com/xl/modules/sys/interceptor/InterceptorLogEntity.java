@@ -3,7 +3,7 @@ package com.xl.modules.sys.interceptor;
 import com.xl.modules.sys.entity.Log;
 
 /**
- * Created by reshi
+ * Created by dingrenxin
  * Created on 2017/1/15 20:51
  * Mail 77219569@qq.com
  */

@@ -19,7 +19,7 @@ import com.xl.modules.sys.service.LogService;
 
 /**
  * 日志Controller
- * @author reshi
+ * @author dingrenxin
  * @version 2013-6-2
  */
 @Controller

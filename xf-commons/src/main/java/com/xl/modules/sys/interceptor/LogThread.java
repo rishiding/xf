@@ -25,7 +25,7 @@ import com.xl.modules.sys.entity.Log;
 import com.xl.modules.sys.entity.Menu;
 
 /**
- * Created by reshi
+ * Created by dingrenxin
  * Created on 2017/1/15 20:55
  * Mail 77219569@qq.com
  */

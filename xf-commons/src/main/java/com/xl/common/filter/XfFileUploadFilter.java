@@ -6,9 +6,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 
 /**
- * Created by reshi
+ * Created by dingrenxin
  * create on 2017/1/10 12:23
- * the email is reshi@163.com.
+ * the email is dingrenxin@163.com.
  */
 @WebFilter(urlPatterns = "/static/ckfinder/core/connector/java/connector.java", initParams = {
         @WebInitParam(name = "sessionCookieName", value = "JSESSIONID"),

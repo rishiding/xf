@@ -13,7 +13,7 @@ import com.xl.common.utils.StringUtils;
 
 /**
  * 日志Entity
- * @author reshi
+ * @author dingrenxin
  * @version 2014-8-19
  */
 public class Log extends DataEntity<Log> {

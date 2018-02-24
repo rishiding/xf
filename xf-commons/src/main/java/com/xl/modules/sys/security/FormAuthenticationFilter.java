@@ -18,7 +18,7 @@ import com.xl.common.utils.StringUtils;
 
 /**
  * 表单验证（包含验证码）过滤类
- * @author reshi
+ * @author dingrenxin
  * @version 2014-5-19
  */
 @Service

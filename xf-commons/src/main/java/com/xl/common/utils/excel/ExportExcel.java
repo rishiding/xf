@@ -42,7 +42,7 @@ import com.xl.modules.sys.utils.DictUtils;
 
 /**
  * 导出Excel文件（导出“XLSX”格式，支持大数据量导出   @see org.apache.poi.ss.SpreadsheetVersion）
- * @author reshi
+ * @author dingrenxin
  * @version 2013-04-21
  */
 public class ExportExcel {

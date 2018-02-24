@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 日志拦截器
  *
- * @author reshi
+ * @author dingrenxin
  * @version 2014-8-19
  */
 @Component("controllerLogInterceptor")

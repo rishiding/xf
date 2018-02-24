@@ -34,7 +34,7 @@ import com.xl.common.utils.StringUtils;
 /**
  * SQL工具类
  *
- * @author poplar.yfyang / reshi
+ * @author poplar.yfyang / dingrenxin
  * @version 2013-8-28
  */
 public class SQLHelper {

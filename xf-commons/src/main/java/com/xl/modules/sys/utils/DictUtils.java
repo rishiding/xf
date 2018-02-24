@@ -18,7 +18,7 @@ import com.xl.modules.sys.entity.Dict;
 
 /**
  * 字典工具类
- * @author reshi
+ * @author dingrenxin
  * @version 2013-5-29
  */
 public class DictUtils {

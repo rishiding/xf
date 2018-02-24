@@ -9,7 +9,7 @@ import org.apache.shiro.cache.CacheManager;
 /**
  * Cache工具类
  *
- * @author reshi
+ * @author dingrenxin
  * @version 2013-5-29
  */
 public class CacheUtils {

@@ -16,7 +16,7 @@ import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 机构Service
- * @author reshi
+ * @author dingrenxin
  * @version 2014-05-16
  */
 @Service
@@ -41,6 +41,14 @@ public class OfficeService extends TreeService<OfficeDao, Office> {
 		if(office != null){
 			office.setParentIds(office.getParentIds()+"%");
 			return dao.findByParentIdsLike(office);
+		}
+		return  new ArrayList<Office>();
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Office> findByAreaId(Office office){
+		if(office != null){			
+			return dao.findByAreaId(office);
 		}
 		return  new ArrayList<Office>();
 	}

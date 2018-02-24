@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * xl-xf
  * springboot的启动类
- * Created by reshi
+ * Created by rishi
  * Created on 2017/11/8 16:20
  * Mail 77219569@qq.com
  */

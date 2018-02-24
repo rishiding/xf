@@ -1,5 +1,5 @@
 /**
- * Copyright &copy; 2012-2013 <a href="httparamMap://github.com/reshi/xf">xf</a> All rights reserved.
+ * Copyright &copy; 2012-2013 <a href="httparamMap://github.com/dingrenxin/xf">xf</a> All rights reserved.
  */
 package com.xl.modules.sys.service;
 
@@ -14,7 +14,7 @@ import com.xl.modules.sys.entity.Log;
 
 /**
  * 日志Service
- * @author reshi
+ * @author dingrenxin
  * @version 2014-05-16
  */
 @Service

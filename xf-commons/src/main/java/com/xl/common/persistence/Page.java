@@ -18,7 +18,7 @@ import com.xl.common.utils.CookieUtils;
 
 /**
  * 分页类
- * @author reshi
+ * @author dingrenxin
  * @version 2013-7-2
  * @param <T>
  */

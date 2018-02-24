@@ -16,7 +16,7 @@ import com.xl.modules.sys.utils.DictUtils;
 
 /**
  * 字典Service
- * @author reshi
+ * @author dingrenxin
  * @version 2014-05-16
  */
 @Service

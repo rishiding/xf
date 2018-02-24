@@ -29,9 +29,9 @@
 </head>
 <body>
 <ul class="nav nav-tabs">
-    <li><a href="${ctx}/sys/office/list?id=${office.parent.id}&parentIds=${office.parentIds}">机构列表</a></li>
+    <li><a href="${ctx}/sys/office/list1?id=${office.id}&area.id=${office.area.id}">机构列表</a></li>
     <li class="active"><a
-            href="${ctx}/sys/office/form?id=${office.id}&parent.id=${office.parent.id}">机构<shiro:hasPermission
+            href="${ctx}/sys/office/form?id=${office.id}&area.id=${office.area.id}">机构<shiro:hasPermission
             name="sys:office:edit">${not empty office.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission
             name="sys:office:edit">查看</shiro:lacksPermission></a></li>
 </ul>
@@ -39,7 +39,8 @@
 <form:form id="inputForm" modelAttribute="office" action="${ctx}/sys/office/save" method="post" class="form-horizontal">
     <form:hidden path="id"/>
     <sys:message content="${message}"/>
-    <div class="control-group">
+    <form:hidden path="parent.id" value="0"/>
+  <%--   <div class="control-group">
         <label class="control-label">上级机构:</label>
         <div class="controls">
             <sys:treeselect id="office" name="parent.id" value="${office.parent.id}" labelName="parent.name"
@@ -47,7 +48,7 @@
                             title="机构" url="/sys/office/treeData" extId="${office.id}" cssClass=""
                             allowClear="${office.currentUser.admin}"/>
         </div>
-    </div>
+    </div> --%>
     <div class="control-group">
         <label class="control-label">归属区域:</label>
         <div class="controls">
@@ -78,15 +79,7 @@
             </form:select>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label">机构级别:</label>
-        <div class="controls">
-            <form:select path="grade" class="input-medium">
-                <form:options items="${fns:getDictList('sys_office_grade')}" itemLabel="label" itemValue="value"
-                              htmlEscape="false"/>
-            </form:select>
-        </div>
-    </div>
+   
     <div class="control-group">
         <label class="control-label">是否可用:</label>
         <div class="controls">
@@ -112,6 +105,18 @@
                             title="用户" url="/sys/office/treeData?type=3" allowClear="true" notAllowSelectParent="true"/>
         </div>
     </div>
+     <div class="control-group">
+        <label class="control-label">联系人:</label>
+        <div class="controls">
+            <form:input path="master" htmlEscape="false" maxlength="50"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">电话:</label>
+        <div class="controls">
+            <form:input path="phone" htmlEscape="false" maxlength="50"/>
+        </div>
+    </div>
     <div class="control-group">
         <label class="control-label">联系地址:</label>
         <div class="controls">
@@ -124,18 +129,7 @@
             <form:input path="zipCode" htmlEscape="false" maxlength="50"/>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label">负责人:</label>
-        <div class="controls">
-            <form:input path="master" htmlEscape="false" maxlength="50"/>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label">电话:</label>
-        <div class="controls">
-            <form:input path="phone" htmlEscape="false" maxlength="50"/>
-        </div>
-    </div>
+   
     <div class="control-group">
         <label class="control-label">传真:</label>
         <div class="controls">
@@ -154,15 +148,7 @@
             <form:textarea path="remarks" htmlEscape="false" rows="3" maxlength="200" class="input-xlarge"/>
         </div>
     </div>
-    <c:if test="${empty office.id}">
-        <div class="control-group">
-            <label class="control-label">快速添加下级部门:</label>
-            <div class="controls">
-                <form:checkboxes path="childDeptList" items="${fns:getDictList('sys_office_common')}" itemLabel="label"
-                                 itemValue="value" htmlEscape="false"/>
-            </div>
-        </div>
-    </c:if>
+   
     <div class="form-actions">
         <shiro:hasPermission name="sys:office:edit"><input id="btnSubmit" class="btn btn-primary" type="submit"
                                                            value="保 存"/>&nbsp;</shiro:hasPermission>

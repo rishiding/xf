@@ -14,7 +14,7 @@ import com.xl.common.persistence.DataEntity;
 
 /**
  * 角色Entity
- * @author reshi
+ * @author dingrenxin
  * @version 2013-12-05
  */
 public class Role extends DataEntity<Role> {

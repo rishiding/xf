@@ -40,7 +40,7 @@ import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 用户Controller
- * @author reshi
+ * @author dingrenxin
  * @version 2013-8-29
  */
 @Controller

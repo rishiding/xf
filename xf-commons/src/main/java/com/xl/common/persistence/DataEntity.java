@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * 数据Entity类
- * @author reshi
+ * @author dingrenxin
  * @version 2014-05-16
  */
 public abstract class DataEntity<T> extends BaseEntity<T> {

@@ -16,7 +16,7 @@ import com.xl.modules.gen.dao.GenTemplateDao;
 
 /**
  * 代码模板Service
- * @author Reshi
+ * @author dingrenxin
  * @version 2013-10-15
  */
 @Service

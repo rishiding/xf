@@ -10,7 +10,7 @@ import com.xl.modules.gen.entity.GenTable;
 
 /**
  * 业务表DAO接口
- * @author Reshi
+ * @author dingrenxin
  * @version 2013-10-15
  */
 @Mapper

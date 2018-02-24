@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 角色DAO接口
  *
- * @author reshi
+ * @author dingrenxin
  * @version 2013-12-05
  */
 @Mapper

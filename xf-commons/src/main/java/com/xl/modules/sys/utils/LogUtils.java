@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * 字典工具类
  *
- * @author reshi
+ * @author dingrenxin
  * @version 2014-11-7
  */
 public class LogUtils {

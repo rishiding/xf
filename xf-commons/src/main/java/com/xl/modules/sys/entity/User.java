@@ -22,7 +22,7 @@ import com.xl.common.utils.excel.fieldtype.RoleListType;
 
 /**
  * 用户Entity
- * @author reshi
+ * @author dingrenxin
  * @version 2013-12-05
  */
 public class User extends DataEntity<User> {

@@ -30,7 +30,7 @@ import com.xl.common.web.Servlets;
 
 /**
  * 系统安全认证实现类
- * @author reshi
+ * @author dingrenxin
  * @version 2014-7-24
  */
 @Component("sessionDAO")
