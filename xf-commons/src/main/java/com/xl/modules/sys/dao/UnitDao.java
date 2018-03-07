@@ -5,6 +5,8 @@ package com.xl.modules.sys.dao;
 
 import com.xl.common.persistence.TreeDao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import com.xl.modules.sys.entity.Unit;
 
@@ -15,5 +17,5 @@ import com.xl.modules.sys.entity.Unit;
  */
 @Mapper
 public interface UnitDao extends TreeDao<Unit> {
-	
+	  List<Unit> findByAreaId(Unit entity); 
 }

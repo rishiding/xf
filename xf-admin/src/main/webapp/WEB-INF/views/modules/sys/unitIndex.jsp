@@ -16,26 +16,26 @@
 	<div id="content" class="row-fluid">
 		<div id="left" class="accordion-group">
 			<div class="accordion-heading">
-		    	<a class="accordion-toggle">单位<i class="icon-refresh pull-right" onclick="refreshTree();"></i></a>
+		    	<a class="accordion-toggle">归属区域<i class="icon-refresh pull-right" onclick="refreshTree();"></i></a>
 		    </div>
 			<div id="ztree" class="ztree"></div>
 		</div>
 		<div id="openClose" class="close">&nbsp;</div>
 		<div id="right">
-			<iframe id="unitContent" src="${ctx}/sys/unit/list?id=&parentIds=" width="100%" height="91%" frameborder="0"></iframe>
+			<iframe id="unitContent" src="${ctx}/sys/unit/list1?id=&area.id=" width="100%" height="91%" frameborder="0"></iframe>
 		</div>
 	</div>
 	<script type="text/javascript">
 		var setting = {data:{simpleData:{enable:true,idKey:"id",pIdKey:"pId",rootPId:'0'}},
 			callback:{onClick:function(event, treeId, treeNode){
-					var id = treeNode.pId == '0' ? '' :treeNode.pId;
-					$('#unitContent').attr("src","${ctx}/sys/unit/list?id="+id+"&parentIds="+treeNode.pIds);
+					
+					$('#unitContent').attr("src","${ctx}/sys/unit/list1?id=&area.id="+treeNode.id);
 				}
 			}
 		};
 		
 		function refreshTree(){
-			$.getJSON("${ctx}/sys/unit/treeData",function(data){
+			$.getJSON("${ctx}/sys/area/treeData",function(data){
 				$.fn.zTree.init($("#ztree"), setting, data).expandAll(true);
 			});
 		}

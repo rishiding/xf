@@ -31,8 +31,8 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="${ctx}/sys/unit/">单位列表</a></li>
-		<shiro:hasPermission name="sys:unit:edit"><li><a href="${ctx}/sys/unit/form">单位添加</a></li></shiro:hasPermission>
+		<li class="active"><a href="${ctx}/sys/unit/list1">单位列表</a></li>
+		<shiro:hasPermission name="sys:unit:edit"><li><a href="${ctx}/sys/unit/form?area.id=${unit.area.id}">单位添加</a></li></shiro:hasPermission>
 	</ul>
 
 	<sys:message content="${message}"/>

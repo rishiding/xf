@@ -29,9 +29,9 @@
 </head>
 <body>
 <ul class="nav nav-tabs">
-    <li><a href="${ctx}/sys/unit/list?id=${unit.parent.id}&parentIds=${unit.parentIds}">单位列表</a></li>
+    <li><a href="${ctx}/sys/unit/list1?id=${unit.parent.id}&area.id=${unit.area.id}">单位列表</a></li>
     <li class="active"><a
-            href="${ctx}/sys/unit/form?id=${unit.id}&parent.id=${unit.parent.id}">单位<shiro:hasPermission
+            href="${ctx}/sys/unit/form?id=${unit.id}&area.id=${unit.area.id}">单位<shiro:hasPermission
             name="sys:unit:edit">${not empty unit.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission
             name="sys:unit:edit">查看</shiro:lacksPermission></a></li>
 </ul>

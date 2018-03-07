@@ -27,9 +27,6 @@ public class UnitService extends TreeService<UnitDao, Unit> {
 		return UserUtils.getUnitList();
 	}
 
-	public Unit get(String id) {
-		return super.get(id);
-	}
 	
 	public List<Unit> findList(Boolean isAll){
 		if (isAll != null && isAll){
@@ -38,7 +35,8 @@ public class UnitService extends TreeService<UnitDao, Unit> {
 			return UserUtils.getUnitList();
 		}
 	}
-	
+	@Override
+	@Transactional(readOnly = true)
 	public List<Unit> findList(Unit unit) {
 		if(unit != null){
 			unit.setParentIds(unit.getParentIds()+"%");
@@ -47,9 +45,14 @@ public class UnitService extends TreeService<UnitDao, Unit> {
 		return  new ArrayList<Unit>();
 	}
 	
-	public Page<Unit> findPage(Page<Unit> page, Unit unit) {
-		return super.findPage(page, unit);
+	@Transactional(readOnly = true)
+	public List<Unit> findByAreaId(Unit unit) {
+		if(unit != null){
+			return dao.findByAreaId(unit);
+		}
+		return  new ArrayList<Unit>();
 	}
+	
 	
 	@Transactional(readOnly = false)
 	public void save(Unit unit) {

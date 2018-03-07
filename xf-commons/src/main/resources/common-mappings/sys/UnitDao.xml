@@ -93,6 +93,20 @@
 		ORDER BY a.code
 	</select>
 	
+	<select id="findByAreaId" resultType="com.xl.modules.sys.entity.Unit">
+		SELECT
+			<include refid="unitColumns"/>
+		FROM sys_unit a
+		<include refid="unitJoins"/>
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		<if test="area != null and area.id != null and area.id != ''">
+		AND ( a.area_id = #{area.id} or a6.parent_ids like <if test="dbName == 'oracle'">'%,'||#{area.id}||',%')</if>
+					<if test="dbName == 'mssql'">'%,'+#{area.id}+',%')</if>
+					<if test="dbName == 'mysql'">CONCAT('%,', #{area.id}, ',%')</if>
+			)
+		</if>
+		ORDER BY a.code
+	</select>
 	<update id="updateParentIds">
 		UPDATE sys_unit SET 
 			parent_id = #{parent.id}, 

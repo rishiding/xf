@@ -64,6 +64,12 @@ public class UnitController extends BaseController {
 		model.addAttribute("list", unitService.findList(unit));
 		return "modules/sys/unitList";
 	}
+	@RequiresPermissions("sys:unit:view")
+	@RequestMapping(value = {"list1"})
+	public String list1(Unit unit, Model model) {
+		model.addAttribute("list", unitService.findByAreaId(unit));
+		return "modules/sys/unitList";
+	}
 
 	@RequiresPermissions("sys:unit:view")
 	@RequestMapping(value = "form")
