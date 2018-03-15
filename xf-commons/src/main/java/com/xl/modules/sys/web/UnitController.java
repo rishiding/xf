@@ -3,6 +3,9 @@
  */
 package com.xl.modules.sys.web;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -67,7 +70,32 @@ public class UnitController extends BaseController {
 	@RequiresPermissions("sys:unit:view")
 	@RequestMapping(value = {"list1"})
 	public String list1(Unit unit, Model model) {
-		model.addAttribute("list", unitService.findByAreaId(unit));
+		List<Unit> list=unitService.findByAreaId(unit);
+		List<Unit> list1=new ArrayList<>();
+		Map<String,Long> times=new HashMap<String,Long>();
+		Map<String,Unit> umap=new HashMap<String,Unit>();
+		for(Unit a:list){
+			times.put(a.getId(), 0l);
+			umap.put(a.getId(), a);
+		}
+		for(Unit a:list){
+			Long pid=times.get(a.getParentId());
+			if(pid!=null){
+				pid=pid+1;
+				times.put(a.getId(), pid);
+			}
+						
+		}
+		
+		for (String key : times.keySet()) { 
+			Long time=times.get(key);
+			Unit u=umap.get(key);
+			if(time==0l){
+				u.setParent(null);
+			}
+			list1.add(u);
+		} 
+		model.addAttribute("list", list1);
 		return "modules/sys/unitList";
 	}
 
