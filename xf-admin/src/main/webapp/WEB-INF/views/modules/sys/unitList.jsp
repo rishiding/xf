@@ -11,7 +11,7 @@
         $(document).ready(function () {
             var tpl = $("#treeTableTpl").html().replace(/(\/\/\<!\-\-)|(\/\/\-\->)/g, "");
             var data = ${fns:toJson(list)}, rootId = "${not empty unit.id ? unit.id : '0'}";
-            addRow("#treeTableList", tpl, data, rootId, false);
+            addRow("#treeTableList", tpl, data, rootId, true);
             $("#treeTable").treeTable({expandLevel: 5});
         });
         function addRow(list, tpl, data, pid, root) {
@@ -24,7 +24,6 @@
                         }, pid: (root ? 0 : pid), row: row
                     }));
                     addRow(list, tpl, data, row.id);
-                    console.info(pid);
                 }
             }
         }
