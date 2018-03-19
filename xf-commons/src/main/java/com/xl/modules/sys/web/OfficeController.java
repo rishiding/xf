@@ -133,8 +133,8 @@ public class OfficeController extends BaseController {
 		}
 		
 		addMessage(redirectAttributes, "保存机构'" + office.getName() + "'成功");
-		String id = "0".equals(office.getParentId()) ? "" : office.getParentId();
-		return "redirect:" + adminPath + "/sys/office/list?id="+id+"&parentIds="+office.getParentIds();
+//		String id = "0".equals(office.getParentId()) ? "" : office.getParentId();
+		return "redirect:" + adminPath + "/sys/office/list";
 	}
 	
 	@RequiresPermissions("sys:office:edit")
@@ -150,7 +150,7 @@ public class OfficeController extends BaseController {
 			officeService.delete(office);
 			addMessage(redirectAttributes, "删除机构成功");
 //		}
-		return "redirect:" + adminPath + "/sys/office/list?id="+office.getParentId()+"&parentIds="+office.getParentIds();
+		return "redirect:" + adminPath + "/sys/office/list";
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class OfficeController extends BaseController {
 		for (int i=0; i<list.size(); i++){
 			Office e = list.get(i);
 			if ((StringUtils.isBlank(extId) || (extId!=null && !extId.equals(e.getId()) && e.getParentIds().indexOf(","+extId+",")==-1))
-					&& (type == null || (type != null && (type.equals("1") ? type.equals(e.getType()) : true)))
+					&& (type == null || (type != null &&  type.equals(e.getType())))
 					&& (grade == null || (grade != null && Integer.parseInt(e.getGrade()) <= grade.intValue()))
 					&& Global.YES.equals(e.getUseable())){
 				Map<String, Object> map = Maps.newHashMap();

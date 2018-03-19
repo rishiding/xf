@@ -66,7 +66,14 @@ public class RoleController extends BaseController {
 
 	@RequiresPermissions("sys:role:view")
 	@RequestMapping(value = "form")
-	public String form(Role role, Model model) {
+	public String form(@RequestParam(required=false)String id ,Role role, Model model) {
+		if(role==null){
+			if(StringUtils.isNotBlank(id)){
+				role=systemService.getRole(id);
+			}else{
+				role =new Role();
+			}
+		}
 		if (role.getOffice()==null){
 			role.setOffice(UserUtils.getUser().getOffice());
 		}
@@ -88,15 +95,15 @@ public class RoleController extends BaseController {
 			return "redirect:" + adminPath + "/sys/role/?repage";
 		}
 		if (!beanValidator(model, role)){
-			return form(role, model);
+			return form(role.getId()==null?null:role.getId(),role, model);
 		}
 		if (!"true".equals(checkName(role.getOldName(), role.getName()))){
 			addMessage(model, "保存角色'" + role.getName() + "'失败, 角色名已存在");
-			return form(role, model);
+			return form(role.getId()==null?null:role.getId(),role, model);
 		}
 		if (!"true".equals(checkEnname(role.getOldEnname(), role.getEnname()))){
 			addMessage(model, "保存角色'" + role.getName() + "'失败, 英文名已存在");
-			return form(role, model);
+			return form(role.getId()==null?null:role.getId(),role, model);
 		}
 		systemService.saveRole(role);
 		addMessage(redirectAttributes, "保存角色'" + role.getName() + "'成功");
@@ -105,7 +112,10 @@ public class RoleController extends BaseController {
 	
 	@RequiresPermissions("sys:role:edit")
 	@RequestMapping(value = "delete")
-	public String delete(Role role, RedirectAttributes redirectAttributes) {
+	public String delete(String id,Role role , RedirectAttributes redirectAttributes) {
+		if(role==null){
+			role=new Role(id);
+		}
 		if(!UserUtils.getUser().isAdmin() && role.getSysData().equals(Global.YES)){
 			addMessage(redirectAttributes, "越权操作，只有超级管理员才能修改此数据！");
 			return "redirect:" + adminPath + "/sys/role/?repage";
@@ -114,14 +124,10 @@ public class RoleController extends BaseController {
 			addMessage(redirectAttributes, "演示模式，不允许操作！");
 			return "redirect:" + adminPath + "/sys/role/?repage";
 		}
-//		if (Role.isAdmin(id)){
-//			addMessage(redirectAttributes, "删除角色失败, 不允许内置角色或编号空");
-////		}else if (UserUtils.getUser().getRoleIdList().contains(id)){
-////			addMessage(redirectAttributes, "删除角色失败, 不能删除当前用户所在角色");
-//		}else{
-			systemService.deleteRole(role);
-			addMessage(redirectAttributes, "删除角色成功");
-//		}
+
+		systemService.deleteRole(role);
+		addMessage(redirectAttributes, "删除角色成功");
+
 		return "redirect:" + adminPath + "/sys/role/?repage";
 	}
 	

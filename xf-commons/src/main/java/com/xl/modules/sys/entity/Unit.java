@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import com.xl.modules.sys.entity.Area;
 import com.xl.modules.sys.entity.Office;
-
+import com.xl.modules.sys.utils.DictUtils;
 import com.xl.common.persistence.TreeEntity;
 
 /**
@@ -35,7 +35,11 @@ public class Unit extends TreeEntity<Unit> {
 	private String email;		// 邮箱
 	private String usable;		// 是否启用
 	private String industry;		// 所属行业
-	private Office office;		// 所属机构
+	private Office office;		// 消费机构
+	private String securityType; //安防类型
+	private String securityUser; //安保负责人
+	private String securityPhone; //安保电话
+	private Office streetOffice; //街道办
 	public Unit() {
 		super();
 	}
@@ -158,6 +162,30 @@ public class Unit extends TreeEntity<Unit> {
 		this.email = email;
 	}
 	
+	public String getSecurityUser() {
+		return securityUser;
+	}
+
+	public void setSecurityUser(String securityUser) {
+		this.securityUser = securityUser;
+	}
+
+	public String getSecurityPhone() {
+		return securityPhone;
+	}
+
+	public void setSecurityPhone(String securityPhone) {
+		this.securityPhone = securityPhone;
+	}
+
+	public Office getStreetOffice() {
+		return streetOffice;
+	}
+
+	public void setStreetOffice(Office streetOffice) {
+		this.streetOffice = streetOffice;
+	}
+
 	@Length(min=0, max=64, message="是否启用长度必须介于 0 和 64 之间")
 	public String getUsable() {
 		return usable;
@@ -182,6 +210,16 @@ public class Unit extends TreeEntity<Unit> {
 
 	public void setOffice(Office office) {
 		this.office = office;
+	}
+	public String getSecurityTypeName() {
+		return DictUtils.getDictLabel(securityType, "sys_security_type", "") ;
+	}
+	public String getSecurityType() {
+		return securityType;
+	}
+
+	public void setSecurityType(String securityType) {
+		this.securityType = securityType;
 	}
 	
 }

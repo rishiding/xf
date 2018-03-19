@@ -49,11 +49,19 @@
         </div>
     </div>
      <div class="control-group">
-        <label class="control-label">归属机构:</label>
+        <label class="control-label">消防机构:</label>
         <div class="controls">
             <sys:treeselect id="office" name="office.id" value="${unit.office.id}" labelName="office.name"
                             labelValue="${unit.office.name}"
-                            title="机构" url="/sys/office/treeData?type=1" cssClass="required"/>
+                            title="消防机构" url="/sys/office/treeData?type=1" cssClass="required"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">街道办:</label>
+        <div class="controls">
+            <sys:treeselect id="streetOffice" name="streetOffice.id" value="${unit.streetOffice.id}" labelName="streetOffice.name"
+                            labelValue="${unit.streetOffice.name}"
+                            title="街道办" url="/sys/office/treeData?type=2" cssClass="required"/>
         </div>
     </div>
     <div class="control-group">
@@ -86,6 +94,15 @@
             </form:select>
         </div>
     </div>
+     <div class="control-group">
+        <label class="control-label">安防类型:</label>
+        <div class="controls">
+            <form:select path="securityType" class="input-large">
+                <form:options items="${fns:getDictList('sys_security_type')}" itemLabel="label" itemValue="value"
+                              htmlEscape="false"/>
+            </form:select>
+        </div>
+    </div>
     
     <div class="control-group">
         <label class="control-label">是否可用:</label>
@@ -110,15 +127,27 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label">负责人:</label>
+        <label class="control-label">单位负责人:</label>
         <div class="controls">
             <form:input path="master" htmlEscape="false" maxlength="50"/>
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label">电话:</label>
+        <label class="control-label">单位电话:</label>
         <div class="controls">
             <form:input path="phone" htmlEscape="false" maxlength="50"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">安保负责人:</label>
+        <div class="controls">
+            <form:input path="securityUser" htmlEscape="false" maxlength="50"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">安保电话:</label>
+        <div class="controls">
+            <form:input path="securityPhone" htmlEscape="false" maxlength="50"/>
         </div>
     </div>
     <div class="control-group">

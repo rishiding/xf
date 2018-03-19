@@ -40,6 +40,7 @@
     <form:hidden path="id"/>
     <sys:message content="${message}"/>
     <form:hidden path="parent.id" value="0"/>
+    <form:hidden path="grade" value="0"/>
   <%--   <div class="control-group">
         <label class="control-label">上级机构:</label>
         <div class="controls">

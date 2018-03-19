@@ -28,6 +28,11 @@
 		a.update_date AS "updateDate",
 		a.remarks AS "remarks",
 		a.del_flag AS "delFlag",
+		a.security_type as "securityType",
+		a.security_user as "securityUser",
+		a.security_phone as "securityPhone",
+		a.street_office_id as "streetOffice.id",
+		s.name as  "streetOffice.name",
 		a6.name AS "area.name",
 		o19.name AS "office.name"
 	</sql>
@@ -35,6 +40,7 @@
 	<sql id="unitJoins">
 		LEFT JOIN sys_area a6 ON a6.id = a.area_id
 		LEFT JOIN sys_office o19 ON o19.id = a.office_id
+		LEFT JOIN sys_office s ON s.id = a.street_office_id
 	</sql>
     
 	<select id="get" resultType="Unit">
@@ -60,6 +66,9 @@
 			</if>
 			<if test="office != null and office.id !=null and office.id != ''">	
 				a.office_id=#{office.id}
+			</if>
+			<if test="streetOffice != null and streetOffice.id !=null and streetOffice.id != ''">	
+				a.street_office_id=#{streetOffice.id}
 			</if>
 			
 			ORDER BY a.code
@@ -89,7 +98,10 @@
 			<include refid="unitColumns"/>
 		FROM sys_unit a
 		<include refid="unitJoins"/>
-		WHERE a.del_flag = #{DEL_FLAG_NORMAL} AND a.parent_ids LIKE #{parentIds}
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		<if test="parentIds != null and parentIds != ''">
+			AND a.parent_ids LIKE #{parentIds}
+		</if>
 		ORDER BY a.code
 	</select>
 	
@@ -139,6 +151,10 @@
 			update_by,
 			update_date,
 			remarks,
+			security_type,
+			security_user,
+			security_phone,
+			street_office_id,
 			del_flag
 		) VALUES (
 			#{id},
@@ -165,6 +181,10 @@
 			#{updateBy.id},
 			#{updateDate},
 			#{remarks},
+			#{securityType},
+			#{securityUser},
+			#{securityPhone},
+			#{streetOffice.id},
 			#{delFlag}
 		)
 	</insert>
@@ -191,6 +211,10 @@
 			office_id = #{office.id},
 			update_by = #{updateBy.id},
 			update_date = #{updateDate},
+			security_type = #{securityType},
+			security_user = #{securityUser},
+			security_phone = #{securityPhone},
+			street_office_id = #{streetOffice.id},
 			remarks = #{remarks}
 		WHERE id = #{id}
 	</update>

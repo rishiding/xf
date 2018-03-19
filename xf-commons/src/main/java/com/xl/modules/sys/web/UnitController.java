@@ -5,7 +5,6 @@ package com.xl.modules.sys.web;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -61,12 +60,7 @@ public class UnitController extends BaseController {
 		return "modules/sys/unitIndex";
 	}
 	
-	@RequiresPermissions("sys:unit:view")
-	@RequestMapping(value = {"list"})
-	public String list(Unit unit, Model model) {
-		model.addAttribute("list", unitService.findList(unit));
-		return "modules/sys/unitList";
-	}
+
 	@RequiresPermissions("sys:unit:view")
 	@RequestMapping(value = {"list1"})
 	public String list1(Unit unit, Model model) {
@@ -148,8 +142,8 @@ public class UnitController extends BaseController {
 		
 		
 		addMessage(redirectAttributes, "保存单位'" + unit.getName() + "'成功");
-		String id = "0".equals(unit.getParentId()) ? "" : unit.getParentId();
-		return "redirect:" + adminPath + "/sys/unit/list?id="+id+"&parentIds="+unit.getParentIds();
+//		String id = "0".equals(unit.getParentId()) ? "" : unit.getParentId();
+		return "redirect:" + adminPath + "/sys/unit/list1";
 		
 	}
 	
@@ -159,12 +153,12 @@ public class UnitController extends BaseController {
 		
 		if(Global.isDemoMode()){
 			addMessage(redirectAttributes, "演示模式，不允许操作！");
-			return "redirect:" + Global.getAdminPath() + "/sys/unit/list";
+			return "redirect:" + Global.getAdminPath() + "/sys/unit/list1";
 		}
 
 		unitService.delete(unit);
 		addMessage(redirectAttributes, "删除单位成功");
-		return "redirect:" + Global.getAdminPath() + "/sys/unit/list?id="+unit.getParentId()+"&parentIds="+unit.getParentIds();
+		return "redirect:" + Global.getAdminPath() + "/sys/unit/list1";
 	}
 	
 	/**

@@ -282,21 +282,16 @@ public class SystemService extends BaseService {
 		if (role.getOfficeList().size() > 0) {
 			roleDao.insertRoleOffice(role);
 		}
-		// 同步到Activiti
-		// 清除用户角色缓存
+		
 		UserUtils.removeCache(UserUtils.CACHE_ROLE_LIST);
-		// // 清除权限缓存
-		// systemRealm.clearAllCachedAuthorizationInfo();
+		
 	}
 
 	@Transactional(readOnly = false)
 	public void deleteRole(Role role) {
-		roleDao.delete(role);
-		// 同步到Activiti
-		// 清除用户角色缓存
+		roleDao.delete(role);		
 		UserUtils.removeCache(UserUtils.CACHE_ROLE_LIST);
-		// // 清除权限缓存
-		// systemRealm.clearAllCachedAuthorizationInfo();
+		
 	}
 
 	@Transactional(readOnly = false)
