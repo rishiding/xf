@@ -38,15 +38,15 @@
 		<div class="control-group">
 			<label class="control-label">建筑名：</label>
 			<div class="controls">
-				<form:input path="name" htmlEscape="false" maxlength="255" class="input-xlarge "/>
+				<form:input path="name" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">所属单位：</label>
 			<div class="controls">
-			  <sys:treeselect id="unit" name="unit.id" value="${unit.parent.id}" labelName="parent.name"
-                            labelValue="${unit.parent.name}"
-                            title="单位" url="/sys/unit/treeData" extId="${unit.id}" cssClass=""
+			  <sys:treeselect id="unit" name="unit.id" value="${building.unit.id}" labelName="unit.name"
+                            labelValue="${building.unit.name}"
+                            title="单位" url="/sys/unit/treeData" extId="${building.unit.id}" cssClass=""
                             allowClear="true"/>
 				
 				<span class="help-inline"><font color="red">*</font> </span>
@@ -55,7 +55,8 @@
 		<div class="control-group">
 			<label class="control-label">楼栋：</label>
 			<div class="controls">
-				<form:input path="buildingNo" htmlEscape="false" maxlength="64" class="input-xlarge "/>
+				<form:input path="buildingNo" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
+				 <span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		
@@ -68,25 +69,31 @@
 		<div class="control-group">
 			<label class="control-label">楼层数量：</label>
 			<div class="controls">
-				<form:input path="floorNum" htmlEscape="false" maxlength="11" class="input-xlarge "/>
+				<form:input path="floorNum" htmlEscape="false" maxlength="11" class="input-xlarge required"/>
+				 <span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">平面图：</label>
 			<div class="controls">
-				<form:input path="planeImg" htmlEscape="false" maxlength="400" class="input-xlarge "/>
+			 <form:hidden id="planeImg" path="planeImg" htmlEscape="false" maxlength="255" class="input-xlarge"/>
+            	<sys:ckfinder input="planeImg" type="images" uploadPath="/building" selectMultiple="false" maxWidth="200"
+                          maxHeight="200"/>
+				
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">可用电梯数量：</label>
 			<div class="controls">
-				<form:input path="elevatorsNum" htmlEscape="false" maxlength="11" class="input-xlarge "/>
+				<form:input path="elevatorsNum" htmlEscape="false" maxlength="11" class="input-xlarge required"/>
+				 <span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">可用楼梯数量：</label>
 			<div class="controls">
-				<form:input path="stairNum" htmlEscape="false" maxlength="11" class="input-xlarge "/>
+				<form:input path="stairNum" htmlEscape="false" maxlength="11" class="input-xlarge required"/>
+				 <span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">

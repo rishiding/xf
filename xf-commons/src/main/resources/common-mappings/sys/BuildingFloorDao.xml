@@ -13,10 +13,12 @@
 		a.update_by AS "updateBy.id",
 		a.update_date AS "updateDate",
 		a.del_flag AS "delFlag",
+		b.name as "building.name",
 		a.remarks AS "remarks"
 	</sql>
 	
 	<sql id="buildingFloorJoins">
+		left join sys_building b on b.id = a.building_id
 	</sql>
     
 	<select id="get" resultType="BuildingFloor">
@@ -34,6 +36,12 @@
 		<include refid="buildingFloorJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="building !=null and building.id !=null and building.id !=''">
+				and a.building_id=#{building.id}
+			</if>
+			<if test="floorNo !=null and floorNo !=''">
+				and a.floor_no=#{floorNo}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">

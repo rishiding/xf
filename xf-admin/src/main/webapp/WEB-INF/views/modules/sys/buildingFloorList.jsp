@@ -27,6 +27,13 @@
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
+			<li>
+			<label>建筑名：</label>
+			<sys:treeselect id="building" name="building.id" value="${buildingFloor.building.id}"
+                                                labelName="building.name" labelValue="${buildingFloor.building.name}"
+                                                title="建筑" url="/sys/building/treeData" cssClass="input-small"
+                                                allowClear="true"/>
+			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
 			<li class="clearfix"></li>
 		</ul>
@@ -35,19 +42,27 @@
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>更新时间</th>
-				<th>备注信息</th>
+				<th>所属建筑</th>
+				<th>楼层</th>
+				<th>平面图</th>
+				<th>视频监控</th>
 				<shiro:hasPermission name="sys:buildingFloor:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="buildingFloor">
 			<tr>
+			<td>
+					${buildingFloor.building.name}
+				</td>
 				<td><a href="${ctx}/sys/buildingFloor/form?id=${buildingFloor.id}">
-					<fmt:formatDate value="${buildingFloor.updateDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					${buildingFloor.floorNo}
 				</a></td>
 				<td>
-					${buildingFloor.remarks}
+					${buildingFloor.planeImg}
+				</td>
+				<td>
+					${buildingFloor.videoUrl}
 				</td>
 				<shiro:hasPermission name="sys:buildingFloor:edit"><td>
     				<a href="${ctx}/sys/buildingFloor/form?id=${buildingFloor.id}">修改</a>

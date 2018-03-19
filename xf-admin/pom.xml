@@ -19,10 +19,10 @@
             <version>1.0</version>            
         </dependency>
         <!-- 自动发布  对文件上传有影响-->
-	    <dependency>
+	  <!--   <dependency>
 	      <groupId>org.springframework.boot</groupId>
 	      <artifactId>spring-boot-devtools</artifactId>
-	    </dependency>
+	    </dependency> -->
     </dependencies>
    	<build>
 		

@@ -15,7 +15,7 @@ import com.xl.common.persistence.DataEntity;
 public class BuildingFloor extends DataEntity<BuildingFloor> {
 	
 	private static final long serialVersionUID = 1L;
-	private String building;		// 所属建筑
+	private Building building;		// 所属建筑
 	private String floorNo;		// 楼层号
 	private String planeImg;		// 楼层平面图
 	private String videoUrl;		// 视频监控地址
@@ -28,12 +28,11 @@ public class BuildingFloor extends DataEntity<BuildingFloor> {
 		super(id);
 	}
 
-	@Length(min=1, max=64, message="所属建筑长度必须介于 1 和 64 之间")
-	public String getBuilding() {
+	public Building getBuilding() {
 		return building;
 	}
 
-	public void setBuilding(String building) {
+	public void setBuilding(Building building) {
 		this.building = building;
 	}
 	

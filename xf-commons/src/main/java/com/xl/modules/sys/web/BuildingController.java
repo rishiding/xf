@@ -3,6 +3,9 @@
  */
 package com.xl.modules.sys.web;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,8 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.xl.common.config.Global;
 import com.xl.common.persistence.Page;
 import com.xl.common.web.BaseController;
@@ -79,5 +85,36 @@ public class BuildingController extends BaseController {
 		addMessage(redirectAttributes, "删除消防建筑成功");
 		return "redirect:"+Global.getAdminPath()+"/sys/building/?repage";
 	}
+	
+	
+	/**
+	 * 获取机构JSON数据。
+	 * @param extId 排除的ID
+	 * @param type	类型（1：公司；2：部门/小组/其它：3：用户）
+	 * @param grade 显示级别
+	 * @param response
+	 * @return
+	 */
+	@RequiresPermissions("user")
+	@ResponseBody
+	@RequestMapping(value = "treeData")
+	public List<Map<String, Object>> treeData(Building entity, @RequestParam(required=false) String extId,HttpServletResponse response) {
+		List<Map<String, Object>> mapList = Lists.newArrayList();
+		List<Building> list = buildingService.findList(entity);
+		for (int i=0; i<list.size(); i++){
+			Building e = list.get(i);
+			if ((StringUtils.isBlank(extId) || (extId!=null && !extId.equals(e.getId()) ))){
+				Map<String, Object> map = Maps.newHashMap();
+				map.put("id", e.getId());
+				map.put("pId", "0");				
+				map.put("name", e.getName());
+				
+				mapList.add(map);
+			}
+			
+		}
+		return mapList;
+	}
+
 
 }

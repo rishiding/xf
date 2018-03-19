@@ -29,7 +29,7 @@
 </head>
 <body>
 <ul class="nav nav-tabs">
-    <li><a href="${ctx}/sys/unit/list1?id=${unit.parent.id}&area.id=${unit.area.id}">单位列表</a></li>
+    <li><a href="${ctx}/sys/unit/list1">单位列表</a></li>
     <li class="active"><a
             href="${ctx}/sys/unit/form?id=${unit.id}&area.id=${unit.area.id}">单位<shiro:hasPermission
             name="sys:unit:edit">${not empty unit.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission
@@ -61,7 +61,7 @@
         <div class="controls">
             <sys:treeselect id="streetOffice" name="streetOffice.id" value="${unit.streetOffice.id}" labelName="streetOffice.name"
                             labelValue="${unit.streetOffice.name}"
-                            title="街道办" url="/sys/office/treeData?type=2" cssClass="required"/>
+                            title="街道办" url="/sys/office/treeData?type=2" />
         </div>
     </div>
     <div class="control-group">

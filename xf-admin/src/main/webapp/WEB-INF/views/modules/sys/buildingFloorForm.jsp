@@ -38,20 +38,27 @@
 		<div class="control-group">
 			<label class="control-label">所属建筑：</label>
 			<div class="controls">
-				<form:input path="building.id" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
+			  <sys:treeselect id="building" name="building.id" value="${buildingFloor.building.id}" labelName="building.name"
+                            labelValue="${buildingFloor.building.name}"
+                            title="建筑" url="/sys/building/treeData" extId="${buildingFloor.building.id}" cssClass="required"
+                            allowClear="true"/>
+				
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">楼层号：</label>
 			<div class="controls">
-				<form:input path="floorNo" htmlEscape="false" maxlength="20" class="input-xlarge "/>
+				<form:input path="floorNo" htmlEscape="false" maxlength="20" class="input-xlarge required"/>
+				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">楼层平面图：</label>
 			<div class="controls">
-				<form:input path="planeImg" htmlEscape="false" maxlength="400" class="input-xlarge "/>
+				 <form:hidden id="planeImg" path="planeImg" htmlEscape="false" maxlength="255" class="input-xlarge"/>
+            	<sys:ckfinder input="planeImg" type="images" uploadPath="/floor" selectMultiple="false" maxWidth="200"
+                          maxHeight="200"/>
 			</div>
 		</div>
 		<div class="control-group">
