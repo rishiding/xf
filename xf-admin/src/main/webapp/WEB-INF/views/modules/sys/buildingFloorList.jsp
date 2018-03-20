@@ -4,11 +4,20 @@
 <html>
 <head>
  	<%@ include file="/WEB-INF/views/include/head.jsp" %>
+ 	<script type="text/javascript" src="${ctxStatic}/layer/layer.js"></script>
 	<title>建筑楼层管理</title>
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			
+			$("img").click(function(){						
+				layer.open({
+				    type: 2,	
+				    title:'平面图预览',
+				    maxmin: true,  
+				    area: ['600px', '600px'],
+				    content: this.src				   
+				  });				
+			});	
 		});
 		function page(n,s){
 			$("#pageNo").val(n);
@@ -59,7 +68,7 @@
 					${buildingFloor.floorNo}
 				</a></td>
 				<td>
-					${buildingFloor.planeImg}
+				<img alt="平面图" src="${buildingFloor.planeImg}" width="100" />
 				</td>
 				<td>
 					${buildingFloor.videoUrl}

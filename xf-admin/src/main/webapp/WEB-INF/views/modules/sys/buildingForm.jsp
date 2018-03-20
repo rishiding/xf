@@ -4,6 +4,7 @@
 <html>
 <head>
 	 <%@ include file="/WEB-INF/views/include/head.jsp" %>
+	 <script type="text/javascript" src="${ctxStatic}/layer/layer.js"></script>
 	<title>消防建筑管理</title>
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
@@ -24,6 +25,15 @@
 					}
 				}
 			});
+			$("img").click(function(){						
+				layer.open({
+				    type: 2,	
+				    title:'平面图预览',
+				    maxmin: true,  
+				    area: ['600px', '600px'],
+				    content: this.src				   
+				  });				
+			});	
 		});
 	</script>
 </head>
