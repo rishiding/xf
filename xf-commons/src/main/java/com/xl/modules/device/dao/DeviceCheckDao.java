@@ -14,5 +14,5 @@ import com.xl.modules.device.entity.DeviceCheck;
  */
 @Mapper
 public interface DeviceCheckDao extends CrudDao<DeviceCheck> {
-	
+	int check(DeviceCheck entity);
 }

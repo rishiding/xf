@@ -6,6 +6,8 @@
 		a.id AS "id",
 		a.sys_name AS "sysName",
 		a.build_id AS "buildId",
+		b.name AS "build.name",
+		a.build_id AS "build.id",
 		a.office_id AS "office.id",
 		a.check_date AS "checkDate",
 		a.check_by AS "checkBy",
@@ -24,6 +26,7 @@
 	
 	<sql id="deviceCheckJoins">
 		LEFT JOIN sys_office o4 ON o4.id = a.office_id
+		left join sys_building b on b.id = a.build_id
 	</sql>
     
 	<select id="get" resultType="DeviceCheck">
@@ -41,6 +44,12 @@
 		<include refid="deviceCheckJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="sysName !=null and sysName !=''">
+				and sys_name=#{sysName}
+			</if>
+			<if test="checkType !=null and checkType !=''">
+				and check_type=#{checkType}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
@@ -128,6 +137,11 @@
 	<update id="delete">
 		UPDATE xf_device_check SET 
 			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	<update id="check">
+		UPDATE xf_device_check SET 
+			status = #{status}
 		WHERE id = #{id}
 	</update>
 	

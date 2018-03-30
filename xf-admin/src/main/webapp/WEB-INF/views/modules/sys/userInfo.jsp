@@ -43,17 +43,12 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label">归属公司:</label>
+        <label class="control-label">归属单位:</label>
         <div class="controls">
             <label class="lbl">${user.company.name}</label>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label">归属部门:</label>
-        <div class="controls">
-            <label class="lbl">${user.office.name}</label>
-        </div>
-    </div>
+   
     <div class="control-group">
         <label class="control-label">姓名:</label>
         <div class="controls">
@@ -79,7 +74,7 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label">备注:</label>
+        <label class="control-label">个人介绍:</label>
         <div class="controls">
             <form:textarea path="remarks" htmlEscape="false" rows="3" maxlength="200" class="input-xlarge"/>
         </div>

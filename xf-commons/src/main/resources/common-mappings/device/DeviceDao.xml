@@ -5,6 +5,8 @@
 	<sql id="deviceColumns">
 		a.id AS "id",
 		a.office_id AS "office.id",
+		b.name AS "build.name",
+		a.build_id AS "build.id",
 		a.build_id AS "buildId",
 		a.device_id AS "deviceId",
 		a.device_name AS "deviceName",
@@ -23,6 +25,7 @@
 	
 	<sql id="deviceJoins">
 		LEFT JOIN sys_office o2 ON o2.id = a.office_id
+		left join sys_building b on b.id = a.build_id
 	</sql>
     
 	<select id="get" resultType="Device">
@@ -40,8 +43,8 @@
 		<include refid="deviceJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
-			<if test="startDate !=null and startDate!='' and endDate !=null and endDate!=''">
-			 and a.create_date between #{startDate} and #{endDate}
+			<if test="startDate !=null  and endDate !=null ">
+			 and  date_format(a.create_date,'%Y-%m-%d') between date_format(#{startDate},'%Y-%m-%d') and date_format(#{endDate},'%Y-%m-%d')
 			</if>			
 		</where>
 		<choose>
@@ -127,6 +130,12 @@
 	<update id="delete">
 		UPDATE xf_device SET 
 			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="baoxiu">
+		UPDATE xf_device SET 
+			status = #{status}
 		WHERE id = #{id}
 	</update>
 	

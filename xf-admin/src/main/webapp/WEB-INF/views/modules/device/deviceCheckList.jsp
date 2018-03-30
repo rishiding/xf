@@ -16,17 +16,25 @@
 			$("#searchForm").submit();
         	return false;
         }
+		function formSubmit() {
+			$("#searchForm").submit();
+		  }
 	</script>
 </head>
 <body>
-	<ul class="nav nav-tabs">
-		<li class="active"><a href="${ctx}/device/deviceCheck/">消防设施巡检列表</a></li>
-		<shiro:hasPermission name="device:deviceCheck:edit"><li><a href="${ctx}/device/deviceCheck/form">消防设施巡检添加</a></li></shiro:hasPermission>
-	</ul>
+	
 	<form:form id="searchForm" modelAttribute="deviceCheck" action="${ctx}/device/deviceCheck/" method="post" class="breadcrumb form-search">
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
+			<li><label>巡检类型：</label>
+				<form:radiobuttons path="checkType" items="${fns:getDictList('check_type')}" itemLabel="label" itemValue="value" />	
+			</li>
+			<li><label>  系统名称：</label>
+			 <input name="sysName" type="radio" value=""  />全部
+			 <input name="sysName" type="radio" value="消防灭火系统"  <c:if test="${deviceCheck.sysName eq '消防灭火系统'}">checked="checked"</c:if>/>消防灭火系统
+			 <input name="sysName" type="radio" value="消防疏散指示系统"  <c:if test="${deviceCheck.sysName eq '消防疏散指示系统'}">checked="checked"</c:if>/>消防疏散指示系统
+			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
 			<li class="clearfix"></li>
 		</ul>
@@ -35,23 +43,49 @@
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>更新时间 : 更新时间</th>
-				<th>备注信息 : 备注信息</th>
+				<th>单位/街道</th>
+				<th>消防建筑ID</th>
+				<th>系统名字</th>
+				<th>巡检日期</th>
+				<th>巡检人</th>
+				<th>巡检类型</th>
+				<th>正常设备</th>
+				<th>异常设备</th>
+				<th>状态</th>
+				<th>备注</th>
 				<shiro:hasPermission name="device:deviceCheck:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="deviceCheck">
 			<tr>
-				<td><a href="${ctx}/device/deviceCheck/form?id=${deviceCheck.id}">
-					<fmt:formatDate value="${deviceCheck.updateDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-				</a></td>
+				<td>
+					${deviceCheck.office.name}
+				</td>
+				<td>
+					<c:choose>
+					<c:when test="${deviceCheck.build.name ne ''}">
+					${deviceCheck.build.name}</c:when>
+					<c:otherwise>
+					${deviceCheck.build.id}
+					</c:otherwise>
+					</c:choose>
+				</td>
+				<td>${deviceCheck.sysName}</td>
+				<td>
+					<fmt:formatDate value="${deviceCheck.checkDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+				</td>
+				<td>${deviceCheck.checkBy}</td>
+				<td>${deviceCheck.checkTypeName}</td>
+				<td>${deviceCheck.normalNum}</td>
+				<td>${deviceCheck.errorNum}</td>
+				<td>${deviceCheck.statusName}</td>
 				<td>
 					${deviceCheck.remarks}
 				</td>
 				<shiro:hasPermission name="device:deviceCheck:edit"><td>
-    				<a href="${ctx}/device/deviceCheck/form?id=${deviceCheck.id}">修改</a>
-					<a href="${ctx}/device/deviceCheck/delete?id=${deviceCheck.id}" onclick="return confirmx('确认要删除该消防设施巡检吗？', this.href)">删除</a>
+    				
+					<a href="${ctx}/device/deviceCheck/check?id=${deviceCheck.id}" onclick="return confirmx('确认审核该消防设施巡检吗？', this.href)">审核</a>
 				</td></shiro:hasPermission>
 			</tr>
 		</c:forEach>

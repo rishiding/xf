@@ -15,7 +15,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
  */
 public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	
-	static final int DAY=1000 * 60 * 60 * 24;
+	static final long DAY=1000 * 60 * 60 * 24l;
 	
 	private static String[] parsePatterns = {
 		"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM", 
@@ -190,7 +190,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	 */
 	public static Date getDateByPlus(Date date,int days){
 		long start=date.getTime();
-		long end=start-days*DAY;
+		long end=start+days*DAY;
 		return new Date(end);
 	}
 }

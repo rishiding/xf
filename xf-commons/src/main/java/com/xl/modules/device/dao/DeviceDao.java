@@ -14,5 +14,5 @@ import com.xl.modules.device.entity.Device;
  */
 @Mapper
 public interface DeviceDao extends CrudDao<Device> {
-	
+	 int baoxiu(Device entity);
 }

@@ -4,11 +4,11 @@
 		<dbsystem>MySQL</dbsystem>
 		<server>localhost</server>
 		<port>3306</port>
-		<database>jeesite</database>
+		<database>xf</database>
 		<user>root</user>
 		<password>123456</password>
 		<use_default_driver>true</use_default_driver>
-		<url>jdbc:mysql://localhost:3306/jeesite</url>
+		<url>jdbc:mysql://localhost:3306/xf</url>
 		<driver_class_name>com.mysql.jdbc.Driver</driver_class_name>
 	</dbsetting>
 	<page_setting>
@@ -106,7 +106,7 @@
 				<is_open_after_saved>true</is_open_after_saved>
 			</export_image_setting>
 			<export_java_setting>
-				<java_output>D:\GitHub\jeesite\db\gen</java_output>
+				<java_output>D:\GitHub\xf\db\gen</java_output>
 				<package_name></package_name>
 				<class_name_suffix></class_name_suffix>
 				<src_file_encoding>UTF-8</src_file_encoding>
@@ -149,7 +149,7 @@
 			<updated_date>2017-11-23 18:20:31</updated_date>
 			<model_property>
 				<name>Project Name</name>
-				<value>JeeSite</value>
+				<value>xf</value>
 			</model_property>
 			<model_property>
 				<name>Model Name</name>

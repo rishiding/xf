@@ -10,6 +10,9 @@
 		$(document).ready(function() {
 			
 		});
+		function formSubmit() {
+			$("#searchForm").submit();
+		  }
 		function page(n,s){
 			$("#pageNo").val(n);
 			$("#pageSize").val(s);
@@ -24,7 +27,12 @@
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
-			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
+			<li>
+			 <input name="queryType" type="radio" value="" onclick="formSubmit()" />全部
+			 <input name="queryType" type="radio" value="1" onclick="formSubmit()" <c:if test="${device.queryType eq '1'}">checked="checked"</c:if>/>本月
+			 <input name="queryType" type="radio" value="2" onclick="formSubmit()" <c:if test="${device.queryType eq '2'}">checked="checked"</c:if>/>本周
+			</li>
+			
 			<li class="clearfix"></li>
 		</ul>
 	</form:form>
@@ -54,7 +62,13 @@
 					${device.office.name}
 				</td>
 				<td>
-					${device.buildId}
+					<c:choose>
+					<c:when test="${device.build.name ne ''}">
+					${device.build.name}</c:when>
+					<c:otherwise>
+					${device.build.id}
+					</c:otherwise>
+					</c:choose>
 				</td>
 				<td>
 					${device.deviceId}

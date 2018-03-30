@@ -4,7 +4,11 @@
 package com.xl.modules.device.entity;
 
 import org.hibernate.validator.constraints.Length;
+
+import com.xl.modules.sys.entity.Building;
 import com.xl.modules.sys.entity.Office;
+import com.xl.modules.sys.utils.DictUtils;
+
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -20,6 +24,7 @@ public class DeviceCheck extends DataEntity<DeviceCheck> {
 	private static final long serialVersionUID = 1L;
 	private String sysName;		// 系统名称 : 名称
 	private String buildId;		// 所属建筑
+	private Building build;
 	private Office office;		// 所属消防局机构 : 所属消防局机构
 	private Date checkDate;		// 巡检日期
 	private String checkBy;		// 巡检人
@@ -54,6 +59,14 @@ public class DeviceCheck extends DataEntity<DeviceCheck> {
 		this.buildId = buildId;
 	}
 	
+	public Building getBuild() {
+		return build;
+	}
+
+	public void setBuild(Building build) {
+		this.build = build;
+	}
+
 	public Office getOffice() {
 		return office;
 	}
@@ -79,7 +92,9 @@ public class DeviceCheck extends DataEntity<DeviceCheck> {
 	public void setCheckBy(String checkBy) {
 		this.checkBy = checkBy;
 	}
-	
+	public String getCheckTypeName() {
+		return DictUtils.getDictLabel(checkType, "check_type", "");
+	}
 	@Length(min=0, max=64, message="巡检类型长度必须介于 0 和 64 之间")
 	public String getCheckType() {
 		return checkType;
@@ -106,7 +121,9 @@ public class DeviceCheck extends DataEntity<DeviceCheck> {
 	public void setErrorNum(String errorNum) {
 		this.errorNum = errorNum;
 	}
-	
+	public String getStatusName() {
+		return DictUtils.getDictLabel(status, "check_status", "");
+	}
 	@Length(min=0, max=1, message="状态 : 0  未上报1 已上报长度必须介于 0 和 1 之间")
 	public String getStatus() {
 		return status;

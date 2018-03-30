@@ -73,6 +73,14 @@ public class DeviceController extends BaseController {
 	}
 	
 	@RequiresPermissions("device:device:edit")
+	@RequestMapping(value = "baoxiu")
+	public String bb(Device device,  RedirectAttributes redirectAttributes) {		
+		deviceService.baoxiu(device);
+		addMessage(redirectAttributes, "报修成功");
+		return "redirect:"+Global.getAdminPath()+"/device/device/?repage";
+	}
+	
+	@RequiresPermissions("device:device:edit")
 	@RequestMapping(value = "delete")
 	public String delete(Device device, RedirectAttributes redirectAttributes) {
 		deviceService.delete(device);

@@ -3,6 +3,7 @@
  */
 package com.xl.modules.device.entity;
 
+import com.xl.modules.sys.entity.Building;
 import com.xl.modules.sys.entity.Office;
 import com.xl.modules.sys.utils.DictUtils;
 
@@ -23,6 +24,7 @@ public class Device extends DataEntity<Device> {
 	private static final long serialVersionUID = 1L;
 	private Office office;		// 所属消防局机构 : 所属消防局机构
 	private String buildId;		// 消防建筑
+	private Building build;
 	private String deviceId;		// 设施id
 	private String deviceName;		// 消防设施名
 	private String deviceType;		// 设施类型
@@ -58,6 +60,14 @@ public class Device extends DataEntity<Device> {
 		this.buildId = buildId;
 	}
 	
+	public Building getBuild() {
+		return build;
+	}
+
+	public void setBuild(Building build) {
+		this.build = build;
+	}
+
 	@Length(min=0, max=64, message="设施id长度必须介于 0 和 64 之间")
 	public String getDeviceId() {
 		return deviceId;

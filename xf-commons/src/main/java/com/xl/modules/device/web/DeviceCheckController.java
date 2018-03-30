@@ -79,5 +79,12 @@ public class DeviceCheckController extends BaseController {
 		addMessage(redirectAttributes, "删除消防设施巡检成功");
 		return "redirect:"+Global.getAdminPath()+"/device/deviceCheck/?repage";
 	}
+	@RequiresPermissions("device:deviceCheck:edit")
+	@RequestMapping(value = "check")
+	public String check(DeviceCheck deviceCheck, RedirectAttributes redirectAttributes) {
+		deviceCheckService.check(deviceCheck);
+		addMessage(redirectAttributes, "审核成功");
+		return "redirect:"+Global.getAdminPath()+"/device/deviceCheck/?repage";
+	}
 
 }
