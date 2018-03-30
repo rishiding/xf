@@ -4,6 +4,7 @@
 package com.xl.modules.device.entity;
 
 import com.xl.modules.sys.entity.Office;
+import com.xl.modules.sys.utils.DictUtils;
 
 import java.util.Date;
 
@@ -92,7 +93,9 @@ public class Device extends DataEntity<Device> {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
+	public String getStatusName() {
+		return DictUtils.getDictLabel(status, "device_status", "");
+	}
 	@Length(min=0, max=2, message="状态 : 1 未上报2 已经上报长度必须介于 0 和 2 之间")
 	public String getStatus() {
 		return status;
