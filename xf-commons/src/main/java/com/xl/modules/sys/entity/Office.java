@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import com.xl.common.persistence.TreeEntity;
+import com.xl.modules.sys.utils.DictUtils;
 
 /**
  * 机构Entity
@@ -21,7 +22,7 @@ public class Office extends TreeEntity<Office> {
 	private static final long serialVersionUID = 1L;
 	private Area area;		// 归属区域
 	private String code; 	// 机构编码
-	private String type; 	// 机构类型（1：公司；2：部门；3：小组）
+	private String type; 	// 机构类型（1：消防局；2：街道办；）
 	private String grade; 	// 机构等级（1：一级；2：二级；3：三级；4：四级）
 	private String address; // 联系地址
 	private String zipCode; // 邮政编码
@@ -94,7 +95,9 @@ public class Office extends TreeEntity<Office> {
 	public void setArea(Area area) {
 		this.area = area;
 	}
-
+	public String getTypeName() {
+		return DictUtils.getDictLabel(type, "sys_office_type", "");
+	}
 	
 	@Length(min=1, max=1)
 	public String getType() {

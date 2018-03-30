@@ -15,6 +15,8 @@ import org.apache.commons.lang3.time.DateFormatUtils;
  */
 public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	
+	static final int DAY=1000 * 60 * 60 * 24;
+	
 	private static String[] parsePatterns = {
 		"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM", 
 		"yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM",
@@ -120,7 +122,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	 */
 	public static long pastDays(Date date) {
 		long t = new Date().getTime()-date.getTime();
-		return t/(24*60*60*1000);
+		return t/(DAY);
 	}
 
 	/**
@@ -167,7 +169,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	public static double getDistanceOfTwoDate(Date before, Date after) {
 		long beforeTime = before.getTime();
 		long afterTime = after.getTime();
-		return (afterTime - beforeTime) / (1000 * 60 * 60 * 24);
+		return (afterTime - beforeTime) / (DAY);
 	}
 	
 	/**
@@ -180,4 +182,15 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 //		long time = new Date().getTime()-parseDate("2012-11-19").getTime();
 //		System.out.println(time/(24*60*60*1000));
 //	}
+	/**
+	 * 获取日期 相加减后的日期
+	 * @param date  当前日期
+	 * @param days  加减天数；
+	 * @return
+	 */
+	public static Date getDateByPlus(Date date,int days){
+		long start=date.getTime();
+		long end=start-days*DAY;
+		return new Date(end);
+	}
 }

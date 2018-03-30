@@ -10,13 +10,14 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("img").click(function(){						
-				layer.open({
+				ll=layer.open({
 				    type: 2,	
 				    title:'平面图预览',
 				    maxmin: true,  
 				    area: ['600px', '600px'],
 				    content: this.src				   
-				  });				
+				  });	
+				 layer.full(ll);
 			});	
 		});
 		function page(n,s){

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xl.modules.device.dao.DeviceDao">
+    
+	<sql id="deviceColumns">
+		a.id AS "id",
+		a.office_id AS "office.id",
+		a.build_id AS "buildId",
+		a.device_id AS "deviceId",
+		a.device_name AS "deviceName",
+		a.device_type AS "deviceType",
+		a.note AS "note",
+		a.status AS "status",
+		a.source AS "source",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.remarks AS "remarks",
+		o2.name AS "office.name"
+	</sql>
+	
+	<sql id="deviceJoins">
+		LEFT JOIN sys_office o2 ON o2.id = a.office_id
+	</sql>
+    
+	<select id="get" resultType="Device">
+		SELECT 
+			<include refid="deviceColumns"/>
+		FROM xf_device a
+		<include refid="deviceJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="Device">
+		SELECT 
+			<include refid="deviceColumns"/>
+		FROM xf_device a
+		<include refid="deviceJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="startDate !=null and startDate!='' and endDate !=null and endDate!=''">
+			 and a.create_date between #{startDate} and #{endDate}
+			</if>			
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="Device">
+		SELECT 
+			<include refid="deviceColumns"/>
+		FROM xf_device a
+		<include refid="deviceJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO xf_device(
+			id,
+			office_id,
+			build_id,
+			device_id,
+			device_name,
+			device_type,
+			note,
+			status,
+			source,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			del_flag,
+			remarks
+		) VALUES (
+			#{id},
+			#{office.id},
+			#{buildId},
+			#{deviceId},
+			#{deviceName},
+			#{deviceType},
+			#{note},
+			#{status},
+			#{source},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{delFlag},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE xf_device SET 	
+			office_id = #{office.id},
+			build_id = #{buildId},
+			device_id = #{deviceId},
+			device_name = #{deviceName},
+			device_type = #{deviceType},
+			note = #{note},
+			status = #{status},
+			source = #{source},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE xf_device SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

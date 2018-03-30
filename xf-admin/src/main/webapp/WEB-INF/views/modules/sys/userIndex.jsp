@@ -21,7 +21,7 @@
 <div id="content" class="row-fluid">
     <div id="left" class="accordion-group">
         <div class="accordion-heading">
-            <a class="accordion-toggle">组织机构<i class="icon-refresh pull-right" onclick="refreshTree();"></i></a>
+            <a class="accordion-toggle">消防局/街道<i class="icon-refresh pull-right" onclick="refreshTree();"></i></a>
         </div>
         <div id="ztree" class="ztree"></div>
     </div>
@@ -36,7 +36,7 @@
         callback: {
             onClick: function (event, treeId, treeNode) {
                 var id = treeNode.id == '0' ? '' : treeNode.id;
-                $('#officeContent').attr("src", "${ctx}/sys/user/list?office.id=" + id + "&office.name=" + treeNode.name);
+                $('#officeContent').attr("src", "${ctx}/sys/user/list?company.id=" + id + "&company.name=" + treeNode.name);
             }
         }
     };

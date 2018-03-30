@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xl.modules.device.dao.DeviceCheckDao">
+    
+	<sql id="deviceCheckColumns">
+		a.id AS "id",
+		a.sys_name AS "sysName",
+		a.build_id AS "buildId",
+		a.office_id AS "office.id",
+		a.check_date AS "checkDate",
+		a.check_by AS "checkBy",
+		a.check_type AS "checkType",
+		a.normal_num AS "normalNum",
+		a.error_num AS "errorNum",
+		a.status AS "status",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.remarks AS "remarks",
+		o4.name AS "office.name"
+	</sql>
+	
+	<sql id="deviceCheckJoins">
+		LEFT JOIN sys_office o4 ON o4.id = a.office_id
+	</sql>
+    
+	<select id="get" resultType="DeviceCheck">
+		SELECT 
+			<include refid="deviceCheckColumns"/>
+		FROM xf_device_check a
+		<include refid="deviceCheckJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="DeviceCheck">
+		SELECT 
+			<include refid="deviceCheckColumns"/>
+		FROM xf_device_check a
+		<include refid="deviceCheckJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="DeviceCheck">
+		SELECT 
+			<include refid="deviceCheckColumns"/>
+		FROM xf_device_check a
+		<include refid="deviceCheckJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO xf_device_check(
+			id,
+			sys_name,
+			build_id,
+			office_id,
+			check_date,
+			check_by,
+			check_type,
+			normal_num,
+			error_num,
+			status,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			del_flag,
+			remarks
+		) VALUES (
+			#{id},
+			#{sysName},
+			#{buildId},
+			#{office.id},
+			#{checkDate},
+			#{checkBy},
+			#{checkType},
+			#{normalNum},
+			#{errorNum},
+			#{status},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{delFlag},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE xf_device_check SET 	
+			sys_name = #{sysName},
+			build_id = #{buildId},
+			office_id = #{office.id},
+			check_date = #{checkDate},
+			check_by = #{checkBy},
+			check_type = #{checkType},
+			normal_num = #{normalNum},
+			error_num = #{errorNum},
+			status = #{status},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE xf_device_check SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>
