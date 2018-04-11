@@ -58,6 +58,22 @@ public class LoginController extends BaseController {
             return "redirect:" + adminPath;
         return "modules/sys/sysLogin";
     }
+    /**
+     * 管理登录
+     */
+    @RequestMapping(value = "${adminPath}/login1", method = RequestMethod.GET)
+    public String login1(HttpServletRequest request, HttpServletResponse response, Model model) {
+        Principal principal = UserUtils.getPrincipal();
+
+      
+        if (logger.isDebugEnabled()) {
+            logger.debug("login, active session size: {}", sessionDAO.getActiveSessions(false).size());
+        }
+        // 如果已经登录，则跳转到管理首页
+        /*if (principal != null && !principal.isMobileLogin())
+            return "redirect:" + adminPath;*/
+        return "modules/sys/sysLogin2";
+    }
 
     /**
      * 登录失败，真正登录的POST请求由Filter完成

@@ -54,6 +54,13 @@ mybatis:
   type-aliases-package: com.xl
 #admin页面管理Path
 adminPath: /admin
+
+#前端基础路径
+frontPath: /www
+
+#网站URL后缀
+urlSuffix: .html
+
 #分页配置
 page:
   pageSize: 10

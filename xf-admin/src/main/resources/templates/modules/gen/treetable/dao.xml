@@ -10,7 +10,7 @@
 package ${packageName}.${moduleName}.dao;
 
 import com.xl.common.persistence.TreeDao;
-import com.xl.common.persistence.annotation.MyBatisDao;
+import org.apache.ibatis.annotations.Mapper;
 import ${packageName}.${moduleName}.entity.${ClassName};
 
 /**
@@ -18,7 +18,7 @@ import ${packageName}.${moduleName}.entity.${ClassName};
  * @author ${functionAuthor}
  * @version ${functionVersion}
  */
-@MyBatisDao
+@Mapper
 public interface ${ClassName}Dao extends TreeDao<${ClassName}> {
 	
 }]]>
