@@ -17,6 +17,6 @@ public class IndexConteoller {
     private String adminpath;
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
-        return "redirect:" + adminpath + "/login";
+        return "redirect:/www/index.html";
     }
 }
