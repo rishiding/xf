@@ -23,6 +23,6 @@
 	
 	<!-- 系统活动会话缓存 -->
     <cache name="activeSessionsCache" maxEntriesLocalHeap="10000" eternal="true" overflowToDisk="true"
-           diskPersistent="true" diskExpiryThreadIntervalSeconds="600" statistics="true"/>
+           diskPersistent="true" diskExpiryThreadIntervalSeconds="600" statistics="true" copyOnRead="true" copyOnWrite="true"/>
     	
 </ehcache>
