@@ -97,6 +97,10 @@
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
+        	<c:if test="${cookie.theme==null}">
+	        	cookie('theme','united');
+	        	top.location = "${ctx}";
+	        </c:if>
             $("#loginForm").validate({
                 rules: {
                     validateCode: {remote: "${pageContext.request.contextPath}/servlet/validateCodeServlet"}
@@ -147,7 +151,7 @@
     <label for="rememberMe" title="下次不需要再登录"><input type="checkbox" id="rememberMe"
                                                     name="rememberMe" ${rememberMe ? 'checked' : ''}/>
         记住我（公共场所慎用）</label>
-    <div id="themeSwitch" class="dropdown">
+   <%--  <div id="themeSwitch" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown"
            href="#">${fns:getDictLabel(cookie.theme.value,'theme','默认主题')}<b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -159,10 +163,10 @@
         </ul>
         <!--[if lte IE 6]>
         <script type="text/javascript">$('#themeSwitch').hide();</script><![endif]-->
-    </div>
+    </div> --%>
 </form>
 <div class="footer">
-    Copyright &copy; 2012-2030 <a href="${pageContext.request.contextPath}">${fns:getConfig('productName')}</a> -
+    Copyright &copy; 2017-2019 <a href="${pageContext.request.contextPath}">${fns:getConfig('productName')}</a> -
     Powered By <a href="http://xf.com" target="_blank">xf</a> ${fns:getConfig('version')}
 </div>
 <script src="${ctxStatic}/flash/zoom.min.js" type="text/javascript"></script>
