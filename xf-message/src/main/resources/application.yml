@@ -1,0 +1,16 @@
+#MQTT配置信息
+spring:
+ mqtt:
+#  username: root
+#  password: Htdl-0825
+#  url: tcp://47.92.193.78:1883
+  username: admin
+  password: 123456789U!
+  url: tcp://47.92.193.78:1123
+  timeout: 5000
+  keepalive: 5000
+  clientId: client_xf
+  serverId: server_xf
+  topic: /AIFC/DEV/#,/AIFC/SER/#
+  topics: /AIFC/test
+  qos: 1

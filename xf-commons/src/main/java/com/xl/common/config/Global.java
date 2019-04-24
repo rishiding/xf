@@ -48,6 +48,12 @@ public class Global {
      */
     public static final String YES = "1";
     public static final String NO = "0";
+    
+    /**
+	 * 显示/隐藏
+	 */
+	public static final String SHOW = "1";
+	public static final String HIDE = "0";
 
     /**
      * 对/错
@@ -93,7 +99,19 @@ public class Global {
     public static String getAdminPath() {
         return getConfig("adminPath");
     }
-    
+    /**
+	 * 获取前端根路径
+	 */
+	public static String getFrontPath() {
+		return getConfig("frontPath");
+	}
+	
+	/**
+	 * 获取URL后缀
+	 */
+	public static String getUrlSuffix() {
+		return getConfig("urlSuffix");
+	}
    
     /**
      * 是否是演示模式，演示模式下不能修改用户、角色、密码、菜单、授权

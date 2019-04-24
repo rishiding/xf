@@ -19,8 +19,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @EnableCaching
 @SpringBootApplication
-@ServletComponentScan("com.xl")
 @Configuration  
+@ServletComponentScan("com.xl")
 @EnableAutoConfiguration 
 @ComponentScan(value = "com.xl",lazyInit = false)
 public class XfApplication {

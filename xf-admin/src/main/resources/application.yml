@@ -46,6 +46,18 @@ spring:
     type: ehcache
     ehcache:
       config: classpath:ehcache.xml
+#MQTT配置信息      
+  mqtt:
+    username: admin
+    password: 123456789U!
+    url: tcp://47.92.193.78:1123
+    timeout: 2000
+    keepalive: 500
+    clientId: client_xf
+    serverId: server_xf
+    topic: /AIFC/DEV/#
+    topics: /AIFC/SER/ID
+    qos: 1
 #mybatis的配置
 mybatis:
   config-location: classpath:/mybatis-config.xml
