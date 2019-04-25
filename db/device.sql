@@ -10,6 +10,7 @@ DROP INDEX sys_office_del_flag ON xf_device_check;
 
 DROP TABLE IF EXISTS xf_device;
 DROP TABLE IF EXISTS xf_device_check;
+DROP TABLE IF EXISTS xf_terminal;
 
 
 
@@ -66,7 +67,7 @@ CREATE TABLE xf_device_check
 	error_num int COMMENT '异常设备数量',
 	-- 0  未上报
 	-- 1 已上报
-	status char DEFAULT '0' COMMENT '状态 : 0  未上报
+	status char DEFAULT '''0''' COMMENT '状态 : 0  未上报
 1 已上报',
 	-- 创建者
 	create_by varchar(64) COMMENT '创建者 : 创建者',
@@ -82,6 +83,38 @@ CREATE TABLE xf_device_check
 	remarks varchar(255) COMMENT '备注信息 : 备注信息',
 	PRIMARY KEY (id)
 ) COMMENT = '消防设施巡检' DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+-- 消防终端
+CREATE TABLE xf_terminal
+(
+	-- 编号
+	id varchar(64) NOT NULL COMMENT 'ID : 编号',
+	ieme varchar(64) NOT NULL COMMENT '设备标识',
+	-- 该值用于查询电话卡的卡号用于用户的充值
+	ccid varchar(64) COMMENT 'ccid : 该值用于查询电话卡的卡号用于用户的充值',
+	Longitude varchar(50) COMMENT '经度',
+	Latitude varchar(50) COMMENT '纬度',
+	name varchar(255) COMMENT '设备类型',
+	-- 0 在线
+	-- 1 不在线
+	online varchar(1) DEFAULT '0' COMMENT '是否在线 : 0 在线
+1 不在线',
+	last_online_time timestamp COMMENT '最后一次在线时间',
+	-- 创建者
+	create_by varchar(64) COMMENT '创建者 : 创建者',
+	-- 创建时间
+	create_date datetime COMMENT '创建时间 : 创建时间',
+	-- 更新者
+	update_by varchar(64) COMMENT '更新者 : 更新者',
+	-- 更新时间
+	update_date datetime COMMENT '更新时间 : 更新时间',
+	-- 删除标记
+	del_flag char COMMENT '删除标记 : 删除标记',
+	-- 备注信息
+	remarks varchar(255) COMMENT '备注信息 : 备注信息',
+	PRIMARY KEY (id)
+) COMMENT = '消防终端';
 
 
 

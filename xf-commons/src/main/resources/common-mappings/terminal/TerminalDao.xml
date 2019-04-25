@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xl.modules.terminal.dao.TerminalDao">
+    
+	<sql id="terminalColumns">
+		a.id AS "id",
+		a.ieme AS "ieme",
+		a.ccid AS "ccid",
+		a.longitude AS "longitude",
+		a.latitude AS "latitude",
+		a.name AS "name",
+		a.online AS "online",
+		a.last_online_time AS "lastOnlineTime",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.remarks AS "remarks"
+	</sql>
+	
+	<sql id="terminalJoins">
+	</sql>
+    
+	<select id="get" resultType="Terminal">
+		SELECT 
+			<include refid="terminalColumns"/>
+		FROM xf_terminal a
+		<include refid="terminalJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="Terminal">
+		SELECT 
+			<include refid="terminalColumns"/>
+		FROM xf_terminal a
+		<include refid="terminalJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="name != null and name != ''">
+				AND a.name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{name}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{name}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{name},'%')</if>
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="Terminal">
+		SELECT 
+			<include refid="terminalColumns"/>
+		FROM xf_terminal a
+		<include refid="terminalJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO xf_terminal(
+			id,
+			ieme,
+			ccid,
+			longitude,
+			latitude,
+			name,
+			online,
+			last_online_time,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			del_flag,
+			remarks
+		) VALUES (
+			#{id},
+			#{ieme},
+			#{ccid},
+			#{longitude},
+			#{latitude},
+			#{name},
+			#{online},
+			#{lastOnlineTime},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{delFlag},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE xf_terminal SET 	
+			ieme = #{ieme},
+			ccid = #{ccid},
+			longitude = #{longitude},
+			latitude = #{latitude},
+			name = #{name},
+			online = #{online},
+			last_online_time = #{lastOnlineTime},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE xf_terminal SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

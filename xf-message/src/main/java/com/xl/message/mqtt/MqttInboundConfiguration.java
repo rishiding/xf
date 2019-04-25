@@ -20,6 +20,7 @@ import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
 
 import com.xl.message.mqtt.config.MqttProperties;
+import com.xl.message.mqtt.constant.Topics;
 
 /**
  * 
@@ -55,7 +56,10 @@ public class MqttInboundConfiguration {
         return new MessageHandler() {
             @Override
             public void handleMessage(Message<?> message) throws MessagingException {
-            	log.info("topic:"+message.getHeaders().get("mqtt_topic"));
+            	String topic=(String)message.getHeaders().get("mqtt_topic");
+            	if(topic.equals(Topics.TOPIC_DEVICE_ID)){//设备信息
+            		
+            	}
                 log.info("收到消息："+(String) message.getPayload());
             }
 

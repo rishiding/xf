@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xl.message.mqtt.MqttGateway;
+import com.xl.message.mqtt.constant.Topics;
 
 
 @RestController
@@ -18,6 +19,7 @@ public class MessageController {
     public String sendMsg(@RequestParam String message){
 
         mqttGateway.sendToMqtt("defualt-topic:"+message);
+        mqttGateway.sendToMqtt(Topics.TOPIC_SERVER_DEVICE_ID, message);
         return "success";
     }
 }
