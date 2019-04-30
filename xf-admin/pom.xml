@@ -18,6 +18,11 @@
             <artifactId>xf-commons</artifactId>
             <version>1.0</version>            
         </dependency>
+        <dependency>
+            <groupId>com.xl</groupId>
+            <artifactId>xf-message</artifactId>
+            <version>1.0</version>            
+        </dependency>
         <!-- 自动发布  对文件上传有影响-->
 	    <dependency>
 	      <groupId>org.springframework.boot</groupId>

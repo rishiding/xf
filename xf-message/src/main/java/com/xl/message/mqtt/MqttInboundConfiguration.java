@@ -3,6 +3,7 @@ package com.xl.message.mqtt;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
 
+import com.alibaba.fastjson.JSON;
 import com.xl.message.mqtt.config.MqttProperties;
 import com.xl.message.mqtt.constant.Topics;
 import com.xl.modules.terminal.entity.Terminal;
@@ -62,11 +64,22 @@ public class MqttInboundConfiguration {
             public void handleMessage(Message<?> message) throws MessagingException {
             	String topic=(String)message.getHeaders().get("mqtt_topic");
             	log.info("topic:"+topic);
+            	String msg = (String) message.getPayload();
             	if(topic.equals(Topics.TOPIC_DEVICE_ID)){//设备信息
-            		Terminal terminal=new Terminal();
-            		terminalService.get(terminal);
+            		Terminal terminal=JSON.parseObject(msg, Terminal.class);
+            		Terminal old=terminalService.get(terminal);
+            		if(old==null){
+            			terminal.setLastOnlineTime(new Date());
+            			terminal.setOnline("0");
+            			terminalService.save(terminal);
+            		}else{
+            			old.setLastOnlineTime(new Date());
+            			old.setOnline("0");
+            			old.setCcid(terminal.getCcid());            			
+            			terminalService.save(old);
+            		}
             	}
-                log.info("收到消息："+(String) message.getPayload());
+                log.info("收到消息："+msg);
             }
 
         };

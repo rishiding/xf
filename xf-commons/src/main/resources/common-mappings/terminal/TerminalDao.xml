@@ -26,8 +26,14 @@
 		SELECT 
 			<include refid="terminalColumns"/>
 		FROM xf_terminal a
-		<include refid="terminalJoins"/>
-		WHERE a.id = #{id}
+		<include refid="terminalJoins"/>		
+		WHERE 1=1
+		<if test="id != null and id != ''">
+			and a.id = #{id}
+		</if>
+		<if test="ieme != null and ieme != ''">
+			and a.ieme = #{ieme}
+		</if>
 	</select>
 	
 	<select id="findList" resultType="Terminal">
