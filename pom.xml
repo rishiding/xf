@@ -12,7 +12,8 @@
 	</parent>
 	<modules>
 		<module>xf-commons</module>
-		<module>xf-admin</module>	   
+		<module>xf-admin</module>	
+		<module>xf-message</module> 
 	  </modules>
 	<properties>
 		<shiro.version>1.4.0-RC2</shiro.version>
@@ -21,12 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
-	<dependencies>
-		 <dependency>
-			<groupId>com.xl</groupId>
-			<artifactId>xf-message</artifactId>
-  			<version>1.0</version>
-		</dependency> 
+	<dependencies>		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>

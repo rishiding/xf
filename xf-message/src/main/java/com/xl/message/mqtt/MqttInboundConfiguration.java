@@ -21,6 +21,8 @@ import org.springframework.messaging.MessagingException;
 
 import com.xl.message.mqtt.config.MqttProperties;
 import com.xl.message.mqtt.constant.Topics;
+import com.xl.modules.terminal.entity.Terminal;
+import com.xl.modules.terminal.service.TerminalService;
 
 /**
  * 
@@ -34,6 +36,8 @@ import com.xl.message.mqtt.constant.Topics;
 public class MqttInboundConfiguration {
     @Autowired
     private MqttProperties mqttProperties;
+    @Autowired 
+    private TerminalService terminalService;
     @Bean
     public MessageChannel mqttInputChannel() {
         return new DirectChannel();
@@ -57,8 +61,10 @@ public class MqttInboundConfiguration {
             @Override
             public void handleMessage(Message<?> message) throws MessagingException {
             	String topic=(String)message.getHeaders().get("mqtt_topic");
+            	log.info("topic:"+topic);
             	if(topic.equals(Topics.TOPIC_DEVICE_ID)){//设备信息
-            		
+            		Terminal terminal=new Terminal();
+            		terminalService.get(terminal);
             	}
                 log.info("收到消息："+(String) message.getPayload());
             }
