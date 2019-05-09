@@ -38,7 +38,7 @@ public class TerminalController extends BaseController {
 	public Terminal get(@RequestParam(required=false) String id) {
 		Terminal entity = null;
 		if (StringUtils.isNotBlank(id)){
-			entity = terminalService.get(id);
+			entity = terminalService.get(new Terminal(id));
 		}
 		if (entity == null){
 			entity = new Terminal();

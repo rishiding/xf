@@ -7,6 +7,9 @@ package com.xl.message.mqtt.constant;
 * @date:  2019年4月24日 下午2:40:39
  */
 public class Topics {
+	public static final String DEVICE_ONLINE="0";
+	public static final String DEVICE_OFFLINE="1";
+	
 	/**
 	 * 设备到服务器
 	 */

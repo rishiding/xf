@@ -70,11 +70,11 @@ public class MqttInboundConfiguration {
             		Terminal old=terminalService.get(terminal);
             		if(old==null){
             			terminal.setLastOnlineTime(new Date());
-            			terminal.setOnline("0");
+            			terminal.setOnline(Topics.DEVICE_ONLINE);
             			terminalService.save(terminal);
             		}else{
             			old.setLastOnlineTime(new Date());
-            			old.setOnline("0");
+            			old.setOnline(Topics.DEVICE_ONLINE);
             			old.setCcid(terminal.getCcid());            			
             			terminalService.save(old);
             		}

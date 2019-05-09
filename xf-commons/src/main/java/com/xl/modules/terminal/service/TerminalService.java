@@ -23,7 +23,7 @@ import com.xl.modules.terminal.dao.TerminalDao;
 public class TerminalService extends CrudService<TerminalDao, Terminal> {
 
 	public Terminal get(String id) {
-		return super.get(id);
+		return super.get(new Terminal(id));
 	}
 	
 	public List<Terminal> findList(Terminal terminal) {

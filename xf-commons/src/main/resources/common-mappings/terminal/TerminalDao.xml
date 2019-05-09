@@ -130,7 +130,7 @@
 	<update id="delete">
 		UPDATE xf_terminal SET 
 			del_flag = #{DEL_FLAG_DELETE}
-		WHERE id = #{id}
+		WHERE ieme = #{ieme}
 	</update>
 	
 </mapper>

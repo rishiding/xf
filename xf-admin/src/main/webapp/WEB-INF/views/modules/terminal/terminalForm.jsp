@@ -69,7 +69,9 @@
 		<div class="control-group">
 			<label class="control-label">是否在线 :：</label>
 			<div class="controls">
-				<form:input path="online" htmlEscape="false" maxlength="1" class="input-xlarge "/>
+				<form:select path="online" class="input-xlarge">
+					<form:options items="${fns:getDictList('terminal_status')}" itemLabel="label" itemValue="value" htmlEscape="false"/>				
+				</form:select>
 			</div>
 		</div>
 		<div class="control-group">

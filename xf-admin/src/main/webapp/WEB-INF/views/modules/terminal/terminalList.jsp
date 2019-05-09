@@ -37,10 +37,13 @@
 	<sys:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
-			<tr>
-				<th>设备类型</th>
-				<th>更新时间</th>
-				<th>备注信息</th>
+			<tr>				
+				<th>设备标识</th>
+				<th>CCID</th>
+				<th>经度</th>
+				<th>纬度</th>
+				<th>是否在线</th>
+				<th>最后在线时间</th>
 				<shiro:hasPermission name="terminal:terminal:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>
@@ -48,14 +51,16 @@
 		<c:forEach items="${page.list}" var="terminal">
 			<tr>
 				<td><a href="${ctx}/terminal/form?id=${terminal.id}">
-					${terminal.name}
+					${terminal.ieme}
 				</a></td>
+				<td>${terminal.ccid}</td>
+				<td>${terminal.longitude}</td>
+				<td>${terminal.latitude}</td>
+				<td>${terminal.onlineName}</td>
 				<td>
-					<fmt:formatDate value="${terminal.updateDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${terminal.lastOnlineTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>
-				<td>
-					${terminal.remarks}
-				</td>
+				
 				<shiro:hasPermission name="terminal:terminal:edit"><td>
     				<a href="${ctx}/terminal/form?id=${terminal.id}">修改</a>
 					<a href="${ctx}/terminal/delete?id=${terminal.id}" onclick="return confirmx('确认要删除该消防终端吗？', this.href)">删除</a>

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.constraints.NotNull;
 
 import com.xl.common.persistence.DataEntity;
+import com.xl.modules.sys.utils.DictUtils;
 
 /**
  * 消防终端Entity
@@ -78,7 +79,10 @@ public class Terminal extends DataEntity<Terminal> {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public String getOnlineName() {
+		return DictUtils.getDictLabel(online, "terminal_status","");
+	}
+
 	@Length(min=0, max=1, message="是否在线 :长度必须介于 0 和 1 之间")
 	public String getOnline() {
 		return online;
