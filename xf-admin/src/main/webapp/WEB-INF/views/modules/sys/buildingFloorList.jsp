@@ -69,7 +69,9 @@
 					${buildingFloor.floorNo}
 				</a></td>
 				<td>
+				<c:if test="${not empty  buildingFloor.planeImg}">
 				<img alt="平面图" src="${buildingFloor.planeImg}" width="100" />
+				</c:if>
 				</td>
 				<td>
 					${buildingFloor.videoUrl}

@@ -5,6 +5,7 @@
 <head>
 	 <%@ include file="/WEB-INF/views/include/head.jsp" %>
 	 <script type="text/javascript" src="${ctxStatic}/layer/layer.js"></script>
+	 <script src="${ctxStatic}/map/js/selectLocation.js" type="text/javascript"></script>
 	<title>消防建筑管理</title>
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
@@ -70,11 +71,26 @@
 				 <span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label">地址：</label>
+			<div class="controls">
+				<form:input path="address" htmlEscape="false" maxlength="100" class="input-xlarge "/><input id="selectBtn" class="btn  btn-primary" type="button" value="地图选点" />
+			</div>
+		</div>
+		
 		
 		<div class="control-group">
 			<label class="control-label">坐标位置：</label>
 			<div class="controls">
 				<form:input path="point" htmlEscape="false" maxlength="100" class="input-xlarge "/>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label class="control-label">设备IEME：</label>
+			<div class="controls">
+				<form:input path="ieme" htmlEscape="false" maxlength="40" class="input-xlarge required"/>
+				 <span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
@@ -84,6 +100,7 @@
 				 <span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
+		
 		<div class="control-group">
 			<label class="control-label">平面图：</label>
 			<div class="controls">
@@ -119,5 +136,17 @@
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>
 	</form:form>
+	
+	<script type="text/javascript">
+	SelectLocation.init({
+        id:'selectBtn',     //打开地图窗口按钮的ID
+        url:'${ctxStatic}/map/bdMap.html?lat=${building.latitude}&lot=${building.longitude}',   //地图页面的地址
+
+        callback:function(selectedLocation){         
+          $("#address").val(selectedLocation.gpsAddr);
+          $("#point").val(selectedLocation.location);
+        }
+    });
+	</script>
 </body>
 </html>

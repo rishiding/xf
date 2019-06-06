@@ -10,6 +10,10 @@
 		a.latitude AS "latitude",
 		a.longitude AS "longitude",
 		a.point AS "point",
+		a.address,
+		a.ieme,
+		a.status,
+		a.alarm_Date AS "alarmDate",
 		a.floor_num AS "floorNum",
 		a.plane_img AS "planeImg",
 		a.elevators_num AS "elevatorsNum",
@@ -55,6 +59,13 @@
 			<if test="floorNum != null and floorNum != ''">
 				and a.floor_num = #{floorNum}
 			</if>
+			<if test="ieme != null and ieme != ''">
+				and a.ieme = #{ieme}
+			</if>
+			
+			<if test="address != null and address != ''">
+				and a.address = #{address}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
@@ -83,6 +94,32 @@
 			</otherwise>
 		</choose>
 	</select>
+	<update id="updateAlarm">
+		UPDATE sys_building SET 	
+			status = #{status},
+			alarm_date = #{alarmDate}
+			
+		WHERE ieme = #{ieme}
+	</update>
+	
+	<select id="findAlarmList" resultType="Building">
+		SELECT 
+			<include refid="buildingColumns"/>
+		FROM sys_building a
+		<include refid="buildingJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>	
+			and a.alarm_date>=#{querydate}
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
 	
 	<insert id="insert">
 		INSERT INTO sys_building(
@@ -93,6 +130,8 @@
 			latitude,
 			longitude,
 			point,
+			ieme ,
+			address,
 			floor_num,
 			plane_img,
 			elevators_num,
@@ -112,6 +151,8 @@
 			#{latitude},
 			#{longitude},
 			#{point},
+			#{ieme},
+			#{address},
 			#{floorNum},
 			#{planeImg},
 			#{elevatorsNum},
@@ -134,6 +175,8 @@
 			latitude = #{latitude},
 			longitude = #{longitude},
 			point = #{point},
+			ieme = #{ieme},
+			address=#{address},
 			floor_num = #{floorNum},
 			plane_img = #{planeImg},
 			elevators_num = #{elevatorsNum},

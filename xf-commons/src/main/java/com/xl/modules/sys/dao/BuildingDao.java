@@ -4,6 +4,9 @@
 package com.xl.modules.sys.dao;
 
 import com.xl.common.persistence.CrudDao;
+
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import com.xl.modules.sys.entity.Building;
 
@@ -14,5 +17,6 @@ import com.xl.modules.sys.entity.Building;
  */
 @Mapper
 public interface BuildingDao extends CrudDao<Building> {
-	
+	int updateAlarm(Building entity);
+	List<Building> findAlarmList(Building entity);
 }

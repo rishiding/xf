@@ -3,8 +3,12 @@
  */
 package com.xl.modules.sys.entity;
 
+import java.util.Date;
+
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xl.common.persistence.DataEntity;
 
 /**
@@ -26,6 +30,11 @@ public class Building extends DataEntity<Building> {
 	private String elevatorsNum;		// 电梯数量
 	private String stairNum;		// 楼梯数量
 	private String videoUrl;		// 视频监控地址
+	private String ieme;	//设备号
+	private String address;  
+	private String status;
+	private Date alarmDate;
+	private Date querydate;
 	
 	public Building() {
 		super();
@@ -127,8 +136,48 @@ public class Building extends DataEntity<Building> {
 		return videoUrl;
 	}
 
+	public String getIeme() {
+		return ieme;
+	}
+
+	public void setIeme(String ieme) {
+		this.ieme = ieme;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	public Date getAlarmDate() {
+		return alarmDate;
+	}
+
+	public void setAlarmDate(Date alarmDate) {
+		this.alarmDate = alarmDate;
+	}
+
 	public void setVideoUrl(String videoUrl) {
 		this.videoUrl = videoUrl;
+	}
+	@JsonIgnore
+	public Date getQuerydate() {
+		return querydate;
+	}
+
+	public void setQuerydate(Date querydate) {
+		this.querydate = querydate;
 	}
 	
 }

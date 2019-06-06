@@ -42,7 +42,7 @@
 				<th>CCID</th>
 				<th>经度</th>
 				<th>纬度</th>
-				<th>是否在线</th>
+				<!-- <th>是否在线</th> -->
 				<th>最后在线时间</th>
 				<shiro:hasPermission name="terminal:terminal:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
@@ -56,7 +56,7 @@
 				<td>${terminal.ccid}</td>
 				<td>${terminal.longitude}</td>
 				<td>${terminal.latitude}</td>
-				<td>${terminal.onlineName}</td>
+				<%-- <td>${terminal.onlineName}</td> --%>
 				<td>
 					<fmt:formatDate value="${terminal.lastOnlineTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>

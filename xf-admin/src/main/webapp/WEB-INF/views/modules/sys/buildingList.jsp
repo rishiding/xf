@@ -82,12 +82,14 @@
 					${building.point}
 				</td>
 				<td >
-					<a href="${ctx}/sys/buildingFloor/list?building.id=${building.id}" title="查看详细楼层">
+					
 					${building.floorNum}
-					</a>
+					
 				</td>
 				<td>
+					<c:if test="${not empty  building.planeImg}">
 					<img alt="平面图" src="${building.planeImg}" width="100" height="100"/>
+					</c:if>
 					
 				</td>
 				<td>

@@ -73,6 +73,11 @@ public class BuildingController extends BaseController {
 		if (!beanValidator(model, building)){
 			return form(building, model);
 		}
+		if(StringUtils.isNotBlank(building.getPoint())){
+			String[] a=building.getPoint().split(",");
+			building.setLongitude(a[0]);
+			building.setLatitude(a[1]);
+		}
 		buildingService.save(building);
 		addMessage(redirectAttributes, "保存消防建筑成功");
 		return "redirect:"+Global.getAdminPath()+"/sys/building/?repage";
