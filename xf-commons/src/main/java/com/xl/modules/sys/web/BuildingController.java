@@ -25,6 +25,7 @@ import com.xl.common.config.Global;
 import com.xl.common.persistence.Page;
 import com.xl.common.web.BaseController;
 import com.xl.common.utils.StringUtils;
+import com.xl.modules.alarm.vo.AlarmBuildVo;
 import com.xl.modules.sys.entity.Building;
 import com.xl.modules.sys.service.BuildingService;
 
@@ -90,7 +91,21 @@ public class BuildingController extends BaseController {
 		addMessage(redirectAttributes, "删除消防建筑成功");
 		return "redirect:"+Global.getAdminPath()+"/sys/building/?repage";
 	}
-	
+	/**
+	 * 获取机构JSON数据。
+	 * @param extId 排除的ID
+	 * @param type	类型（1：公司；2：部门/小组/其它：3：用户）
+	 * @param grade 显示级别
+	 * @param response
+	 * @return
+	 */
+	@RequiresPermissions("user")
+	@ResponseBody
+	@RequestMapping(value = "alarmData")
+	public Object alarmData(Building entity, HttpServletResponse response) {
+		AlarmBuildVo vo = buildingService.findAlarmBuild(entity);
+		return vo;
+	}
 	
 	/**
 	 * 获取机构JSON数据。

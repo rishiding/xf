@@ -62,7 +62,9 @@
 			<if test="ieme != null and ieme != ''">
 				and a.ieme = #{ieme}
 			</if>
-			
+			<if test="areaId != null and areaId != ''">
+				and u.area_id = #{areaId}
+			</if>
 			<if test="address != null and address != ''">
 				and a.address = #{address}
 			</if>

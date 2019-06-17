@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.Length;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xl.common.persistence.DataEntity;
+import com.xl.modules.alarm.vo.BuildVo;
 
 /**
  * 消防建筑Entity
@@ -35,6 +36,7 @@ public class Building extends DataEntity<Building> {
 	private String status;
 	private Date alarmDate;
 	private Date querydate;
+	private String areaId;
 	
 	public Building() {
 		super();
@@ -178,6 +180,33 @@ public class Building extends DataEntity<Building> {
 
 	public void setQuerydate(Date querydate) {
 		this.querydate = querydate;
+	}
+	@JsonIgnore
+	public String getAreaId() {
+		return areaId;
+	}
+
+	public void setAreaId(String areaId) {
+		this.areaId = areaId;
+	}
+
+	@JsonIgnore
+	public BuildVo toBuildVo(){
+		BuildVo vo=new BuildVo();
+		vo.setId(this.id);
+		vo.setContent(this.address);
+		vo.setTitle(this.name);
+		vo.setPoint(this.longitude+"|"+this.latitude);
+		vo.setIcon("/static/images/status/normal1.png");
+		if(this.getStatus()!=null){
+			if(this.getStatus().equals("1")){
+				vo.setIcon("/static/images/status/fire.png");
+			}else if(this.getStatus().equals("2")){
+				vo.setIcon("/static/images/status/alarm.png");
+			}
+		}
+		vo.setIsOpen("0");
+		return vo;
 	}
 	
 }

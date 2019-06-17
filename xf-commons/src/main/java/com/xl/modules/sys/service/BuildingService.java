@@ -8,9 +8,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.google.common.collect.Lists;
 import com.xl.common.persistence.Page;
 import com.xl.common.service.CrudService;
 import com.xl.modules.sys.entity.Building;
+import com.xl.modules.alarm.vo.AlarmBuildVo;
 import com.xl.modules.sys.dao.BuildingDao;
 
 /**
@@ -42,6 +44,23 @@ public class BuildingService extends CrudService<BuildingDao, Building> {
 	@Transactional(readOnly = false)
 	public void delete(Building building) {
 		super.delete(building);
+	}
+	
+	public AlarmBuildVo findAlarmBuild(Building building){
+		AlarmBuildVo vo=new AlarmBuildVo();
+		for(Building b:findList(building)){
+			vo.getList().add(b.toBuildVo());
+			vo.setTotalBuild(vo.getTotalBuild()+1);
+			if(b.getStatus().equals("1")){
+				vo.setAlarmBuild(vo.getAlarmBuild()+1);
+			}else if(b.getStatus().equals("2")){
+				vo.setFaltBuild(vo.getFaltBuild()+1);
+			}else{
+				vo.setNormalBuild(vo.getNormalBuild()+1);
+			}
+		}
+		return vo;
+		
 	}
 	
 }

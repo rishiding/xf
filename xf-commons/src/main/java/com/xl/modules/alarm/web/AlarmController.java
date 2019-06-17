@@ -21,6 +21,7 @@ import com.xl.common.web.BaseController;
 import com.xl.common.utils.StringUtils;
 import com.xl.modules.alarm.entity.Alarm;
 import com.xl.modules.alarm.service.AlarmService;
+import com.xl.modules.sys.service.BuildingService;
 
 /**
  * 报警记录Controller
@@ -32,7 +33,8 @@ import com.xl.modules.alarm.service.AlarmService;
 public class AlarmController extends BaseController {
 
 	@Autowired
-	private AlarmService alarmService;
+	private AlarmService alarmService;	
+	
 	
 	@ModelAttribute
 	public Alarm get(@RequestParam(required=false) String id) {
@@ -45,6 +47,13 @@ public class AlarmController extends BaseController {
 		}
 		return entity;
 	}
+	@RequiresPermissions("user")
+	@RequestMapping(value = {"index"})
+	public String index(Alarm alarm, HttpServletRequest request, HttpServletResponse response, Model model) {
+		return "modules/alarm/alarmIndex";
+	}
+	
+	
 	
 	@RequiresPermissions("alarm:alarm:view")
 	@RequestMapping(value = {"list", ""})

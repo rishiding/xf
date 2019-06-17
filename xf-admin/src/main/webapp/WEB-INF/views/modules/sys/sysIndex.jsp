@@ -124,15 +124,28 @@
 		});
 		// <c:if test="${tabmode eq '1'}"> 添加一个页签
 		function addTab($this, refresh){
+			var text;
+			var url;
+			var obj=null;
+			try{
+				text=$this.text();
+				url=$this.attr('href');
+				obj=$this;
+			}catch(e){
+				text=$this.title;
+				url=$this.type;
+				obj=null;
+			}
+			console.info($this);
 			$(".jericho_tab").show();
 			$("#mainFrame").hide();
 			$.fn.jerichoTab.addTab({
-                tabFirer: $this,
-                title: $this.text(),
+                tabFirer: obj,
+                title: text,
                 closeable: true,
                 data: {
                     dataType: 'iframe',
-                    dataLink: $this.attr('href')
+                    dataLink: url
                 }
             }).loadData(refresh);
 			return false;
