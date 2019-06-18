@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 body, html,#allmap {width: 100%;height: 100%;overflow: hidden;}
+#h-hong{height:10%;width:100%;float:left;}
 #l-map{height:100%;width:78%;float:left;border-right:2px solid #bcbcbc;}
 #r-result{height:100%;width:20%;float:left;}
 </style>
@@ -11,6 +12,7 @@ body, html,#allmap {width: 100%;height: 100%;overflow: hidden;}
 <title>检索用户静态数据</title>
 </head>
 <body>
+
 <div id="l-map"></div>
 <div id="r-result">
     <input id="type1" type="radio" name="type" value="single" /><label for="type1">精准查找</label>
@@ -49,7 +51,7 @@ var BASEDATA = [
 //创建和初始化地图函数：
 function initMap(){
     window.map = new BMap.Map("l-map");
-    map.centerAndZoom("北京",10);
+    map.centerAndZoom("中国",5);
     map.enableScrollWheelZoom();
 	map.addControl(new BMap.NavigationControl());
 	//创建自定义搜索类

@@ -28,6 +28,7 @@ import com.xl.common.utils.StringUtils;
 import com.xl.modules.alarm.vo.AlarmBuildVo;
 import com.xl.modules.sys.entity.Building;
 import com.xl.modules.sys.service.BuildingService;
+import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 消防建筑Controller
@@ -91,6 +92,9 @@ public class BuildingController extends BaseController {
 		addMessage(redirectAttributes, "删除消防建筑成功");
 		return "redirect:"+Global.getAdminPath()+"/sys/building/?repage";
 	}
+	
+	//UserUtils.getAreaList();
+	
 	/**
 	 * 获取机构JSON数据。
 	 * @param extId 排除的ID

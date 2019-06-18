@@ -3,6 +3,8 @@
  */
 package com.xl.modules.alarm.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,13 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.common.collect.Lists;
 import com.xl.common.config.Global;
 import com.xl.common.persistence.Page;
 import com.xl.common.web.BaseController;
 import com.xl.common.utils.StringUtils;
 import com.xl.modules.alarm.entity.Alarm;
 import com.xl.modules.alarm.service.AlarmService;
+import com.xl.modules.sys.entity.Area;
 import com.xl.modules.sys.service.BuildingService;
+import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 报警记录Controller
@@ -50,6 +55,12 @@ public class AlarmController extends BaseController {
 	@RequiresPermissions("user")
 	@RequestMapping(value = {"index"})
 	public String index(Alarm alarm, HttpServletRequest request, HttpServletResponse response, Model model) {
+		 List<Area> list=UserUtils.getAreaList();
+		 List<Area> listg=Lists.newLinkedList();
+		 List<Area> listc=Lists.newLinkedList();
+		 list.forEach(a->{if(a.getType().equals("2"))listg.add(a);if(a.getParentId().equals("24"))listc.add(a);});
+		 model.addAttribute("listg", listg);
+		 model.addAttribute("listc", listc);
 		return "modules/alarm/alarmIndex";
 	}
 	

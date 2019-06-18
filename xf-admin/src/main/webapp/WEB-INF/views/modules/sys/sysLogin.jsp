@@ -98,7 +98,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
         	<c:if test="${cookie.theme==null}">
-	        	cookie('theme','united');
+	        	cookie('theme','cosmo');
 	        	top.location = "${ctx}";
 	        </c:if>
             $("#loginForm").validate({

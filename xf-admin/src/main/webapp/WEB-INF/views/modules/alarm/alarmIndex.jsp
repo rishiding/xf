@@ -20,7 +20,7 @@ body, html, #allmap {
 
 #l-map {
 	height: 100%;
-	width: 80%;
+	width: 78%;
 	float: left;
 	border-right: 2px solid #bcbcbc;
 }
@@ -40,32 +40,73 @@ body, html, #allmap {
 	<form id="searchForm" action="#" method="post"
 		class="breadcrumb form-search">
 		<ul class="ul-form">
-			<li><label>区域：</label> <sys:treeselect id="area" name="areaId"
-					value="" labelName="area.name" labelValue="" title="区域"
-					url="/sys/area/treeData" cssClass="required" /></li>
-			<li><label>查询方式：</label> <input id="type1" type="radio"
-				name="type" value="single" /><label for="type1">精准查找</label> <input
-				id="type2" type="radio" name="type" value="more" checked="checked" /><label
-				for="type2">模糊查找</label></li>
-			<li><label>建筑名：</label> <input id="keyword" type="text"
-				maxlength="255" class="input-medium" /></li>
-			<li class="btns"><input id="btnSubmit" class="btn btn-primary"
-				type="button" onclick="search('type','keyword')" value="查询" /> <input
-				type="button" onclick="reset()" value="重置" /></li>
-			<li class="clearfix"></li>
+			<li><label>区域：</label>  <select id="c" name="c" onchange="getAreaData()">
+				<option value="">请选择</option>
+				<c:forEach items="${listg}" var="a">
+					<option value="${a.id}" <c:if test="${a.id eq '24'}"> selected="selected"</c:if>>${a.name}</option>
+				</c:forEach>				
+            </select><select id="s" name="s" class="input-mini" onchange="getShiData()"><option value="">请选择</option><c:forEach items="${listc}" var="a">
+					<option value="${a.id}" <c:if test="${a.id eq '276'}"> selected="selected"</c:if>>${a.name}</option>
+				</c:forEach></select> </li><li class="btns"><input id="button" class="btn btn-primary" type="button" value="查询" onclick="getData()"/></li>			
+			<li><input type="hidden" id="areaId"/><input type="hidden" id="areaName"/></li>
 		</ul>
 	</form>
 
 	<div id="l-map"></div>
 	<div id="r-result">
-		
+		<div class="breadcrumb form-search">
+		<ul class="ul-form">
+			<li ><label>建筑物总数:</label>&nbsp;<span id="totalBuild"></span></li>
+			<li class="clearfix"></li>
+			<li style="height:64px;"><label style="float:left"><img title="当前火灾报警数" src="/static/images/status/fire.png"></label><span id="alarmBuild" Style="padding-left:4px;font-size:46px;color:red;font-weight:bold;float:left">0</span></li>
+			<li class="clearfix" style="height:64px;"></li>
+			<li style="height:64px;"><label style="float:left"><img title="当前故障数" src="/static/images/status/alarm.png"></label><span id="faltBuild" Style="padding-left:4px;font-size:46px;color:yellow;font-weight:bold;float:left">0</span></li>
+			<li class="clearfix" style="height:64px;"></li>
+			<li style="height:64px;"><label style="float:left"><img title="当前正常数" src="/static/images/status/normal1.png"></label><span id="normalBuild" Style="padding-left:4px;font-size:46px;font-weight:bold; color:green;float:left">0</span></li>
+			<li class="clearfix" style="height:64px;"></li>					
+		</ul>
+		</div>
+    	<input id="keyword" type="text" style="width:150px;height:18px;float:left" value="" onkeypress="search('type','keyword')"	placeholder="输入建筑名模糊查询"/> 
+   	 	<input type="button" value="搜索" onclick="search('type','keyword')" style="float:left"/><input type="button" onclick="reset()" value="重置数据"/>
 	</div>
 
 </body>
 </html>
 <script type="text/javascript">
-// 	var BASEDATA=[{"title":"航利中心","icon":"/static/images/status/normal1.png","point":"104.044296|30.632085","content":"四川省成都市武侯区科园二路12","id":"caf5f24078254cbc9b9522ec3abdb2b1","isOpen":"0"},{"title":"环球中心","icon":"/static/images/status/normal1.png","point":"104.070742|30.574935","content":"四川省成都市武侯区","id":"ddf222e856cf467bbe901b01c03475dd","isOpen":"0"}];
-// 	console.info(BASEDATA);
+	function getAreaData(){		
+			console.info("1");
+			$('#s').val(null).trigger("change"); 
+			 var oSelected = document.getElementById("c");
+			 var selectedValue = oSelected.options[oSelected.selectedIndex].value;		
+			 var text =$("#c option:selected").text();
+			 $("#areaId").val(selectedValue);
+			 $("#areaName").val(text);
+			 var office= document.getElementById("s");
+			 office.options.length = 0;
+			 document.getElementById('s2id_s').childNodes[0].childNodes[1].innerHTML="";
+		        $.ajax({  
+		            type:"POST",  
+		            url: "${ctx}/sys/area/treeData?pid="+selectedValue,  
+		           
+		            success: function(data){  
+		                if(data != null && data.length > 0){  
+		                    var html="";  
+		                    for(var i=0; i<data.length; i++){  
+		                        office.add(new Option(data[i].name,data[i].id));
+		                    }  
+		                    $("#s").select2();
+		                }  
+		            }  
+		        }); 
+		        console.info("1");
+	}
+	function getShiData(){		
+		var selectedValue = $("#s option:selected").val();		
+		 var text =$("#s option:selected").text();
+		 $("#areaId").val(selectedValue);
+		 $("#areaName").val(text);
+		
+	}
 	function getData() {
 		var a;
 		$.ajax({
@@ -73,10 +114,12 @@ body, html, #allmap {
 			async : false,
 			url : "${ctx}/sys/building/alarmData?areaId=" + $("#areaId").val(),
 			success : function(data) {
+				$("#totalBuild").text(data.totalBuild);
+				$("#alarmBuild").text(data.alarmBuild);
+				$("#faltBuild").text(data.faltBuild);
+				$("#normalBuild").text(data.normalBuild);
 				 a =  JSON.parse(JSON.stringify(data.list))
-			     /* for(var i =0 ;i < jsonObj.length;i++){
-			            a[i] = jsonObj[i];
-			     } */
+			   
 			}
 		});
 		var name = $("#areaName").val();
@@ -103,15 +146,15 @@ body, html, #allmap {
 	//搜索方法 param{searchTypeRadio_name：搜索radio的名字,keyword_name:搜索文本框的id}
 	window.search = function(searchTypeRadio_name, keyword_name) {
 		//获取页面dom
-		var searchType = document.getElementsByName(searchTypeRadio_name);
+// 		var searchType = document.getElementsByName(searchTypeRadio_name);
 		var keyword = document.getElementById(keyword_name).value;
 		//获取dom的值
-		var isLikeSearch;
-		for (var i = 0; i < searchType.length; i++) {
+		var isLikeSearch='more';
+		/* for (var i = 0; i < searchType.length; i++) {
 			if (searchType[i].checked) {
 				isLikeSearch = searchType[i].value;
 			}
-		}
+		} */
 		//开始搜索
 		searchClass.trim(isLikeSearch) == "" && (t_v = "single"); //去掉搜索关键字的html标签
 		var dd = searchClass.search({
@@ -128,7 +171,7 @@ body, html, #allmap {
 		var dd = searchClass.search({
 			k : "title",
 			d : "显示全部",
-			t : "single",
+			t : "more",
 			s : "all"
 		});
 		addMarker(dd);//向地图中添加marker
@@ -184,9 +227,9 @@ body, html, #allmap {
 	//创建InfoWindow
 	function createInfoWindow(json) {
 		var iw = new BMap.InfoWindow(
-				"<b class='iw_poi_title' title='" + json.title + "'>"
+				"<a href='#' type='${ctx}/sys/building/form?id='"+json.id+"' onclick='parent.addTab(this, true)' title='" + json.title + "'><b class='iw_poi_title' title='" + json.title + "'>"
 						+ json.title + "</b><div class='iw_poi_content'>"
-						+ json.content + "</div>");
+						+ json.content + "</div></a>");
 		return iw;
 	}
 	//创建一个Icon

@@ -45,6 +45,9 @@
 			<include refid="buildingColumns"/>
 		FROM sys_building a
 		<include refid="buildingJoins"/>
+		<if test="areaId != null and areaId != ''">
+			left join sys_area s on u.area_id=s.id
+		</if>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
 			<if test="name != null and name != ''">
@@ -63,7 +66,9 @@
 				and a.ieme = #{ieme}
 			</if>
 			<if test="areaId != null and areaId != ''">
-				and u.area_id = #{areaId}
+				and (u.area_id = #{areaId} or s.parent_ids like <if test="dbName == 'oracle'">'%'||#{areaId}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{areaId}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{areaId},'%')</if>)
 			</if>
 			<if test="address != null and address != ''">
 				and a.address = #{address}
