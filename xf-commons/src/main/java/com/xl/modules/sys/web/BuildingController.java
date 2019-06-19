@@ -68,7 +68,13 @@ public class BuildingController extends BaseController {
 		model.addAttribute("building", building);
 		return "modules/sys/buildingForm";
 	}
-
+	@RequiresPermissions("user")
+	@RequestMapping(value = "detail")
+	public String detail(String id, Model model) {
+		Building building=buildingService.get(id);
+		model.addAttribute("building", building);
+		return "modules/sys/buildingDetail";
+	}
 	@RequiresPermissions("sys:building:edit")
 	@RequestMapping(value = "save")
 	public String save(Building building, Model model, RedirectAttributes redirectAttributes) {

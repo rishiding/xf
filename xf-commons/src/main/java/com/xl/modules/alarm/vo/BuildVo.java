@@ -7,6 +7,7 @@ public class BuildVo {
 	private String content;
 	private String id;
 	private String isOpen;
+	private String status;
 	public String getTitle() {
 		return title;
 	}
@@ -42,6 +43,12 @@ public class BuildVo {
 	}
 	public void setIsOpen(String isOpen) {
 		this.isOpen = isOpen;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 

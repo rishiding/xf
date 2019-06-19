@@ -196,6 +196,7 @@ public class Building extends DataEntity<Building> {
 		vo.setId(this.id);
 		vo.setContent(this.address);
 		vo.setTitle(this.name);
+		vo.setStatus(this.status);
 		vo.setPoint(this.longitude+"|"+this.latitude);
 		vo.setIcon("/static/images/status/normal1.png");
 		if(this.getStatus()!=null){

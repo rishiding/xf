@@ -56,25 +56,24 @@ body, html, #allmap {
 	<div id="r-result">
 		<div class="breadcrumb form-search">
 		<ul class="ul-form">
-			<li ><label>建筑物总数:</label>&nbsp;<span id="totalBuild"></span></li>
+			<li ><label onclick="find('')">建筑物总数:</label>&nbsp;<span id="totalBuild" onclick="find('')"></span></li>
 			<li class="clearfix"></li>
-			<li style="height:64px;"><label style="float:left"><img title="当前火灾报警数" src="/static/images/status/fire.png"></label><span id="alarmBuild" Style="padding-left:4px;font-size:46px;color:red;font-weight:bold;float:left">0</span></li>
+			<li style="height:64px;" ><label><img title="当前火灾报警数" onclick="find('1')"  src="/static/images/status/fire.png"></label><span onclick="find('1')" id="alarmBuild" Style="padding-left:4px;font-size:26px;color:red;font-weight:bold;">0</span></li>
 			<li class="clearfix" style="height:64px;"></li>
-			<li style="height:64px;"><label style="float:left"><img title="当前故障数" src="/static/images/status/alarm.png"></label><span id="faltBuild" Style="padding-left:4px;font-size:46px;color:yellow;font-weight:bold;float:left">0</span></li>
+			<li style="height:64px;"><label><img title="当前故障数" onclick="find('2')"  src="/static/images/status/alarm.png"></label><span onclick="find('2')" id="faltBuild" Style="padding-left:4px;font-size:26px;color:yellow;font-weight:bold;">0</span></li>
 			<li class="clearfix" style="height:64px;"></li>
-			<li style="height:64px;"><label style="float:left"><img title="当前正常数" src="/static/images/status/normal1.png"></label><span id="normalBuild" Style="padding-left:4px;font-size:46px;font-weight:bold; color:green;float:left">0</span></li>
+			<li style="height:64px;"><label><img title="当前正常数" onclick="find('0')"  src="/static/images/status/normal1.png"></label><span onclick="find('0')" id="normalBuild" Style="padding-left:4px;font-size:26px;font-weight:bold; color:green;">0</span></li>
 			<li class="clearfix" style="height:64px;"></li>					
 		</ul>
 		</div>
     	<input id="keyword" type="text" style="width:150px;height:18px;float:left" value="" onkeypress="search('type','keyword')"	placeholder="输入建筑名模糊查询"/> 
-   	 	<input type="button" value="搜索" onclick="search('type','keyword')" style="float:left"/><input type="button" onclick="reset()" value="重置数据"/>
+   	 	<input type="button" value="搜索" onclick="search('type','keyword')" style="float:left"/>
 	</div>
 
 </body>
 </html>
 <script type="text/javascript">
 	function getAreaData(){		
-			console.info("1");
 			$('#s').val(null).trigger("change"); 
 			 var oSelected = document.getElementById("c");
 			 var selectedValue = oSelected.options[oSelected.selectedIndex].value;		
@@ -98,7 +97,6 @@ body, html, #allmap {
 		                }  
 		            }  
 		        }); 
-		        console.info("1");
 	}
 	function getShiData(){		
 		var selectedValue = $("#s option:selected").val();		
@@ -131,8 +129,12 @@ body, html, #allmap {
 
 	//创建和初始化地图函数：
 	function initMap(name1, data) {
+		var num=10;
+		if(name1.indexOf("市")>=0){
+			num=12;
+		}
 		window.map = new BMap.Map("l-map");
-		map.centerAndZoom(name1, 10);
+		map.centerAndZoom(name1, num);
 		map.enableScrollWheelZoom();
 		map.addControl(new BMap.NavigationControl());
 		//创建自定义搜索类
@@ -160,6 +162,20 @@ body, html, #allmap {
 		var dd = searchClass.search({
 			k : "title",
 			d : keyword,
+			t : isLikeSearch,
+			s : ""
+		});
+		addMarker(dd);//向地图中添加marker
+	}
+	window.find = function(status) {
+		//获取dom的值
+		var isLikeSearch='more';
+	
+		//开始搜索
+		searchClass.trim(isLikeSearch) == "" && (t_v = "single"); //去掉搜索关键字的html标签
+		var dd = searchClass.search({
+			k : "status",
+			d : status,
 			t : isLikeSearch,
 			s : ""
 		});
@@ -226,8 +242,9 @@ body, html, #allmap {
 	}
 	//创建InfoWindow
 	function createInfoWindow(json) {
+		console.info(json);
 		var iw = new BMap.InfoWindow(
-				"<a href='#' type='${ctx}/sys/building/form?id='"+json.id+"' onclick='parent.addTab(this, true)' title='" + json.title + "'><b class='iw_poi_title' title='" + json.title + "'>"
+				"<a href='#' type='${ctx}/sys/building/detail?id="+ json.id +"' onclick='parent.addTab(this, true)' title='" + json.title + "'><b class='iw_poi_title' title='" + json.title + "'>"
 						+ json.title + "</b><div class='iw_poi_content'>"
 						+ json.content + "</div></a>");
 		return iw;
@@ -254,11 +271,11 @@ body, html, #allmap {
 			alert("数据不存在!");
 			return false;
 		}
-		if (this.trim(rule) == "" || this.trim(rule.d) == ""
+		/* if (this.trim(rule) == "" || this.trim(rule.d) == ""
 				|| this.trim(rule.k) == "" || this.trim(rule.t) == "") {
 			alert("请指定要搜索建筑物名!");
 			return false;
-		}
+		} */
 		var reval = [];
 		var datas = this.datas;
 		var len = datas.length;

@@ -211,7 +211,7 @@
 				</div>
 			</div>
 		    <div id="footer" class="row-fluid">
-	            Copyright &copy; 2017-2017 ${fns:getConfig('productName')} - Powered By <a href="http://xf.com" target="_blank">xf</a> ${fns:getConfig('version')}
+	            Copyright &copy; 2017-2019 ${fns:getConfig('productName')} - Powered By <a href="http://xf.com" target="_blank">xf</a> ${fns:getConfig('version')}
 			</div>
 		</div>
 	</div>
