@@ -22,7 +22,10 @@
 	</script>
 </head>
 <body>
-
+<ul class="nav nav-tabs">
+		<li class="active"><a href="${ctx}/device/device/list">消防设施事件列表</a></li>
+		<shiro:hasPermission name="terminal:terminal:edit"><li><a href="${ctx}/device/device/form">消防设施事件添加</a></li></shiro:hasPermission>
+	</ul>
 	<form:form id="searchForm" modelAttribute="device" action="${ctx}/device/device/" method="post" class="breadcrumb form-search">
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
@@ -89,8 +92,9 @@
 					${device.source}
 				</td>
 				<shiro:hasPermission name="device:device:edit"><td>
-    				
-					<a href="${ctx}/device/device/baoxiu?id=${device.id}" onclick="return confirmx('确认要保修该消防设施吗？', this.href)">保修</a>
+    				<c:if test="${device.status eq '1'}">
+						<a href="${ctx}/device/device/baoxiu?id=${device.id}" onclick="return confirmx('确认要保修该消防设施吗？', this.href)">保修</a>
+					</c:if>
 				</td></shiro:hasPermission>
 			</tr>
 		</c:forEach>

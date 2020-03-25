@@ -21,7 +21,7 @@ import com.xl.modules.device.dao.DeviceCheckDao;
 public class DeviceCheckService extends CrudService<DeviceCheckDao, DeviceCheck> {
 	@Transactional(readOnly = false)
 	public int check(DeviceCheck entity){
-		entity.setStatus("2");
+		entity.setStatus("1");
 		return dao.check(entity);
 	}
 	

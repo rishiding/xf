@@ -30,6 +30,11 @@
 			<li><label>设备类型：</label>
 				<form:input path="name" htmlEscape="false" maxlength="255" class="input-medium"/>
 			</li>
+			<li><label>是否在线：</label>
+				<form:select path="online" >
+					<form:options items="${fns:getDictList('terminal_status')}" itemLabel="label" itemValue="value" htmlEscape="false"/>				
+				</form:select>
+			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
 			<li class="clearfix"></li>
 		</ul>
@@ -42,8 +47,8 @@
 				<th>CCID</th>
 				<th>经度</th>
 				<th>纬度</th>
-				<!-- <th>是否在线</th> -->
-				<th>最后在线时间</th>
+				<th>是否在线</th>
+				<th>位置描述</th>
 				<shiro:hasPermission name="terminal:terminal:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>
@@ -56,9 +61,9 @@
 				<td>${terminal.ccid}</td>
 				<td>${terminal.longitude}</td>
 				<td>${terminal.latitude}</td>
-				<%-- <td>${terminal.onlineName}</td> --%>
+				<td>${terminal.onlineName}</td> 
 				<td>
-					<fmt:formatDate value="${terminal.lastOnlineTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					${terminal.remarks}
 				</td>
 				
 				<shiro:hasPermission name="terminal:terminal:edit"><td>

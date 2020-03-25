@@ -35,25 +35,32 @@
 	<form:form id="inputForm" modelAttribute="deviceCheck" action="${ctx}/device/deviceCheck/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
+		
+		
 		<div class="control-group">
-			<label class="control-label">系统名称 : 名称：</label>
+			<label class="control-label">所属消防局机构：</label>
 			<div class="controls">
-				<form:input path="sysName" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<sys:treeselect id="office" name="office.id" value="${deviceCheck.office.id}" labelName="office.name" labelValue="${deviceCheck.office.name}"
+					title="机构" url="/sys/office/treeData?type=2" cssClass="" allowClear="true" notAllowSelectParent="true"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">所属建筑：</label>
 			<div class="controls">
-				<form:input path="buildId" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
+					<sys:treeselect id="build" name="buildId" value="${deviceCheck.buildId}" labelName="buildName" labelValue="${deviceCheck.build.name}"
+					title="所属建筑" url="/sys/building/treeData" cssClass="" allowClear="true" notAllowSelectParent="true"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">所属消防局机构 : 所属消防局机构：</label>
+			<label class="control-label">系统名称 ：</label>
 			<div class="controls">
-				<sys:treeselect id="office" name="office.id" value="${deviceCheck.office.id}" labelName="office.name" labelValue="${deviceCheck.office.name}"
-					title="部门" url="/sys/office/treeData?type=2" cssClass="" allowClear="true" notAllowSelectParent="true"/>
+				<form:select path="sysName" class="input-xlarge required">
+					<form:option value="消防灭火系统">消防灭火系统</form:option>
+					<form:option value="消防疏散指示系统">消防疏散指示系统</form:option>
+				</form:select>
+			
+				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
@@ -73,7 +80,10 @@
 		<div class="control-group">
 			<label class="control-label">巡检类型：</label>
 			<div class="controls">
-				<form:input path="checkType" htmlEscape="false" maxlength="64" class="input-xlarge "/>
+				<form:select path="checkType">
+					 <form:options items="${fns:getDictList('check_type')}" itemLabel="label" itemValue="value"
+                              htmlEscape="false"/>
+				</form:select>
 			</div>
 		</div>
 		<div class="control-group">
@@ -89,13 +99,16 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">状态 : 0  未上报1 已上报：</label>
+			<label class="control-label">状态 ：</label>
 			<div class="controls">
-				<form:input path="status" htmlEscape="false" maxlength="1" class="input-xlarge "/>
+				<form:select path="status">
+					 <form:options items="${fns:getDictList('check_status')}" itemLabel="label" itemValue="value"
+                              htmlEscape="false"/>
+				</form:select>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">备注信息 : 备注信息：</label>
+			<label class="control-label">备注信息：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge "/>
 			</div>

@@ -75,7 +75,10 @@
 			<include refid="officeColumns"/>
 		FROM sys_office a
 		<include refid="officeJoins"/>
-		WHERE a.del_flag = #{DEL_FLAG_NORMAL} AND a.parent_ids LIKE #{parentIds}
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		<if test="parentIds != null and parentIds != ''">
+			AND a.parent_ids LIKE #{parentIds}
+		</if>
 		ORDER BY a.code
 	</select>
 	

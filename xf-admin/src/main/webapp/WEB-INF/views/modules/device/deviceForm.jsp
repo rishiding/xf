@@ -29,27 +29,28 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li><a href="${ctx}/device/device/">消防设施列表</a></li>
-		<li class="active"><a href="${ctx}/device/device/form?id=${device.id}">消防设施<shiro:hasPermission name="device:device:edit">${not empty device.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="device:device:edit">查看</shiro:lacksPermission></a></li>
+		<li><a href="${ctx}/device/device/">消防设施事件列表</a></li>
+		<li class="active"><a href="${ctx}/device/device/form?id=${device.id}">消防设施新增事件<shiro:hasPermission name="device:device:edit">${not empty device.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="device:device:edit">查看</shiro:lacksPermission></a></li>
 	</ul><br/>
 	<form:form id="inputForm" modelAttribute="device" action="${ctx}/device/device/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">所属消防局机构 : 所属消防局机构：</label>
+			<label class="control-label">所属消防局机构：</label>
 			<div class="controls">
 				<sys:treeselect id="office" name="office.id" value="${device.office.id}" labelName="office.name" labelValue="${device.office.name}"
-					title="部门" url="/sys/office/treeData?type=2" cssClass="" allowClear="true" notAllowSelectParent="true"/>
+					title="机构" url="/sys/office/treeData?type=2" cssClass="" allowClear="true" notAllowSelectParent="true"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">消防建筑：</label>
 			<div class="controls">
-				<form:input path="buildId" htmlEscape="false" maxlength="64" class="input-xlarge "/>
+				<sys:treeselect id="build" name="buildId" value="${device.buildId}" labelName="buildName" labelValue="${device.deviceName}"
+					title="所属建筑" url="/sys/building/treeData" cssClass="" allowClear="true" notAllowSelectParent="true"/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">设施id：</label>
+			<label class="control-label">设施ID：</label>
 			<div class="controls">
 				<form:input path="deviceId" htmlEscape="false" maxlength="64" class="input-xlarge "/>
 			</div>
@@ -73,9 +74,12 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">状态 : 1 未上报2 已经上报：</label>
+			<label class="control-label">状态 :</label>
 			<div class="controls">
-				<form:input path="status" htmlEscape="false" maxlength="2" class="input-xlarge "/>
+				<form:select path="status">
+					 <form:options items="${fns:getDictList('device_event_status')}" itemLabel="label" itemValue="value"
+                              htmlEscape="false"/>
+				</form:select>
 			</div>
 		</div>
 		<div class="control-group">
@@ -85,7 +89,7 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">备注信息 : 备注信息：</label>
+			<label class="control-label">备注信息：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge "/>
 			</div>

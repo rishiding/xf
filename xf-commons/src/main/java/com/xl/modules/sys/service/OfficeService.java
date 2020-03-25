@@ -6,6 +6,7 @@ package com.xl.modules.sys.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +40,9 @@ public class OfficeService extends TreeService<OfficeDao, Office> {
 	@Transactional(readOnly = true)
 	public List<Office> findList(Office office){
 		if(office != null){
-			office.setParentIds(office.getParentIds()+"%");
+			if(StringUtils.isNotBlank(office.getParentIds())){
+				office.setParentIds(office.getParentIds()+"%");
+			}
 			return dao.findByParentIdsLike(office);
 		}
 		return  new ArrayList<Office>();

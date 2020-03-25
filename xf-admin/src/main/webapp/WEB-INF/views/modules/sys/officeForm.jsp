@@ -41,15 +41,7 @@
     <sys:message content="${message}"/>
     <form:hidden path="parent.id" value="0"/>
     <form:hidden path="grade" value="0"/>
-  <%--   <div class="control-group">
-        <label class="control-label">上级机构:</label>
-        <div class="controls">
-            <sys:treeselect id="office" name="parent.id" value="${office.parent.id}" labelName="parent.name"
-                            labelValue="${office.parent.name}"
-                            title="机构" url="/sys/office/treeData" extId="${office.id}" cssClass=""
-                            allowClear="${office.currentUser.admin}"/>
-        </div>
-    </div> --%>
+
     <div class="control-group">
         <label class="control-label">归属区域:</label>
         <div class="controls">

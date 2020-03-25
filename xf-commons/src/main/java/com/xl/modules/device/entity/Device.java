@@ -104,7 +104,7 @@ public class Device extends DataEntity<Device> {
 		this.note = note;
 	}
 	public String getStatusName() {
-		return DictUtils.getDictLabel(status, "device_status", "");
+		return DictUtils.getDictLabel(status, "device_event_status", "");
 	}
 	@Length(min=0, max=2, message="状态 : 1 未上报2 已经上报长度必须介于 0 和 2 之间")
 	public String getStatus() {
