@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
+import com.xl.common.config.Constants;
 import com.xl.common.persistence.Page;
 import com.xl.common.service.CrudService;
 import com.xl.modules.sys.entity.Building;
@@ -51,11 +52,11 @@ public class BuildingService extends CrudService<BuildingDao, Building> {
 		for(Building b:findList(building)){
 			vo.getList().add(b.toBuildVo());
 			vo.setTotalBuild(vo.getTotalBuild()+1);
-			if(b.getStatus().equals("1")){
+			if(b.getStatus().equals(Constants.ALARM_FIRE)){//火灾
 				vo.setAlarmBuild(vo.getAlarmBuild()+1);
-			}else if(b.getStatus().equals("2")){
+			}else if(b.getStatus().equals(Constants.ALARM_FAULT)){//故障
 				vo.setFaltBuild(vo.getFaltBuild()+1);
-			}else{
+			}else{//正常建筑
 				vo.setNormalBuild(vo.getNormalBuild()+1);
 			}
 		}

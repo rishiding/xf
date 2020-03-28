@@ -14,10 +14,18 @@
 		a.update_by AS "updateBy.id",
 		a.update_date AS "updateDate",
 		a.remarks AS "remarks",
+		a.build_id As "buildId",
+		a.floor_id As "floorId",
+		b.id as "build.id",
+		b.name as "build.name",
+		f.id as "floor.id",
+		f.floor_no as "floor.floorNo", 
 		a.del_flag AS "delFlag"
 	</sql>
 	
 	<sql id="alarmJoins">
+		left join sys_building b on b.id=a.build_id
+		left join sys_building_floor f  on f.id=a.floor_id
 	</sql>
     
 	<select id="get" resultType="Alarm">
@@ -36,6 +44,9 @@
 		where a.del_flag = #{DEL_FLAG_NORMAL}
 		<if test="ieme != null and ieme != ''">
 			and a.ieme=#{ieme}
+		</if>
+		<if test="type != null and type != ''">
+			and a.type=#{type}
 		</if>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
@@ -73,6 +84,8 @@
 			loop_number,
 			sys_type,
 			type,
+			build_id,
+			floor_id,
 			create_by,
 			create_date,
 			update_by,
@@ -86,6 +99,8 @@
 			#{loopNumber},
 			#{sysType},
 			#{type},
+			#{buildId},
+			#{floorId},
 			#{createBy.id},
 			#{createDate},
 			#{updateBy.id},
@@ -102,6 +117,8 @@
 			loop_number = #{loopNumber},
 			sys_type = #{sysType},
 			type = #{type},
+			build_id = #{buildId},
+			floor_id = #{floorId},
 			update_by = #{updateBy.id},
 			update_date = #{updateDate},
 			remarks = #{remarks}

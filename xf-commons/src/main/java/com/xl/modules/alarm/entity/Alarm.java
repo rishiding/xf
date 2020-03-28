@@ -5,7 +5,11 @@ package com.xl.modules.alarm.entity;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xl.common.persistence.DataEntity;
+import com.xl.modules.sys.entity.Building;
+import com.xl.modules.sys.entity.BuildingFloor;
+import com.xl.modules.sys.utils.DictUtils;
 
 /**
  * 报警记录Entity
@@ -20,6 +24,10 @@ public class Alarm extends DataEntity<Alarm> {
 	private String loopNumber;		// 回路号
 	private String sysType;		// 系统类型
 	private String type;		// 报警类型
+	private String buildId;//建筑id
+	private String floorId; //楼层id
+	private Building build;
+	private BuildingFloor floor;
 	
 	public Alarm() {
 		super();
@@ -60,6 +68,10 @@ public class Alarm extends DataEntity<Alarm> {
 	public String getSysType() {
 		return sysType;
 	}
+	
+	public String getSysTypeName() {
+		return DictUtils.getDictLabel(sysType, "system_type", "");
+	}
 
 	public void setSysType(String sysType) {
 		this.sysType = sysType;
@@ -69,9 +81,45 @@ public class Alarm extends DataEntity<Alarm> {
 	public String getType() {
 		return type;
 	}
-
+	public String getTypeName() {
+		return DictUtils.getDictLabel(type, "alarm_type", "");
+	}
 	public void setType(String type) {
 		this.type = type;
+	}
+
+
+
+	public String getBuildId() {
+		return buildId;
+	}
+
+	public void setBuildId(String buildId) {
+		this.buildId = buildId;
+	}
+
+	public String getFloorId() {
+		return floorId;
+	}
+
+	public void setFloorId(String floorId) {
+		this.floorId = floorId;
+	}
+	@JsonIgnore
+	public Building getBuild() {
+		return build;
+	}
+
+	public void setBuild(Building build) {
+		this.build = build;
+	}
+	@JsonIgnore
+	public BuildingFloor getFloor() {
+		return floor;
+	}
+
+	public void setFloor(BuildingFloor floor) {
+		this.floor = floor;
 	}
 	
 }

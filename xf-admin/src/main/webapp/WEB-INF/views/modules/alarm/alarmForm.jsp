@@ -34,9 +34,23 @@
 	</ul><br/>
 	<form:form id="inputForm" modelAttribute="alarm" action="${ctx}/alarm/alarm/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
-		<sys:message content="${message}"/>		
+		<sys:message content="${message}"/>	
 		<div class="control-group">
-			<label class="control-label">ieme：</label>
+			<label class="control-label">所属建筑：</label>
+			<div class="controls">
+				<form:input path="buildId" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
+				<span class="help-inline"><font color="red">*</font> </span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">所属楼层：</label>
+			<div class="controls">
+				<form:input path="floorId" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
+				<span class="help-inline"><font color="red">*</font> </span>
+			</div>
+		</div>	
+		<div class="control-group">
+			<label class="control-label">设备号：</label>
 			<div class="controls">
 				<form:input path="ieme" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
@@ -57,13 +71,19 @@
 		<div class="control-group">
 			<label class="control-label">系统类型：</label>
 			<div class="controls">
-				<form:input path="sysType" htmlEscape="false" maxlength="255" class="input-xlarge "/>
+				<form:select path="sysType" class="input-xlarge ">
+					 <form:options items="${fns:getDictList('system_type')}" itemLabel="label" itemValue="value"
+                              htmlEscape="false"/>
+				</form:select>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">报警类型：</label>
 			<div class="controls">
-				<form:input path="type" htmlEscape="false" maxlength="255" class="input-xlarge "/>
+				<form:select path="type" class="input-xlarge ">
+					 <form:options items="${fns:getDictList('alarm_type')}" itemLabel="label" itemValue="value"
+                              htmlEscape="false"/>
+				</form:select>
 			</div>
 		</div>
 		<div class="control-group">
