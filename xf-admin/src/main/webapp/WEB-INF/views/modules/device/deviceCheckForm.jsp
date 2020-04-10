@@ -56,9 +56,9 @@
 			<label class="control-label">系统名称 ：</label>
 			<div class="controls">
 				<form:select path="sysName" class="input-xlarge required">
-					<form:option value="消防灭火系统">消防灭火系统</form:option>
-					<form:option value="消防疏散指示系统">消防疏散指示系统</form:option>
-				</form:select>
+					 <form:options items="${fns:getDictList('system_type')}" itemLabel="label" itemValue="label"
+		                              htmlEscape="false"/>
+                </form:select>
 			
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>

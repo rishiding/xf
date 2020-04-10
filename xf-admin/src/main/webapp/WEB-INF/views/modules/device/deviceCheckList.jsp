@@ -31,12 +31,16 @@
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
 			<li><label>巡检类型：</label>
-				<form:radiobuttons path="checkType" items="${fns:getDictList('check_type')}" itemLabel="label" itemValue="value" />	
+			<form:select path="checkType">
+				<form:options  items="${fns:getDictList('check_type')}" itemLabel="label" itemValue="value" />	
+				</form:select>
 			</li>
 			<li><label>  系统名称：</label>
-			 <input name="sysName" type="radio" value=""  />全部
-			 <input name="sysName" type="radio" value="消防灭火系统"  <c:if test="${deviceCheck.sysName eq '消防灭火系统'}">checked="checked"</c:if>/>消防灭火系统
-			 <input name="sysName" type="radio" value="消防疏散指示系统"  <c:if test="${deviceCheck.sysName eq '消防疏散指示系统'}">checked="checked"</c:if>/>消防疏散指示系统
+				<form:select path="sysName">
+					 <form:options items="${fns:getDictList('system_type')}" itemLabel="label" itemValue="label"
+		                              htmlEscape="false"/>
+                </form:select>
+			
 			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
 			<li class="clearfix"></li>
