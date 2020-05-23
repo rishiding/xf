@@ -19,6 +19,7 @@ public class BuildingFloor extends DataEntity<BuildingFloor> {
 	private String floorNo;		// 楼层号
 	private String planeImg;		// 楼层平面图
 	private String videoUrl;		// 视频监控地址
+	private String dragInfos;//
 	
 	public BuildingFloor() {
 		super();
@@ -61,6 +62,14 @@ public class BuildingFloor extends DataEntity<BuildingFloor> {
 
 	public void setVideoUrl(String videoUrl) {
 		this.videoUrl = videoUrl;
+	}
+
+	public String getDragInfos() {
+		return dragInfos;
+	}
+
+	public void setDragInfos(String dragInfos) {
+		this.dragInfos = dragInfos;
 	}
 	
 }

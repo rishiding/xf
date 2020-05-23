@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.xl.common.config.Global;
@@ -60,6 +61,13 @@ public class BuildingFloorController extends BaseController {
 		model.addAttribute("buildingFloor", buildingFloor);
 		return "modules/sys/buildingFloorForm";
 	}
+	
+	@RequiresPermissions("sys:buildingFloor:view")
+	@RequestMapping(value = "deploy")
+	public String deploy(BuildingFloor buildingFloor, Model model) {
+		model.addAttribute("buildingFloor", buildingFloor);
+		return "modules/sys/floorDeploy";
+	}
 
 	@RequiresPermissions("sys:buildingFloor:edit")
 	@RequestMapping(value = "save")
@@ -71,7 +79,16 @@ public class BuildingFloorController extends BaseController {
 		addMessage(redirectAttributes, "保存建筑楼层成功");
 		return "redirect:"+Global.getAdminPath()+"/sys/buildingFloor/?repage";
 	}
-	
+	@RequiresPermissions("sys:buildingFloor:edit")
+	@RequestMapping(value = "updateMaps")
+	@ResponseBody
+	public String updateMaps(BuildingFloor buildingFloor, Model model, RedirectAttributes redirectAttributes) {
+		if (!beanValidator(model, buildingFloor)){
+			return form(buildingFloor, model);
+		}
+		buildingFloorService.updateMaps(buildingFloor);
+		return "保存成功";
+	}
 	@RequiresPermissions("sys:buildingFloor:edit")
 	@RequestMapping(value = "delete")
 	public String delete(BuildingFloor buildingFloor, RedirectAttributes redirectAttributes) {

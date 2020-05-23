@@ -78,6 +78,7 @@
 				</td>
 				<shiro:hasPermission name="sys:buildingFloor:edit"><td>
     				<a href="${ctx}/sys/buildingFloor/form?id=${buildingFloor.id}">修改</a>
+    				<c:if test="${not empty buildingFloor.planeImg}"><a href="${ctx}/sys/buildingFloor/deploy?id=${buildingFloor.id}">锚点</a></c:if>    				
 					<a href="${ctx}/sys/buildingFloor/delete?id=${buildingFloor.id}" onclick="return confirmx('确认要删除该建筑楼层吗？', this.href)">删除</a>
 				</td></shiro:hasPermission>
 			</tr>

@@ -3,15 +3,20 @@
  */
 package com.xl.modules.sys.service;
 
+
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.xl.common.persistence.Page;
+import com.alibaba.fastjson.JSON;
 import com.xl.common.service.CrudService;
+import com.xl.common.utils.StringUtils;
 import com.xl.modules.sys.entity.BuildingFloor;
+import com.xl.modules.sys.entity.FloorDeploy;
 import com.xl.modules.sys.dao.BuildingFloorDao;
+import com.xl.modules.sys.dao.FloorDeployDao;
 
 /**
  * 建筑楼层Service
@@ -22,26 +27,28 @@ import com.xl.modules.sys.dao.BuildingFloorDao;
 @Transactional(readOnly = true)
 public class BuildingFloorService extends CrudService<BuildingFloorDao, BuildingFloor> {
 
-	public BuildingFloor get(String id) {
-		return super.get(id);
-	}
-	
-	public List<BuildingFloor> findList(BuildingFloor buildingFloor) {
-		return super.findList(buildingFloor);
-	}
-	
-	public Page<BuildingFloor> findPage(Page<BuildingFloor> page, BuildingFloor buildingFloor) {
-		return super.findPage(page, buildingFloor);
-	}
+	@Autowired
+	FloorDeployDao fDao;
 	
 	@Transactional(readOnly = false)
-	public void save(BuildingFloor buildingFloor) {
-		super.save(buildingFloor);
+	public void updateMaps(BuildingFloor buildingFloor) {
+		BuildingFloor old=dao.get(buildingFloor);
+		/*System.out.println("old:"+old.getDragInfos().hashCode());
+		System.out.println("new:"+buildingFloor.getDragInfos().hashCode());*/
+		if(StringUtils.isBlank(old.getDragInfos())||(old.getDragInfos().hashCode()!=buildingFloor.getDragInfos().hashCode())){
+			FloorDeploy fd=new FloorDeploy();
+			fd.setFloorId(buildingFloor.getId());
+			fDao.deleteByFloorId(fd);			
+			dao.updateMaps(buildingFloor);
+			List<FloorDeploy> list=JSON.parseArray(buildingFloor.getDragInfos(), FloorDeploy.class);
+			list.forEach(a->{
+				a.setFloorId(buildingFloor.getId());
+				a.preInsert();
+				fDao.insert(a);
+			});
+		}
 	}
 	
-	@Transactional(readOnly = false)
-	public void delete(BuildingFloor buildingFloor) {
-		super.delete(buildingFloor);
-	}
+	
 	
 }

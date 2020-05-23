@@ -13,6 +13,7 @@
 		a.update_by AS "updateBy.id",
 		a.update_date AS "updateDate",
 		a.del_flag AS "delFlag",
+		a.drag_infos As "dragInfos",
 		b.name as "building.name",
 		a.remarks AS "remarks"
 	</sql>
@@ -98,6 +99,12 @@
 			#{remarks}
 		)
 	</insert>
+	
+	<update id="updateMaps">
+		UPDATE sys_building_floor SET 	
+			drag_infos = #{dragInfos}
+		WHERE id = #{id}
+	</update>
 	
 	<update id="update">
 		UPDATE sys_building_floor SET 	

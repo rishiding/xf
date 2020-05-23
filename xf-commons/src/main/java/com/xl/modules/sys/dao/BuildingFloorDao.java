@@ -14,5 +14,6 @@ import com.xl.modules.sys.entity.BuildingFloor;
  */
 @Mapper
 public interface BuildingFloorDao extends CrudDao<BuildingFloor> {
+	int updateMaps(BuildingFloor floor);
 	
 }

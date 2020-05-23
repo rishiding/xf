@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xl.modules.sys.dao.FloorDeployDao">
+    
+	<sql id="floorDeployColumns">
+		a.id AS "id",
+		a.floor_id AS "floorId",
+		a.loop_number AS "loopNumber",
+		a.create_date AS "createDate",
+		a.create_by AS "createBy.id",
+		a.update_date AS "updateDate",
+		a.update_by AS "updateBy.id",
+		a.del_flag AS "delFlag",
+		a.name,
+		a.point,
+		a.remarks AS "remarks"
+	</sql>
+	
+	<sql id="floorDeployJoins">
+	</sql>
+    
+	<select id="get" resultType="FloorDeploy">
+		SELECT 
+			<include refid="floorDeployColumns"/>
+		FROM sys_floor_deploy a
+		<include refid="floorDeployJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="FloorDeploy">
+		SELECT 
+			<include refid="floorDeployColumns"/>
+		FROM sys_floor_deploy a
+		<include refid="floorDeployJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="FloorDeploy">
+		SELECT 
+			<include refid="floorDeployColumns"/>
+		FROM sys_floor_deploy a
+		<include refid="floorDeployJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sys_floor_deploy(
+			id,
+			floor_id,
+			loop_number,
+			name,
+			point,
+			create_date,
+			create_by,
+			update_date,
+			update_by,
+			del_flag,
+			remarks
+		) VALUES (
+			#{id},
+			#{floorId},
+			#{loopNumber},
+			#{name},
+			#{point},
+			#{createDate},
+			#{createBy.id},
+			#{updateDate},
+			#{updateBy.id},
+			#{delFlag},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sys_floor_deploy SET 	
+			floor_id = #{floorId},
+			loop_number = #{loopNumber},
+			name = #{name},
+			point = #{point},
+			update_date = #{updateDate},
+			update_by = #{updateBy.id},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE sys_floor_deploy SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	<update id="deleteByFloorId">
+		delete from sys_floor_deploy 
+		WHERE floor_id = #{floorId}
+	</update>
+	
+</mapper>
