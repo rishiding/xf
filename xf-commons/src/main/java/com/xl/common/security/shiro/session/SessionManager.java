@@ -25,14 +25,12 @@ import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.apache.shiro.web.util.WebUtils;
 
-import org.springframework.stereotype.Component;
 
 /**
  * 自定义WEB会话管理类
  * @author dingrenxin
  * @version 2014-7-20
  */
-@Component
 public class SessionManager extends DefaultWebSessionManager {
 
 	public SessionManager() {

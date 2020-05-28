@@ -2,6 +2,7 @@ package com.xl.common.config;
 
 import com.xl.common.security.shiro.session.CacheSessionDAO;
 import com.xl.common.security.shiro.session.SessionManager;
+import com.xl.common.utils.IdGen;
 import com.xl.modules.sys.security.FormAuthenticationFilter;
 import com.xl.modules.sys.security.SystemAuthorizingRealm;
 import net.sf.ehcache.CacheManager;
@@ -90,6 +91,14 @@ public class ShiroConfig {
         ehCacheManager.setCacheManager(manager);
         return ehCacheManager;
     }
+    @Bean(name = "sessionDAO")
+    public CacheSessionDAO sessionDAO(EhCacheManager shiroCacheManager,IdGen idGen){
+    	CacheSessionDAO dao=new CacheSessionDAO();
+    	dao.setSessionIdGenerator(idGen);
+    	dao.setActiveSessionsCacheName("activeSessionsCache");
+    	dao.setCacheManager(shiroCacheManager);
+    	return dao;
+    }
 
     @Bean(name = "sessionManager")
     public SessionManager sessionManager(CacheSessionDAO dao) {
@@ -100,6 +109,7 @@ public class ShiroConfig {
         sessionManager.setSessionValidationSchedulerEnabled(true);
         sessionManager.setSessionIdCookie(new SimpleCookie("xf.session.id"));
         sessionManager.setSessionIdCookieEnabled(true);
+        
         return sessionManager;
     }
 
@@ -109,9 +119,9 @@ public class ShiroConfig {
             SessionManager sessionManager,
             EhCacheManager ehCacheManager) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setSessionManager(sessionManager);
-        securityManager.setCacheManager(ehCacheManager);
         securityManager.setRealm(systemAuthorizingRealm);
+        securityManager.setSessionManager(sessionManager);
+        securityManager.setCacheManager(ehCacheManager);        
         return securityManager;
     }
 

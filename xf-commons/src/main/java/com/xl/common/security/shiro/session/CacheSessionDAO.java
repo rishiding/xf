@@ -9,7 +9,6 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.UnknownSessionException;
 import org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO;
@@ -17,14 +16,11 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.support.DefaultSubjectContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 
 import com.google.common.collect.Sets;
 import com.xl.common.config.Global;
 import com.xl.common.utils.DateUtils;
-import com.xl.common.utils.IdGen;
 import com.xl.common.utils.StringUtils;
 import com.xl.common.web.Servlets;
 
@@ -33,26 +29,15 @@ import com.xl.common.web.Servlets;
  * @author dingrenxin
  * @version 2014-7-24
  */
-@Component("sessionDAO")
-public class CacheSessionDAO extends EnterpriseCacheSessionDAO implements SessionDAO,InitializingBean{
+
+public class CacheSessionDAO extends EnterpriseCacheSessionDAO implements SessionDAO{
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	@Autowired
-	private IdGen idgen;
-	@Autowired
-	private CacheManager cacheManager;
-
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		setSessionIdGenerator(idgen);
-		setActiveSessionsCacheName("activeSessionsCache");
-		setCacheManager(cacheManager);
-	}
+	
 
 	public CacheSessionDAO() {
         super();
     }
-
 
 
 	@Override
