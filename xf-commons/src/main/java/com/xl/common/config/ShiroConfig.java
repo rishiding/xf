@@ -7,10 +7,10 @@ import com.xl.modules.sys.security.SystemAuthorizingRealm;
 import net.sf.ehcache.CacheManager;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -70,7 +70,7 @@ public class ShiroConfig {
             @Value("${adminPath:/a}") String adminPath,
             BasicHttpAuthenticationFilter basicHttpAuthenticationFilter,
             FormAuthenticationFilter formAuthenticationFilter,
-            DefaultWebSecurityManager securityManager,
+            SecurityManager securityManager,
             @Qualifier("shiroFilterChainDefinitions") String shiroFilterChainDefinitions) {
         Map<String, Filter> filters = new HashMap<String, Filter>();
         filters.put("basic", basicHttpAuthenticationFilter);
@@ -104,24 +104,17 @@ public class ShiroConfig {
     }
 
     @Bean(name = "securityManager")
-    public DefaultWebSecurityManager defaultWebSecurityManager(
+    public SecurityManager securityManager(
             SystemAuthorizingRealm systemAuthorizingRealm,
             SessionManager sessionManager,
             EhCacheManager ehCacheManager) {
-        DefaultWebSecurityManager defaultWebSecurityManager = new DefaultWebSecurityManager();
-        defaultWebSecurityManager.setSessionManager(sessionManager);
-        defaultWebSecurityManager.setCacheManager(ehCacheManager);
-        defaultWebSecurityManager.setRealm(systemAuthorizingRealm);
-        return defaultWebSecurityManager;
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        securityManager.setSessionManager(sessionManager);
+        securityManager.setCacheManager(ehCacheManager);
+        securityManager.setRealm(systemAuthorizingRealm);
+        return securityManager;
     }
 
-    @Bean
-    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(
-            DefaultWebSecurityManager defaultWebSecurityManager) {
-        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
-        authorizationAttributeSourceAdvisor.setSecurityManager(defaultWebSecurityManager);
-        return authorizationAttributeSourceAdvisor;
-    }
 
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
