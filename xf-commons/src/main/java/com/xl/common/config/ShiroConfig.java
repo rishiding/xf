@@ -38,52 +38,20 @@ import java.util.Map;
 @Component
 public class ShiroConfig {
 
-    /**
-     * 全局的环境变量的设置
-     * shiro的拦截
-     *
-     * @param environment
-     * @param adminPath
-     * @return
-     */
-    @Bean(name = "shiroFilterChainDefinitions")
-    public String shiroFilterChainDefinitions(Environment environment, @Value("${adminPath}") String adminPath) {
-        Global.resolver = new RelaxedPropertyResolver(environment);
-        String string = "/static/** = anon\n";
-        string += "/userfiles/** = anon\n";
-        string += adminPath + "/basic = basic\n";
-        string += adminPath + "/login = authc\n";
-        string += adminPath + "/logout = logout\n";
-        string += adminPath + "/** = user\n";
-        string += "/ReportServer/** = user";
-        return string;
+   
+    
+    @Bean(name = "securityManager")
+    public SecurityManager securityManager(
+            SystemAuthorizingRealm systemAuthorizingRealm,
+            SessionManager sessionManager,
+            EhCacheManager ehCacheManager) {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        securityManager.setRealm(systemAuthorizingRealm);
+        securityManager.setSessionManager(sessionManager);
+        securityManager.setCacheManager(ehCacheManager);        
+        return securityManager;
     }
 
-    @Bean(name = "basicHttpAuthenticationFilter")
-    public BasicHttpAuthenticationFilter casFilter(@Value("${adminPath:/a}") String adminPath) {
-        BasicHttpAuthenticationFilter basicHttpAuthenticationFilter = new BasicHttpAuthenticationFilter();
-        basicHttpAuthenticationFilter.setLoginUrl(adminPath + "/login");
-        return basicHttpAuthenticationFilter;
-    }
-
-    @Bean(name = "shiroFilter")
-    public ShiroFilterFactoryBean shiroFilterFactoryBean(
-            @Value("${adminPath:/a}") String adminPath,
-            BasicHttpAuthenticationFilter basicHttpAuthenticationFilter,
-            FormAuthenticationFilter formAuthenticationFilter,
-            SecurityManager securityManager,
-            @Qualifier("shiroFilterChainDefinitions") String shiroFilterChainDefinitions) {
-        Map<String, Filter> filters = new HashMap<String, Filter>();
-        filters.put("basic", basicHttpAuthenticationFilter);
-        filters.put("authc", formAuthenticationFilter);
-        ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
-        bean.setFilters(filters);
-        bean.setSecurityManager(securityManager);
-        bean.setLoginUrl(adminPath + "/login");
-        bean.setSuccessUrl(adminPath + "?login");
-        bean.setFilterChainDefinitions(shiroFilterChainDefinitions);
-        return bean;
-    }
 
     @Bean(name = "shiroCacheManager")
     public EhCacheManager shiroCacheManager(CacheManager manager) {
@@ -112,19 +80,53 @@ public class ShiroConfig {
         
         return sessionManager;
     }
-
-    @Bean(name = "securityManager")
-    public SecurityManager securityManager(
-            SystemAuthorizingRealm systemAuthorizingRealm,
-            SessionManager sessionManager,
-            EhCacheManager ehCacheManager) {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(systemAuthorizingRealm);
-        securityManager.setSessionManager(sessionManager);
-        securityManager.setCacheManager(ehCacheManager);        
-        return securityManager;
+    @Bean(name = "shiroFilter")
+    public ShiroFilterFactoryBean shiroFilterFactoryBean(
+            @Value("${adminPath:/a}") String adminPath,
+            BasicHttpAuthenticationFilter basicHttpAuthenticationFilter,
+            FormAuthenticationFilter formAuthenticationFilter,
+            SecurityManager securityManager,
+            @Qualifier("shiroFilterChainDefinitions") String shiroFilterChainDefinitions) {
+        Map<String, Filter> filters = new HashMap<String, Filter>();
+        filters.put("basic", basicHttpAuthenticationFilter);
+        filters.put("authc", formAuthenticationFilter);
+        ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
+        bean.setFilters(filters);
+        bean.setSecurityManager(securityManager);
+        bean.setLoginUrl(adminPath + "/login");
+        bean.setSuccessUrl(adminPath + "?login");
+        bean.setFilterChainDefinitions(shiroFilterChainDefinitions);
+        return bean;
+    }
+    /**
+     * 全局的环境变量的设置
+     * shiro的拦截
+     *
+     * @param environment
+     * @param adminPath
+     * @return
+     */
+    @Bean(name = "shiroFilterChainDefinitions")
+    public String shiroFilterChainDefinitions(Environment environment, @Value("${adminPath}") String adminPath) {
+        Global.resolver = new RelaxedPropertyResolver(environment);
+        String string = "/static/** = anon\n";
+        string += "/userfiles/** = anon\n";
+        string += adminPath + "/basic = basic\n";
+        string += adminPath + "/login = authc\n";
+        string += adminPath + "/logout = logout\n";
+        string += adminPath + "/** = user\n";
+        return string;
     }
 
+    
+
+    @Bean(name = "basicHttpAuthenticationFilter")
+    public BasicHttpAuthenticationFilter casFilter(@Value("${adminPath:/a}") String adminPath) {
+        BasicHttpAuthenticationFilter basicHttpAuthenticationFilter = new BasicHttpAuthenticationFilter();
+        basicHttpAuthenticationFilter.setLoginUrl(adminPath + "/login");
+        return basicHttpAuthenticationFilter;
+    }
+  
 
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
