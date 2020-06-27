@@ -166,7 +166,7 @@
     </div> --%>
 </form>
 <div class="footer">
-    Copyright &copy; 2017-2019 <a href="${pageContext.request.contextPath}">${fns:getConfig('productName')}</a> -
+    Copyright &copy; 2017-2020 <a href="${pageContext.request.contextPath}">${fns:getConfig('productName')}</a> -
     Powered By <a href="http://xf.com" target="_blank">xf</a> ${fns:getConfig('version')}
 </div>
 <script src="${ctxStatic}/flash/zoom.min.js" type="text/javascript"></script>
