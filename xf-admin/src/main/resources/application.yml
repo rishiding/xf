@@ -66,6 +66,7 @@ mybatis:
   type-aliases-package: com.xl
 #admin页面管理Path
 adminPath: /admin
+frontPath: /f
 
 #分页配置
 page:
