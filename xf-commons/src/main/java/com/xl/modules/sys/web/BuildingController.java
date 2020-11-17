@@ -28,7 +28,6 @@ import com.xl.common.utils.StringUtils;
 import com.xl.modules.alarm.vo.AlarmBuildVo;
 import com.xl.modules.sys.entity.Building;
 import com.xl.modules.sys.service.BuildingService;
-import com.xl.modules.sys.utils.UserUtils;
 
 /**
  * 消防建筑Controller
@@ -68,13 +67,7 @@ public class BuildingController extends BaseController {
 		model.addAttribute("building", building);
 		return "modules/sys/buildingForm";
 	}
-	@RequiresPermissions("user")
-	@RequestMapping(value = "detail")
-	public String detail(String id, Model model) {
-		Building building=buildingService.get(id);
-		model.addAttribute("building", building);
-		return "modules/sys/buildingDetail";
-	}
+	
 	@RequiresPermissions("sys:building:edit")
 	@RequestMapping(value = "save")
 	public String save(Building building, Model model, RedirectAttributes redirectAttributes) {

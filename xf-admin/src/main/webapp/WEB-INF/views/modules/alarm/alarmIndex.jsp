@@ -244,7 +244,7 @@ body, html, #allmap {
 	function createInfoWindow(json) {
 		console.info(json);
 		var iw = new BMap.InfoWindow(
-				"<a href='#' type='${ctx}/sys/building/detail?id="+ json.id +"' onclick='parent.addTab(this, true)' title='" + json.title + "'><b class='iw_poi_title' title='" + json.title + "'>"
+				"<a href='#' type='/f/sys/building/detail?id="+ json.id +"' onclick='parent.addTab(this, true)' title='" + json.title + "'><b class='iw_poi_title' title='" + json.title + "'>"
 						+ json.title + "</b><div class='iw_poi_content'>"
 						+ json.content + "</div></a>");
 		return iw;

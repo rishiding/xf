@@ -15,7 +15,20 @@
 		a.point,
 		a.remarks AS "remarks"
 	</sql>
-	
+	<sql id="buildingFloorColumns">
+		a.id AS "id",
+		a.building_id AS "building.id",
+		a.floor_no AS "floorNo",
+		a.plane_img AS "planeImg",
+		a.video_url AS "videoUrl",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.drag_infos As "dragInfos"
+		
+	</sql>
 	<sql id="floorDeployJoins">
 	</sql>
     
@@ -43,6 +56,28 @@
 				ORDER BY a.update_date DESC
 			</otherwise>
 		</choose>
+	</select>
+	<select id="findFloorByLoopNumber" resultType="BuildingFloor">
+		select  top 1
+		<include refid="buildingFloorColumns"></include>
+		 from sys_building_floor a where a.id in
+		(SELECT 
+			distinct floor_id
+		FROM sys_floor_deploy a
+		<include refid="floorDeployJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			and a.loop_number = #{loopNumber}
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+		)
 	</select>
 	
 	<select id="findAllList" resultType="FloorDeploy">

@@ -5,6 +5,8 @@ package com.xl.modules.sys.dao;
 
 import com.xl.common.persistence.CrudDao;
 import org.apache.ibatis.annotations.Mapper;
+
+import com.xl.modules.sys.entity.BuildingFloor;
 import com.xl.modules.sys.entity.FloorDeploy;
 
 /**
@@ -15,4 +17,5 @@ import com.xl.modules.sys.entity.FloorDeploy;
 @Mapper
 public interface FloorDeployDao extends CrudDao<FloorDeploy> {
 	int deleteByFloorId(FloorDeploy fd);
+	BuildingFloor findFloorByLoopNumber(FloorDeploy fd);
 }

@@ -8,7 +8,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.common.collect.Lists;
 import com.xl.common.config.Constants;
 import com.xl.common.persistence.Page;
 import com.xl.common.service.CrudService;

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xl.common.service.CrudService;
+import com.xl.modules.sys.entity.BuildingFloor;
 import com.xl.modules.sys.entity.FloorDeploy;
 import com.xl.modules.sys.dao.FloorDeployDao;
 
@@ -25,5 +26,20 @@ public class FloorDeployService extends CrudService<FloorDeployDao, FloorDeploy>
 	public void deleteByFloorId(FloorDeploy floorDeploy) {
 		dao.deleteByFloorId(floorDeploy);
 	}
+	/**
+	 * 根据loopNumber 找到楼层
+	 * @param loopNumber
+	 * @return
+	 */
+	public BuildingFloor findFloorByLoopNumber(String loopNumber){
+		FloorDeploy  d=new FloorDeploy();
+		d.setLoopNumber(loopNumber);
+		BuildingFloor bf= dao.findFloorByLoopNumber(d);
+		if(bf==null){
+			bf=new BuildingFloor();
+		}
+		return bf;
+	}
+	
 	
 }

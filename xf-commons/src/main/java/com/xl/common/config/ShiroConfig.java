@@ -138,7 +138,7 @@ public class ShiroConfig {
         return filterRegistration;
     }
 
-    @Bean(name = "lifecycleBeanPostProcessor")
+   /* @Bean(name = "lifecycleBeanPostProcessor")
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
     }
@@ -149,5 +149,5 @@ public class ShiroConfig {
         DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
         defaultAdvisorAutoProxyCreator.setProxyTargetClass(true);
         return defaultAdvisorAutoProxyCreator;
-    }
+    }*/
 }
