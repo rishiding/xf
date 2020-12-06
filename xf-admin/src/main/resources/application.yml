@@ -48,9 +48,12 @@ spring:
       config: classpath:ehcache.xml
 #MQTT配置信息      
   mqtt:
-    username: admin
-    password: 123456789U!
-    url: tcp://47.92.193.78:1123
+#    username: admin
+#    password: 123456789U!
+#    url: tcp://47.92.193.78:1123
+    username: root
+    password: Htdl-0825
+    url: tcp://47.92.193.78:1883
     timeout: 2000
     keepalive: 500
     clientId: client_xf

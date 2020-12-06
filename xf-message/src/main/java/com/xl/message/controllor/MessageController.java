@@ -16,10 +16,10 @@ public class MessageController {
     MqttGateway mqttGateway;
 
     @RequestMapping(value="/sendMsg")
-    public String sendMsg(@RequestParam String message){
+    public String sendMsg(@RequestParam String id,@RequestParam String message){
 
-        mqttGateway.sendToMqtt("defualt-topic:"+message);
-        mqttGateway.sendToMqtt(Topics.TOPIC_SERVER_DEVICE_ID, message);
+//        mqttGateway.sendToMqtt("defualt-topic:"+message);
+        mqttGateway.sendToMqtt(Topics.TOPIC_SERVER_DEVICE_ID.replace("{id}",id), message);
         return "success";
     }
 }
