@@ -28,6 +28,12 @@ public class BuildingService extends CrudService<BuildingDao, Building> {
 		return super.get(id);
 	}
 	
+	public Building getByIeme(String ieme) {
+		Building building=new Building();
+		building.setIeme(ieme);
+		return dao.getByIeme(building);
+	}
+	
 	public List<Building> findList(Building building) {
 		return super.findList(building);
 	}

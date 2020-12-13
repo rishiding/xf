@@ -9,6 +9,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * xl-xf
@@ -20,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableCaching
 @SpringBootApplication
 @Configuration  
+@EnableScheduling
 @ServletComponentScan("com.xl")
 @EnableAutoConfiguration 
 @ComponentScan(value = "com.xl",lazyInit = false)

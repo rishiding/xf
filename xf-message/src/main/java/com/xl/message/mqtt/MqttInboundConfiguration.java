@@ -63,18 +63,18 @@ public class MqttInboundConfiguration {
             @Override
             public void handleMessage(Message<?> message) throws MessagingException {
             	String topic=(String)message.getHeaders().get("mqtt_topic");
-            	log.info("topic:"+topic);
+//            	log.info("topic:"+topic);
             	String msg = (String) message.getPayload();
             	if(topic.equals(Topics.TOPIC_DEVICE_ID)){//设备注册 状态更新
             		equipmentUploadFactory.getResource(topic,"",msg);
             		
             	}else if(topic.startsWith(Topics.TOPIC_DEVICE_PREFIX)){
             		String shortTopic=topic.substring(Topics.TOPIC_DEVICE_PREFIX.length());
-            		String imemid=shortTopic.substring(0,shortTopic.indexOf("/")-1);
+            		String imemid=shortTopic.substring(0,shortTopic.indexOf("/"));
             		String top=shortTopic.substring(shortTopic.indexOf("/"));
             		equipmentUploadFactory.getResource(top,imemid,msg);            		
             	}
-                log.info("收到消息："+msg);
+//                log.info("收到消息："+msg);
             }
 
         };

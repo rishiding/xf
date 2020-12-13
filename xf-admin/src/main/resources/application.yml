@@ -70,6 +70,9 @@ mybatis:
 #admin页面管理Path
 adminPath: /admin
 frontPath: /f
+view:
+  building:
+    url: http://xf.xhtdl.com/f/sys/building/detail  
 
 #分页配置
 page:

@@ -19,4 +19,5 @@ import com.xl.modules.sys.entity.Building;
 public interface BuildingDao extends CrudDao<Building> {
 	int updateAlarm(Building entity);
 	List<Building> findAlarmList(Building entity);
+	Building getByIeme(Building entity);
 }

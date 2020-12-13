@@ -40,6 +40,14 @@
 		WHERE a.id = #{id}
 	</select>
 	
+	<select id="getByIeme" resultType="Building">
+		SELECT 
+			<include refid="buildingColumns"/>
+		FROM sys_building a
+		<include refid="buildingJoins"/>
+		WHERE a.ieme = #{ieme}
+	</select>
+	
 	<select id="findList" resultType="Building">
 		SELECT 
 			<include refid="buildingColumns"/>
