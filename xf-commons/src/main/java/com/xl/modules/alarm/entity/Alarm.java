@@ -27,6 +27,7 @@ public class Alarm extends DataEntity<Alarm> {
 	private String buildId;//建筑id
 	private String floorId; //楼层id
 	private Building build;
+	private String status;//状态
 	private BuildingFloor floor;
 	
 	public Alarm() {
@@ -85,6 +86,11 @@ public class Alarm extends DataEntity<Alarm> {
 		return DictUtils.getDictLabel(type, "alarm_type", "");
 	}
 	public void setType(String type) {
+		if(type.isEmpty()||type.equalsIgnoreCase("alarm")){
+			type="1";
+		}else{
+			type="2";
+		}
 		this.type = type;
 	}
 
@@ -113,6 +119,19 @@ public class Alarm extends DataEntity<Alarm> {
 	public void setBuild(Building build) {
 		this.build = build;
 	}
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		if(status.isEmpty()||status.equals("on")){
+			status="0";
+		}else{
+			status="1";
+		}
+		this.status = status;
+	}
+
 	@JsonIgnore
 	public BuildingFloor getFloor() {
 		return floor;

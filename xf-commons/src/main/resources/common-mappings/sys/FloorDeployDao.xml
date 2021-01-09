@@ -58,7 +58,7 @@
 		</choose>
 	</select>
 	<select id="findFloorByLoopNumber" resultType="BuildingFloor">
-		select  top 1
+		select 
 		<include refid="buildingFloorColumns"></include>
 		 from sys_building_floor a where a.id in
 		(SELECT 
@@ -78,6 +78,7 @@
 			</otherwise>
 		</choose>
 		)
+		limit 1
 	</select>
 	
 	<select id="findAllList" resultType="FloorDeploy">

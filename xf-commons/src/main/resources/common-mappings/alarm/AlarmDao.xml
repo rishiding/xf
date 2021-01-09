@@ -14,6 +14,7 @@
 		a.update_by AS "updateBy.id",
 		a.update_date AS "updateDate",
 		a.remarks AS "remarks",
+		a.status AS "status",
 		a.build_id As "buildId",
 		a.floor_id As "floorId",
 		b.id as "build.id",
@@ -91,6 +92,7 @@
 			update_by,
 			update_date,
 			remarks,
+			status,
 			del_flag
 		) VALUES (
 			#{id},
@@ -106,6 +108,7 @@
 			#{updateBy.id},
 			#{updateDate},
 			#{remarks},
+			#{status},
 			#{delFlag}
 		)
 	</insert>
@@ -118,6 +121,7 @@
 			sys_type = #{sysType},
 			type = #{type},
 			build_id = #{buildId},
+			status = #{status},
 			floor_id = #{floorId},
 			update_by = #{updateBy.id},
 			update_date = #{updateDate},
